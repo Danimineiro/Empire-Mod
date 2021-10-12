@@ -29,8 +29,8 @@ namespace FactionColonies
 
         Rect BaseBuildingWindow = new Rect(0, 150, 400, rowHeight);
         Rect BaseBuildingIcon = new Rect(offset, 150 + offset, 64, 64);
-        Rect BaseBuildingLabel = new Rect(80, 150 + 5, 320, 20);
-        Rect BaseBuildingDesc = new Rect(80, 150 + 25, 320, 65);
+        Rect BaseBuildingLabel = new Rect(80, 150 + 5, 320 - offset, 20);
+        Rect BaseBuildingDesc = new Rect(80, 150 + 25, 320 - offset, 65);
 
         Rect newBuildingWindow;
         Rect newBuildingIcon;
