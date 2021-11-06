@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!--  TRIBAL TIER   -->
+
+	<!-- Farmland -->
+	<FactionColonies.BuildingFCDef>
+		<defName>Farmland</defName> <!--Name of Def -->
+		<label>Farmland</label> <!--Lable of Def -->
+		<desc>A section of land deicated to growing edible plants. +.5 base food production.</desc> <!-- Description of trait -->
+		<cost>250</cost>
+		<techLevel>Undefined</techLevel>
+		<constructionDuration>60000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>Farmland</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>0</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/Farmland</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>Farmland</defName> <!--Name of Def -->
+		<label>Farmland</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionBaseFood>0.5</productionBaseFood>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Ammunition Mines -->
+	<FactionColonies.BuildingFCDef>
+		<defName>AmmunitionMines</defName> <!--Name of Def -->
+		<label>Ammunition Mines</label> <!--Lable of Def -->
+		<desc>From flint for arrows to the materials for bullets and gunpowder, these mines take up space that could be used for other resource mining. +15% weapons production. -15% mining production.</desc> <!-- Description of trait -->
+		<cost>250</cost>
+		<techLevel>Undefined</techLevel>
+		<constructionDuration>60000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>AmmunitionMines</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>0</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/AmmoMines</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>AmmunitionMines</defName> <!--Name of Def -->
+		<label>Ammunition Mines</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionMultiplierWeapons>1.15</productionMultiplierWeapons>
+		<productionMultiplierMining>0.85</productionMultiplierMining>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Tanning Workshop -->
+	<FactionColonies.BuildingFCDef>
+		<defName>TanningWorkshop</defName> <!--Name of Def -->
+		<label>Tanning Workshop</label> <!--Lable of Def -->
+		<desc>A workshop designed to turn animal hides into leather. +15% apparel production. -15% animal production.</desc> <!-- Description of trait -->
+		<cost>250</cost>
+		<techLevel>Undefined</techLevel>
+		<constructionDuration>60000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>TanningWorkshop</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>0</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/Tanning</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>TanningWorkshop</defName> <!--Name of Def -->
+		<label>Tanning Workshop</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionMultiplierApparel>1.15</productionMultiplierApparel>
+		<productionMultiplierAnimals>0.85</productionMultiplierAnimals>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Psychedelic Drug Den -->
+	<FactionColonies.BuildingFCDef>
+		<defName>DrugDen</defName> <!--Name of Def -->
+		<label>Psychedelic Drug Den</label> <!--Lable of Def -->
+		<desc>It's amazing the discoveries people make while absurdly high. Sometimes those discoveries are even useful! +5% research production. +.3 happiness per day. -5% medicine production.</desc> <!-- Description of trait -->
+		<cost>250</cost>
+		<techLevel>Undefined</techLevel>
+		<constructionDuration>60000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>DrugDen</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>0</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/DrugDen</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>DrugDen</defName> <!--Name of Def -->
+		<label>Psychedelic Drug Den</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionMultiplierResearch>1.05</productionMultiplierResearch>
+		<happinessGainedBase>0.3</happinessGainedBase>
+		<productionMultiplierMedicine>0.95</productionMultiplierMedicine>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Giant Hamster Wheel -->
+	<FactionColonies.BuildingFCDef>
+		<defName>HamsterWheel</defName> <!--Name of Def -->
+		<label>Giant Hamster Wheel</label> <!--Lable of Def -->
+		<desc>It's not much, but it's better than nothing! +.25 power production. -1 overmax worker.</desc> <!-- Description of trait -->
+		<cost>250</cost>
+		<techLevel>Undefined</techLevel>
+		<constructionDuration>60000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>HamsterWheel</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>0</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/HamsterWheel</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>HamsterWheel</defName> <!--Name of Def -->
+		<label>Giant Hamster Wheel</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionBasePower>0.25</productionBasePower>
+		<workerBaseOverMax>-1</workerBaseOverMax>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+<!-- MEDIEVAL TIER  -->
+	
+	<!-- Smithy -->
+	<FactionColonies.BuildingFCDef>
+		<defName>Smithy</defName> <!--Name of Def -->
+		<label>Smithy</label> <!--Lable of Def -->
+		<desc>A sturdy forge and sturdier anvil. Perfect for shaping metal into weapons and tools alike.  +.5 base weapons production. -5% mining production.</desc> <!-- Description of trait -->
+		<cost>500</cost>
+		<techLevel>Medieval</techLevel>
+		<constructionDuration>60000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>Smithy</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>0</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/Smithy</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>Smithy</defName> <!--Name of Def -->
+		<label>Smithy</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionBaseWeapons>0.5</productionBaseWeapons>
+		<productionMultiplierMining>0.95</productionMultiplierMining>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Subterranean Mine -->
+	<FactionColonies.BuildingFCDef>
+		<defName>UndergroundMine</defName> <!--Name of Def -->
+		<label>Subterranean Mine</label> <!--Lable of Def -->
+		<desc>Dig down into the planet's surface in search of those really valuable materials. Don't forget to build supports! +.5 base mining production. -5% logging production.</desc> <!-- Description of trait -->
+		<cost>500</cost>
+		<techLevel>Medieval</techLevel>
+		<constructionDuration>60000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>UndergroundMine</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>0</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/UndergroundMine</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>UndergroundMine</defName> <!--Name of Def -->
+		<label>Subterranean Mine</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionBaseMining>0.5</productionBaseMining>
+		<productionMultiplierLogging>0.95</productionMultiplierLogging>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Mills -->
+	<FactionColonies.BuildingFCDef>
+		<defName>Mills</defName> <!--Name of Def -->
+		<label>Mills</label> <!--Lable of Def -->
+		<desc>Mills! Wind or water, these are useful for a number of things! +.25 base power production. +5% food, weapons, apparel, and logging production. 300 silver per tax period upkeep.</desc> <!-- Description of trait -->
+		<cost>500</cost>
+		<techLevel>Medieval</techLevel>
+		<constructionDuration>60000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>Mills</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>300</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/Mills</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>Mills</defName> <!--Name of Def -->
+		<label>Mills</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionBasePower>0.25</productionBasePower>
+		<productionMultiplierFood>1.05</productionMultiplierFood>
+		<productionMultiplierWeapons>1.05</productionMultiplierWeapons>
+		<productionMultiplierApparel>1.05</productionMultiplierApparel>
+		<productionMultiplierLogging>1.05</productionMultiplierLogging>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Servant Housing -->
+	<FactionColonies.BuildingFCDef>
+		<defName>ServantHousing</defName> <!--Name of Def -->
+		<label>Servant Housing</label> <!--Lable of Def -->
+		<desc>Servants are a delight to have and more places to house them means you can hire more! +4 max workers. +4 overmax workers. +$5 worker cost. 250 silver per tax period upkeep.</desc> <!-- Description of trait -->
+		<cost>3000</cost>
+		<techLevel>Medieval</techLevel>
+		<constructionDuration>60000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>ServantHousing</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>250</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/Servant</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>ServantHousing</defName> <!--Name of Def -->
+		<label>Servant Housing</label> <!--Lable of Def -->
+		<desc></desc>
+		<workerBaseMax>4</workerBaseMax>
+		<workerBaseOverMax>4</workerBaseOverMax>
+		<workerBaseCost>5</workerBaseCost>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+<!-- INDUSTRIAL TIER -->
+	
+	<!-- Junk Food Factory -->
+	<FactionColonies.BuildingFCDef>
+		<defName>JunkFoodFactory</defName> <!--Name of Def -->
+		<label>Junk Food Factory</label> <!--Lable of Def -->
+		<desc>It's quick, cheap, and unhealthy. The locals will complain about the lack of quality, but they'll be too unhealthy to do anything about it. +25% food production. -.5 base happiness per day. -.5 unrest per day. 400 silver per tax period upkeep.</desc> <!-- Description of trait -->
+		<cost>1000</cost>
+		<techLevel>Industrial</techLevel>
+		<constructionDuration>120000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>JunkFoodFactory</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>400</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/JunkFood</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>JunkFoodFactory</defName> <!--Name of Def -->
+		<label>Junk Food Factory</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionMultiplierFood>1.25</productionMultiplierFood>
+		<happinessLostBase>0.5</happinessLostBase>
+		<unrestLostBase>0.5</unrestLostBase>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Textile Factory -->
+	<FactionColonies.BuildingFCDef>
+		<defName>TextileFactory</defName> <!--Name of Def -->
+		<label>Textile Factory</label> <!--Lable of Def -->
+		<desc>Making clothes is so much easier when machines do most of the work! +.5 base apparel production. 250 silver per tax period upkeep.</desc> <!-- Description of trait -->
+		<cost>1000</cost>
+		<techLevel>Industrial</techLevel>
+		<constructionDuration>120000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>TextileFactory</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>250</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/TextileFactory</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>TextileFactory</defName> <!--Name of Def -->
+		<label>Textile Factory</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionBaseApparel>0.5</productionBaseApparel>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Local Zoo -->
+	<FactionColonies.BuildingFCDef>
+		<defName>LocalZoo</defName> <!--Name of Def -->
+		<label>Local Zoo</label> <!--Lable of Def -->
+		<desc>A place for people to ogle various different animals as they pass through the settlement for fun and profit! +.5 base animal production. +.3 base happiness per day. 350 silver per tax period upkeep.</desc> <!-- Description of trait -->
+		<cost>1000</cost>
+		<techLevel>Industrial</techLevel>
+		<constructionDuration>120000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>LocalZoo</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>350</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/Zoo</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>LocalZoo</defName> <!--Name of Def -->
+		<label>Local Zoo</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionBaseAnimals>0.5</productionBaseAnimals>
+		<happinessGainedBase>0.3</happinessGainedBase>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Tree Farm -->
+	<FactionColonies.BuildingFCDef>
+		<defName>TreeFarm</defName> <!--Name of Def -->
+		<label>Tree Farm</label> <!--Lable of Def -->
+		<desc>Stop stripping forest of trees and just grow your own! +.5 base logging production. +5% total logging production.</desc> <!-- Description of trait -->
+		<cost>1000</cost>
+		<techLevel>Industrial</techLevel>
+		<constructionDuration>120000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>TreeFarm</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>0</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/TreeFarm</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>TreeFarm</defName> <!--Name of Def -->
+		<label>Tree Farm</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionBaseLogging>0.5</productionBaseLogging>
+		<productionMultiplierLogging>1.05</productionMultiplierLogging>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Industrial Mining Equipment Depot -->
+	<FactionColonies.BuildingFCDef>
+		<defName>IMED</defName> <!--Name of Def -->
+		<label>Industrial Mining Equipment Depot</label> <!--Lable of Def -->
+		<desc>Build a place to store and maintain big ugly machines that chew through rock like it's cardboard. +20% mining production. 550 silver per tax period upkeep.</desc> <!-- Description of trait -->
+		<cost>1000</cost>
+		<techLevel>Industrial</techLevel>
+		<constructionDuration>120000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>IMED</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>550</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/IMED</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>IMED</defName> <!--Name of Def -->
+		<label>Industrial Mining Equipment Depot</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionMultiplierMining>1.2</productionMultiplierMining>
+	</FactionColonies.FCTraitEffectDef>
+
+
+<!-- SPACER TIER -->
+	
+	
+	<!-- Food Reconstruction -->
+	<FactionColonies.BuildingFCDef>
+		<defName>FoodReconstruction</defName> <!--Name of Def -->
+		<label>Food Reconstruction</label> <!--Lable of Def -->
+		<desc>Nobody likes nutrient paste, but with a little flavoring and cosmetic tweaks, it can look and taste like whatever you want it to! +50% food production. 400 silver per tax period upkeep.</desc> <!-- Description of trait -->
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>FoodReconstruction</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>400</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/TastyPaste</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>FoodReconstruction</defName> <!--Name of Def -->
+		<label>Food Reconstruction</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionMultiplierFood>1.5</productionMultiplierFood>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Mechanoid Salvage Shop -->
+	<FactionColonies.BuildingFCDef>
+		<defName>MechSalvage</defName> <!--Name of Def -->
+		<label>Mechanoid Salvage Shop</label> <!--Lable of Def -->
+		<desc>With the right tools, you can do more than shred dead mechanoids, you can salvage their tech to use against them. +.5 base weapons production. +5% military conbat efficiency.</desc> <!-- Description of trait -->
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>MechSalvage</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>0</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/MechSalvage</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>MechSalvage</defName> <!--Name of Def -->
+		<label>Mechanoid Salvage Shop</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionBaseWeapons>0.5</productionBaseWeapons>
+		<militaryMultiplierCombatEfficiency>1.05</militaryMultiplierCombatEfficiency>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Clothing Priners -->
+	<FactionColonies.BuildingFCDef>
+		<defName>ClothingPrinters</defName> <!--Name of Def -->
+		<label>Clothing Printers</label> <!--Lable of Def -->
+		<desc>Remove the human element altogether! Dump raw materials in and watch as each article of clothing is printed as a single, seamless piece! +50% apparel production.</desc> <!-- Description of trait -->
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>ClothingPrinters</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>0</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/Printer</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>ClothingPrinters</defName> <!--Name of Def -->
+		<label>Clothing Printers</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionMultiplierApparel>1.5</productionMultiplierApparel>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Synthetic Wood Factory -->
+	<FactionColonies.BuildingFCDef>
+		<defName>SyntheticWoodFactory</defName> <!--Name of Def -->
+		<label>Synthetic Wood Factory</label> <!--Lable of Def -->
+		<desc>It's new! It's space-age! It's just as good as the real thing and it's definitely not vinyl, we swear! +.5 base logging production.</desc> <!-- Description of trait -->
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>SyntheticWoodFactory</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>0</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/Vinyl</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>SyntheticWoodFactory</defName> <!--Name of Def -->
+		<label>Synthetic Wood Factory</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionBaseLogging>0.5</productionBaseLogging>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Asteroid Magnet -->
+	<FactionColonies.BuildingFCDef>
+		<defName>AsteroidMagnet</defName> <!--Name of Def -->
+		<label>Asteroid Magnet</label> <!--Lable of Def -->
+		<desc>People may not like it, but it's hard to deny the amount of resources gathered when you just pull the metals you want out of the sky. +20% mining production. -.5 happiness per day. +.5 unrest per day. </desc> <!-- Description of trait -->
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>AsteroidMagnet</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>0</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/Magnet</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>AsteroidMagnet</defName> <!--Name of Def -->
+		<label>Asteroid Magnet</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionMultiplierMining>1.2</productionMultiplierMining>
+		<happinessLostBase>0.5</happinessLostBase>
+		<unrestGainedBase>0.5</unrestGainedBase>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Worker Bots -->
+	<FactionColonies.BuildingFCDef>
+		<defName>WorkerBots</defName> <!--Name of Def -->
+		<label>Worker Bots</label> <!--Lable of Def -->
+		<desc>Put robots to work doing the more mundane tasks around the colony so the people can be put to work elsewhere. +10 max workers. +7 overmax workers. 400 silver per tax period upkeep. </desc> <!-- Description of trait -->
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>WorkerBots</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>400</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/WorkerBots</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>WorkerBots</defName> <!--Name of Def -->
+		<label>Worker Bots</label> <!--Lable of Def -->
+		<desc></desc>
+		<workerBaseMax>10</workerBaseMax>
+		<workerBaseOverMax>7</workerBaseOverMax>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Subliminal Message Center -->
+	<FactionColonies.BuildingFCDef>
+		<defName>SubliminalMessageCenter</defName> <!--Name of Def -->
+		<label>Subliminal Message Center</label> <!--Lable of Def -->
+		<desc>Weave subliminal messaging into the settlement's local broadcasts. +.5 loyalty per day. -.5 unrest per day. 400 silver per tax period upkeep. </desc> <!-- Description of trait -->
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>SubliminalMessageCenter</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>400</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/TheyLive</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>SubliminalMessageCenter</defName> <!--Name of Def -->
+		<label>Subliminal Message Center</label> <!--Lable of Def -->
+		<desc></desc>
+		<loyaltyGainedBase>0.5</loyaltyGainedBase>
+		<unrestLostBase>0.5</unrestLostBase>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Cloning Lab -->
+	<FactionColonies.BuildingFCDef>
+		<defName>CloningLab</defName> <!--Name of Def -->
+		<label>Cloning Lab</label> <!--Lable of Def -->
+		<desc>Why breed or capture animals when you can just grow them in vats? +.5 base animal production. +.25 base research. 400 silver per tax period upkeep. </desc> <!-- Description of trait -->
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>CloningLab</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>400</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/CloningLab</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>CloningLab</defName> <!--Name of Def -->
+		<label>Cloning Lab</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionMultiplierAnimals>1.2</productionMultiplierAnimals>
+		<productionBaseResearch>.25</productionBaseResearch>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+<!-- ARCHOTECH TIER -->
+	
+	
+	<!-- Archotech Light Converter -->
+	<FactionColonies.BuildingFCDef>
+		<defName>LightConverter</defName> <!--Name of Def -->
+		<label>Archotech Light Converter</label> <!--Lable of Def -->
+		<desc>A large, vanometrically powered, archotech machine that can turn light into just about anything that isn't alive. Needs a constant military presence to ward off raiders. +75% food, weapons, apparel, logging, mining, and medicine production. -3 military level. 4000 silver per tax period upkeep. </desc> <!-- Description of trait -->
+		<cost>120000</cost>
+		<techLevel>Ultra</techLevel>
+		<constructionDuration>600000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>LightConverter</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>4000</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/LightConverter</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>LightConverter</defName> <!--Name of Def -->
+		<label>Archotech Light Converter</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionMultiplierFood>1.75</productionMultiplierFood>
+		<productionMultiplierWeapons>1.75</productionMultiplierWeapons>
+		<productionMultiplierApparel>1.75</productionMultiplierApparel>
+		<productionMultiplierLogging>1.75</productionMultiplierLogging>
+		<productionMultiplierMining>1.75</productionMultiplierMining>
+		<productionMultiplierMedicine>1.75</productionMultiplierMedicine>
+		<militaryBaseLevel>-3</militaryBaseLevel>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Archotech Animal Beacon -->
+	<FactionColonies.BuildingFCDef>
+		<defName>AnimalBeacon</defName> <!--Name of Def -->
+		<label>Archotech Animal Beacon</label> <!--Lable of Def -->
+		<desc>An archotech tower that emits a signal which lures distant animals and calms nearby ones. +100% animal production. 1000 silver per tax period upkeep. </desc> <!-- Description of trait -->
+		<cost>8000</cost>
+		<techLevel>Ultra</techLevel>
+		<constructionDuration>600000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>AnimalBeacon</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>1000</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/BaconBeacon</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>AnimalBeacon</defName> <!--Name of Def -->
+		<label>Archotech Animal Beacon</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionMultiplierAnimals>2</productionMultiplierAnimals>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Trapped Archotech AI -->
+	<FactionColonies.BuildingFCDef>
+		<defName>TrappedAI</defName> <!--Name of Def -->
+		<label>Trapped Archotech AI</label> <!--Lable of Def -->
+		<desc>An archotech level AI trapped in a closed network. It's perfectly safe unless someone lets it out. +100% research production. +.5 unrest per day. 2000 silver per tax period upkeep. </desc> <!-- Description of trait -->
+		<cost>8000</cost>
+		<techLevel>Ultra</techLevel>
+		<constructionDuration>600000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>TrappedAI</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>2000</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/HAL9000</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>TrappedAI</defName> <!--Name of Def -->
+		<label>Trapped Archotech AI</label> <!--Lable of Def -->
+		<desc></desc>
+		<productionMultiplierResearch>2</productionMultiplierResearch>
+		<unrestGainedBase>0.5</unrestGainedBase>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Union Offices -->
+	<FactionColonies.BuildingFCDef>
+		<defName>UnionOffices</defName> <!--Name of Def -->
+		<label>Union Offices</label> <!--Lable of Def -->
+		<desc>A central building for local unions to operate out of. It's amazing how much happier and willing to work people are when you treat them well. -.75 unrest per day. +.75 happiness and loyalty per day. +$50 worker cost. +10 max and overmax workers. 1000 silver per tax period upkeep. </desc> <!-- Description of trait -->
+		<cost>8000</cost>
+		<techLevel>Ultra</techLevel>
+		<constructionDuration>600000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>UnionOffices</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>1000</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/CapitalismSucks</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>UnionOffices</defName> <!--Name of Def -->
+		<label>Union Offices</label> <!--Lable of Def -->
+		<desc></desc>
+		<unrestLostBase>0.75</unrestLostBase>
+		<happinessGainedBase>0.75</happinessGainedBase>
+		<loyaltyGainedBase>0.75</loyaltyGainedBase>
+		<workerBaseCost>50</workerBaseCost>
+		<workerBaseMax>10</workerBaseMax>
+		<workerBaseOverMax>10</workerBaseOverMax>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Orbital Space Laser -->
+	<FactionColonies.BuildingFCDef>
+		<defName>OrbitalSpaceLaser</defName> <!--Name of Def -->
+		<label>Orbital Space Laser</label> <!--Lable of Def -->
+		<desc>It's kind of like a nuclear bomb, but reusable and solar powered. +2 military level. 1000 silver per tax period upkeep. </desc> <!-- Description of trait -->
+		<cost>8000</cost>
+		<techLevel>Ultra</techLevel>
+		<constructionDuration>600000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>OrbitalSpaceLaser</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>1000</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/CFinder</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>OrbitalSpaceLaser</defName> <!--Name of Def -->
+		<label>Orbital Space Laser</label> <!--Lable of Def -->
+		<desc></desc>
+		<militaryBaseLevel>2</militaryBaseLevel>
+	</FactionColonies.FCTraitEffectDef>
+	
+	
+	<!-- Transdimensional Market -->
+	<FactionColonies.BuildingFCDef>
+		<defName>TransdimensionalMarket</defName> <!--Name of Def -->
+		<label>Transdimentional Market</label> <!--Lable of Def -->
+		<desc>It's one thing to trade across the galaxy. It's another to build a flaming obsidian monolith to trade with the residents of a hell-dimension. +80 tithe modifier, +25% basetax. </desc> <!-- Description of trait -->
+		<cost>8000</cost>
+		<techLevel>Ultra</techLevel>
+		<constructionDuration>600000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits> <!-- Put the traits they provide here -->
+			<li>TransdimensionalMarket</li>
+		</traits>
+		<applicableBiomes> <!-- If the building requires it to be in a biome, put it here-->
+		
+		</applicableBiomes>
+		<upkeep>0</upkeep> <!-- cost per week for the building -->
+		<iconPath>GUI/Buildings/NetherPortal</iconPath>
+	</FactionColonies.BuildingFCDef>
+	
+	<FactionColonies.FCTraitEffectDef>
+		<defName>TransdimensionalMarket</defName> <!--Name of Def -->
+		<label>Transdimensional Market</label> <!--Lable of Def -->
+		<desc></desc>
+		<taxBaseRandomModifier>80</taxBaseRandomModifier>
+		<taxBasePercentage>25</taxBasePercentage>
+	</FactionColonies.FCTraitEffectDef>
+</Defs>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

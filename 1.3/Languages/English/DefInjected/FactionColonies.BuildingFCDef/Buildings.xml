@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<!-- Undefined Buildings -->
+	<barracks.label>Military 1: Barracks</barracks.label>
+	<tradingPost.label>Trade 1: Trading Post</tradingPost.label>
+	<migrantHousing.label>Employment 1: Migrant Housing</migrantHousing.label>
+	<quarry.label>Mining 1: Quarry</quarry.label>
+	<trainingYard.label>Military 1: Training Yard</trainingYard.label>
+	<deforestationCamp.label>Wilderness 1: Deforestation Camp</deforestationCamp.label>
+	<herbalMedicineFarm.label>Science 1: Herbal Medicine Farm</herbalMedicineFarm.label>
+
+	<!-- Medieval Buildings -->
+	<slavePlantation.label>Food 2: Slave Plantation</slavePlantation.label>
+	<adventurersGuild.label>Military 2: Adventurer's Guild</adventurersGuild.label>
+	<publicMarket.label>Trade 2: Public Market</publicMarket.label>
+	<jailhouse.label>Utility 2: Jailhouse</jailhouse.label>
+	<wildernessGuild.label>Wilderness 2: Wilderness Guild</wildernessGuild.label>
+	<apparelSweatshop.label>Apparel 2: Apparel Sweatshop</apparelSweatshop.label>
+	<loggingCamp.label>Wilderness 2: Logging Camp</loggingCamp.label>
+	<plagueCamp.label>Science 2: Plague Camp</plagueCamp.label>
+
+	<!-- Industrial Buildings -->
+	<researchLabs.label>Science 3: Research Labs</researchLabs.label>
+	<animalTestingFacility.label>Science 3: Testing Facility</animalTestingFacility.label>
+	<indoorHydroponics.label>Food 3: Indoor Hydroponics</indoorHydroponics.label>
+	<firearmsFactory.label>Weapons 3: Firearms Factory</firearmsFactory.label>
+	<rimazonWarehouse.label>Trade 3: Rimazon Warehouse</rimazonWarehouse.label>
+	<inhouseMercCompany.label>Military 3: Merc Company</inhouseMercCompany.label>
+	<artilleryOutpost.label>Military 3: Artillery Outpost</artilleryOutpost.label>
+	<adultEntertainmentCentre.label>Utility 3: Entertainment Centre</adultEntertainmentCentre.label>
+	<apartmentHousing.label>Employment 3: Apartment Housing</apartmentHousing.label>
+	<forcedWorkCamps.label>Employment 3: Labor Camps</forcedWorkCamps.label>
+	<batteryPowerStation.label>Power 3: Battery Power Station</batteryPowerStation.label>
+	<solarPlant.label>Power 3: Solar Plant</solarPlant.label>
+	<cleanEnergyLab.label>Power 3: Clean Energy Lab</cleanEnergyLab.label>
+
+	<!-- Spacer Buildings -->
+	<intergalacticMarket.label>Trading 4: Intergalactic Market</intergalacticMarket.label>
+	<glitterworldResearchFacility.label>Science 4: Glittertech Facility</glitterworldResearchFacility.label>
+	<automatedDefenseSystems.label>Military 4: Auto-Defense Systems</automatedDefenseSystems.label>
+	<perpetualMotionGenerator.label>Power 4: ∞ Motion Generator</perpetualMotionGenerator.label>
+	<bionicsManufacturingPlant.label>Science 4: Bionics Plant</bionicsManufacturingPlant.label>
+
+	<!-- Ultra -->
+	<archotechGenerator.label>Power 5: Archotech Generator</archotechGenerator.label>
+
+</LanguageData>
