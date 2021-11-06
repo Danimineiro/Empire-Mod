@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>LocalZoo</defName>
+		<label>Local Zoo</label>
+		<desc>A place for people to ogle various different animals as they pass through the settlement for fun and profit! +.5 base animal production. +.3 base happiness per day. 350 silver per tax period upkeep.</desc>
+		<cost>1000</cost>
+		<techLevel>Industrial</techLevel>
+		<constructionDuration>120000</constructionDuration>
+		<traits>
+			<li>LocalZoo</li>
+		</traits>
+		<upkeep>350</upkeep>
+		<iconPath>GUI/Buildings/Zoo</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>LocalZoo</defName>
+		<label>Wilderness 3: Local Zoo</label>
+		<desc></desc>
+		<productionBaseAnimals>0.5</productionBaseAnimals>
+		<happinessGainedBase>0.3</happinessGainedBase>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>CloningLab</defName>
+		<label>Wilderness 4: Cloning Lab</label>
+		<desc>Why breed or capture animals when you can just grow them in vats? +.5 base animal production. +.25 base research. 400 silver per tax period upkeep. </desc>
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration>
+		<traits>
+			<li>CloningLab</li>
+		</traits>
+		<upkeep>400</upkeep>
+		<iconPath>GUI/Buildings/CloningLab</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>CloningLab</defName>
+		<label>Cloning Lab</label>
+		<desc></desc>
+		<productionMultiplierAnimals>1.2</productionMultiplierAnimals>
+		<productionBaseResearch>.25</productionBaseResearch>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>AnimalBeacon</defName>
+		<label>Wilderness 5: AT Animal Beacon</label>
+		<desc>An archotech tower that emits a signal which lures distant animals and calms nearby ones. +100% animal production. 1000 silver per tax period upkeep. </desc>
+		<cost>8000</cost>
+		<techLevel>Ultra</techLevel>
+		<constructionDuration>600000</constructionDuration>
+		<traits>
+			<li>AnimalBeacon</li>
+		</traits>
+		<upkeep>1000</upkeep>
+		<iconPath>GUI/Buildings/BaconBeacon</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>AnimalBeacon</defName>
+		<label>Archotech Animal Beacon</label>
+		<desc></desc>
+		<productionMultiplierAnimals>2</productionMultiplierAnimals>
+	</FactionColonies.FCTraitEffectDef>
+
+</Defs>

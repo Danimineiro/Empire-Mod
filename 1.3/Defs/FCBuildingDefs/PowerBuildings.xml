@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>HamsterWheel</defName>
+		<label>Power 1: Giant Hamster Wheel</label>
+		<desc>It's not much, but it's better than nothing! +.25 power production. -1 overmax worker.</desc>
+		<cost>250</cost>
+		<techLevel>Undefined</techLevel>
+		<constructionDuration>60000</constructionDuration>
+		<traits>
+			<li>HamsterWheel</li>
+		</traits>
+		<iconPath>GUI/Buildings/HamsterWheel</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>HamsterWheel</defName>
+		<label>Giant Hamster Wheel</label>
+		<desc></desc>
+		<productionBasePower>0.25</productionBasePower>
+		<workerBaseOverMax>-1</workerBaseOverMax>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>Mills</defName>
+		<label>Power 2: Mills</label>
+		<desc>Mills! Wind or water, these are useful for a number of things! +.25 base power production. +5% food, weapons, apparel, and logging production. 300 silver per tax period upkeep.</desc>
+		<cost>500</cost>
+		<techLevel>Medieval</techLevel>
+		<constructionDuration>60000</constructionDuration>
+		<traits>
+			<li>Mills</li>
+		</traits>
+		<iconPath>GUI/Buildings/Mills</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>Mills</defName>
+		<label>Mills</label>
+		<desc></desc>
+		<productionBasePower>0.25</productionBasePower>
+		<productionMultiplierFood>1.05</productionMultiplierFood>
+		<productionMultiplierWeapons>1.05</productionMultiplierWeapons>
+		<productionMultiplierApparel>1.05</productionMultiplierApparel>
+		<productionMultiplierLogging>1.05</productionMultiplierLogging>
+	</FactionColonies.FCTraitEffectDef>
+
+</Defs>

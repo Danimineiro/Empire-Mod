@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>ServantHousing</defName>
+		<label>Employment 2: Servant Housing</label>
+		<desc>Servants are a delight to have and more places to house them means you can hire more! +4 max workers. +4 overmax workers. +$5 worker cost. 250 silver per tax period upkeep.</desc>
+		<cost>3000</cost>
+		<techLevel>Medieval</techLevel>
+		<constructionDuration>60000</constructionDuration>
+		<traits>
+			<li>ServantHousing</li>
+		</traits>
+		<upkeep>250</upkeep>
+		<iconPath>GUI/Buildings/Servant</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>ServantHousing</defName>
+		<label>Servant Housing</label>
+		<desc></desc>
+		<workerBaseMax>4</workerBaseMax>
+		<workerBaseOverMax>4</workerBaseOverMax>
+		<workerBaseCost>5</workerBaseCost>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>WorkerBots</defName>
+		<label>Employment 4: Worker Bots</label>
+		<desc>Put robots to work doing the more mundane tasks around the colony so the people can be put to work elsewhere. +10 max workers. +7 overmax workers. 400 silver per tax period upkeep. </desc>
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration>
+		<traits>
+			<li>WorkerBots</li>
+		</traits>
+		<upkeep>400</upkeep>
+		<iconPath>GUI/Buildings/WorkerBots</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>WorkerBots</defName>
+		<label>Worker Bots</label>
+		<desc></desc>
+		<workerBaseMax>10</workerBaseMax>
+		<workerBaseOverMax>7</workerBaseOverMax>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>UnionOffices</defName>
+		<label>Employment 5: Union Offices</label>
+		<desc>A central building for local unions to operate out of. It's amazing how much happier and willing to work people are when you treat them well. -.75 unrest per day. +.75 happiness and loyalty per day. +$50 worker cost. +10 max and overmax workers. 1000 silver per tax period upkeep. </desc>
+		<cost>8000</cost>
+		<techLevel>Ultra</techLevel>
+		<constructionDuration>600000</constructionDuration>
+		<traits>
+			<li>UnionOffices</li>
+		</traits>
+		<upkeep>1000</upkeep>
+		<iconPath>GUI/Buildings/CapitalismSucks</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>UnionOffices</defName>
+		<label>Union Offices</label>
+		<desc></desc>
+		<unrestLostBase>0.75</unrestLostBase>
+		<happinessGainedBase>0.75</happinessGainedBase>
+		<loyaltyGainedBase>0.75</loyaltyGainedBase>
+		<workerBaseCost>50</workerBaseCost>
+		<workerBaseMax>10</workerBaseMax>
+		<workerBaseOverMax>10</workerBaseOverMax>
+	</FactionColonies.FCTraitEffectDef>
+
+</Defs>

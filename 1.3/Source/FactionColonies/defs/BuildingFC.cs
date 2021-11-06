@@ -29,7 +29,7 @@ namespace FactionColonies
         public TechLevel techLevel = TechLevel.Undefined;
         public List<FCTraitEffectDef> traits;
         public List<string> applicableBiomes = new List<string>();
-        public int upkeep;
+        public int upkeep = 0;
         public string iconPath = "GUI/unrest";
         public Texture2D iconLoaded;
         public int shuttleUses = 0;

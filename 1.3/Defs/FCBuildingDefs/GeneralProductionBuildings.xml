@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>LightConverter</defName>
+		<label>Production 5: AT Light Converter</label>
+		<desc>A large, vanometrically powered, archotech machine that can turn light into just about anything that isn't alive. Needs a constant military presence to ward off raiders. +75% food, weapons, apparel, logging, mining, and medicine production. -3 military level. 4000 silver per tax period upkeep. </desc>
+		<cost>120000</cost>
+		<techLevel>Ultra</techLevel>
+		<constructionDuration>600000</constructionDuration>
+		<traits>
+			<li>LightConverter</li>
+		</traits>
+		<upkeep>4000</upkeep>
+		<iconPath>GUI/Buildings/LightConverter</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>LightConverter</defName>
+		<label>Archotech Light Converter</label>
+		<desc></desc>
+		<productionMultiplierFood>1.75</productionMultiplierFood>
+		<productionMultiplierWeapons>1.75</productionMultiplierWeapons>
+		<productionMultiplierApparel>1.75</productionMultiplierApparel>
+		<productionMultiplierLogging>1.75</productionMultiplierLogging>
+		<productionMultiplierMining>1.75</productionMultiplierMining>
+		<productionMultiplierMedicine>1.75</productionMultiplierMedicine>
+		<militaryBaseLevel>-3</militaryBaseLevel>
+	</FactionColonies.FCTraitEffectDef>
+</Defs>

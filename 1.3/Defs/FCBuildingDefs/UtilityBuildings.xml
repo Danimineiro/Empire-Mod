@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>SubliminalMessageCenter</defName>
+		<label>Utility 4: Propaganda Center</label>
+		<desc>Weave subliminal messaging into the settlement's local broadcasts. +.5 loyalty per day. -.5 unrest per day. 400 silver per tax period upkeep. </desc>
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration>
+		<traits>
+			<li>SubliminalMessageCenter</li>
+		</traits>
+		<upkeep>400</upkeep>
+		<iconPath>GUI/Buildings/TheyLive</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>SubliminalMessageCenter</defName>
+		<label>Subliminal Message Center</label>
+		<desc></desc>
+		<loyaltyGainedBase>0.5</loyaltyGainedBase>
+		<unrestLostBase>0.5</unrestLostBase>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>shuttlePort</defName>
+		<label>Utility 4: Shuttle Port</label>
+		<desc>A small scale airport, this building provides the infrastructure to rapidly send goods around the planet. +10 tithe modifier, +5% basetax.</desc>
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration>
+		<traits>
+			<li>shuttlePort</li>
+		</traits>
+		<upkeep>1000</upkeep>
+		<iconPath>GUI/Buildings/ShuttlePort</iconPath>
+		<shuttleUses>3</shuttleUses>
+		<requiresRoyality>true</requiresRoyality>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>shuttlePort</defName>
+		<label>Shuttle Port</label>
+		<desc>A small scale airport, this building provides the infrastructure to rapidly send goods around the planet. +10 tithe modifier, +5% basetax.</desc>
+		<taxBaseRandomModifier>10</taxBaseRandomModifier>
+		<taxBasePercentage>5</taxBasePercentage>
+	</FactionColonies.FCTraitEffectDef>
+</Defs>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>TransdimensionalMarket</defName>
+		<label>Trading 5: Transdimension Market</label>
+		<desc>It's one thing to trade across the galaxy. It's another to build a flaming obsidian monolith to trade with the residents of a hell-dimension. +80 tithe modifier, +25% basetax. </desc>
+		<cost>8000</cost>
+		<techLevel>Ultra</techLevel>
+		<constructionDuration>600000</constructionDuration>
+		<traits>
+			<li>TransdimensionalMarket</li>
+		</traits>
+		<iconPath>GUI/Buildings/NetherPortal</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>TransdimensionalMarket</defName>
+		<label>Transdimensional Market</label>
+		<desc></desc>
+		<taxBaseRandomModifier>80</taxBaseRandomModifier>
+		<taxBasePercentage>25</taxBasePercentage>
+	</FactionColonies.FCTraitEffectDef>
+</Defs>

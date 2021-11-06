@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>TanningWorkshop</defName>
+		<label>Apparel 1: Tanning Workshop</label>
+		<desc>A workshop designed to turn animal hides into leather. +15% apparel production. -15% animal production.</desc>
+		<cost>250</cost>
+		<techLevel>Undefined</techLevel>
+		<constructionDuration>60000</constructionDuration>
+		<traits>
+			<li>TanningWorkshop</li>
+		</traits>
+		<iconPath>GUI/Buildings/Tanning</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>TanningWorkshop</defName>
+		<label>Tanning Workshop</label>
+		<desc></desc>
+		<productionMultiplierApparel>1.15</productionMultiplierApparel>
+		<productionMultiplierAnimals>0.85</productionMultiplierAnimals>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>TextileFactory</defName>
+		<label>Apparel 3: Textile Factory</label>
+		<desc>Making clothes is so much easier when machines do most of the work! +.5 base apparel production. 250 silver per tax period upkeep.</desc>
+		<cost>1000</cost>
+		<techLevel>Industrial</techLevel>
+		<constructionDuration>120000</constructionDuration>
+		<traits>
+			<li>TextileFactory</li>
+		</traits>
+		<upkeep>250</upkeep>
+		<iconPath>GUI/Buildings/TextileFactory</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>TextileFactory</defName>
+		<label>Textile Factory</label>
+		<desc></desc>
+		<productionBaseApparel>0.5</productionBaseApparel>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>ClothingPrinters</defName>
+		<label>Apparel 4: Clothing Printers</label>
+		<desc>Remove the human element altogether! Dump raw materials in and watch as each article of clothing is printed as a single, seamless piece! +50% apparel production.</desc>
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration>
+		<traits>
+			<li>ClothingPrinters</li>
+		</traits>
+		<iconPath>GUI/Buildings/Printer</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>ClothingPrinters</defName>
+		<label>Clothing Printers</label>
+		<desc></desc>
+		<productionMultiplierApparel>1.5</productionMultiplierApparel>
+	</FactionColonies.FCTraitEffectDef>
+
+</Defs>

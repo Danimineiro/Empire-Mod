@@ -7,7 +7,7 @@
 	<migrantHousing.label>Employment 1: Migrant Housing</migrantHousing.label>
 	<quarry.label>Mining 1: Quarry</quarry.label>
 	<trainingYard.label>Military 1: Training Yard</trainingYard.label>
-	<deforestationCamp.label>Wilderness 1: Deforestation Camp</deforestationCamp.label>
+	<deforestationCamp.label>Logging 1: Deforestation Camp</deforestationCamp.label>
 	<herbalMedicineFarm.label>Science 1: Herbal Medicine Farm</herbalMedicineFarm.label>
 
 	<!-- Medieval Buildings -->
@@ -17,7 +17,7 @@
 	<jailhouse.label>Utility 2: Jailhouse</jailhouse.label>
 	<wildernessGuild.label>Wilderness 2: Wilderness Guild</wildernessGuild.label>
 	<apparelSweatshop.label>Apparel 2: Apparel Sweatshop</apparelSweatshop.label>
-	<loggingCamp.label>Wilderness 2: Logging Camp</loggingCamp.label>
+	<loggingCamp.label>Logging 2: Logging Camp</loggingCamp.label>
 	<plagueCamp.label>Science 2: Plague Camp</plagueCamp.label>
 
 	<!-- Industrial Buildings -->

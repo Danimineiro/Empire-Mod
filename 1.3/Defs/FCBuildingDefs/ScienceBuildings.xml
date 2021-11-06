@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>DrugDen</defName>
+		<label>Science 1: Psychedelic Drug Den</label>
+		<desc>It's amazing the discoveries people make while absurdly high. Sometimes those discoveries are even useful! +5% research production. +.3 happiness per day. -5% medicine production.</desc>
+		<cost>250</cost>
+		<techLevel>Undefined</techLevel>
+		<constructionDuration>60000</constructionDuration>
+		<traits>
+			<li>DrugDen</li>
+		</traits>
+		<iconPath>GUI/Buildings/DrugDen</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>DrugDen</defName>
+		<label>Psychedelic Drug Den</label>
+		<desc></desc>
+		<productionMultiplierResearch>1.05</productionMultiplierResearch>
+		<happinessGainedBase>0.3</happinessGainedBase>
+		<productionMultiplierMedicine>0.95</productionMultiplierMedicine>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>TrappedAI</defName>
+		<label>Science 5: Trapped Archotech AI</label>
+		<desc>An archotech level AI trapped in a closed network. It's perfectly safe unless someone lets it out. +100% research production. +.5 unrest per day. 2000 silver per tax period upkeep. </desc>
+		<cost>8000</cost>
+		<techLevel>Ultra</techLevel>
+		<constructionDuration>600000</constructionDuration>
+		<traits>
+			<li>TrappedAI</li>
+		</traits>
+		<upkeep>2000</upkeep>
+		<iconPath>GUI/Buildings/HAL9000</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>TrappedAI</defName>
+		<label>Trapped Archotech AI</label>
+		<desc></desc>
+		<productionMultiplierResearch>2</productionMultiplierResearch>
+		<unrestGainedBase>0.5</unrestGainedBase>
+	</FactionColonies.FCTraitEffectDef>
+
+</Defs>

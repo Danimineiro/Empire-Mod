@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>UndergroundMine</defName>
+		<label>Mining 2: Sunterranean Mine</label>
+		<desc>Dig down into the planet's surface in search of those really valuable materials. Don't forget to build supports! +.5 base mining production. -5% logging production.</desc>
+		<cost>500</cost>
+		<techLevel>Medieval</techLevel>
+		<constructionDuration>60000</constructionDuration>
+		<traits>
+			<li>UndergroundMine</li>
+		</traits>
+		<iconPath>GUI/Buildings/UndergroundMine</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>UndergroundMine</defName>
+		<label>Subterranean Mine</label>
+		<desc></desc>
+		<productionBaseMining>0.5</productionBaseMining>
+		<productionMultiplierLogging>0.95</productionMultiplierLogging>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>IMED</defName>
+		<label>Mining 3: Mining Equipment Depot</label>
+		<desc>Build a place to store and maintain big ugly machines that chew through rock like it's cardboard. +20% mining production. 550 silver per tax period upkeep.</desc>
+		<cost>1000</cost>
+		<techLevel>Industrial</techLevel>
+		<constructionDuration>120000</constructionDuration>
+		<traits>
+			<li>IMED</li>
+		</traits>
+		<upkeep>550</upkeep>
+		<iconPath>GUI/Buildings/IMED</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>IMED</defName>
+		<label>Industrial Mining Equipment Depot</label>
+		<desc></desc>
+		<productionMultiplierMining>1.2</productionMultiplierMining>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>AsteroidMagnet</defName>
+		<label>Mining 4: Asteroid Magnet</label>
+		<desc>People may not like it, but it's hard to deny the amount of resources gathered when you just pull the metals you want out of the sky. +20% mining production. -.5 happiness per day. +.5 unrest per day. </desc>
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration>
+		<traits>
+			<li>AsteroidMagnet</li>
+		</traits>
+		<iconPath>GUI/Buildings/Magnet</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>AsteroidMagnet</defName>
+		<label>Asteroid Magnet</label>
+		<desc></desc>
+		<productionMultiplierMining>1.2</productionMultiplierMining>
+		<happinessLostBase>0.5</happinessLostBase>
+		<unrestGainedBase>0.5</unrestGainedBase>
+	</FactionColonies.FCTraitEffectDef>
+
+</Defs>

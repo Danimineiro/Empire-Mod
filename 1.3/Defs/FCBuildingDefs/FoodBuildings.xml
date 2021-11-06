@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>Farmland</defName>
+		<label>Food 1: Farmland</label>
+		<desc>A section of land deicated to growing edible plants. +.5 base food production.</desc>
+		<cost>250</cost>
+		<techLevel>Undefined</techLevel>
+		<constructionDuration>60000</constructionDuration>
+		<traits>
+			<li>Farmland</li>
+		</traits>
+		<iconPath>GUI/Buildings/Farmland</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>Farmland</defName>
+		<label>Farmland</label>
+		<desc></desc>
+		<productionBaseFood>0.5</productionBaseFood>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>JunkFoodFactory</defName>
+		<label>Food 3: Junk Food Factory</label>
+		<desc>It's quick, cheap, and unhealthy. The locals will complain about the lack of quality, but they'll be too unhealthy to do anything about it. +25% food production. -.5 base happiness per day. -.5 unrest per day. 400 silver per tax period upkeep.</desc>
+		<cost>1000</cost>
+		<techLevel>Industrial</techLevel>
+		<constructionDuration>120000</constructionDuration>
+		<traits>
+			<li>JunkFoodFactory</li>
+		</traits>
+		<upkeep>400</upkeep>
+		<iconPath>GUI/Buildings/JunkFood</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>JunkFoodFactory</defName>
+		<label>Junk Food Factory</label>
+		<desc></desc>
+		<productionMultiplierFood>1.25</productionMultiplierFood>
+		<happinessLostBase>0.5</happinessLostBase>
+		<unrestLostBase>0.5</unrestLostBase>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>FoodReconstruction</defName>
+		<label>Food 4: Food Reconstruction</label>
+		<desc>Nobody likes nutrient paste, but with a little flavoring and cosmetic tweaks, it can look and taste like whatever you want it to! +50% food production. 400 silver per tax period upkeep.</desc>
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration>
+		<traits>
+			<li>FoodReconstruction</li>
+		</traits>
+		<upkeep>400</upkeep>
+		<iconPath>GUI/Buildings/TastyPaste</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>FoodReconstruction</defName>
+		<label>Food Reconstruction</label>
+		<desc></desc>
+		<productionMultiplierFood>1.5</productionMultiplierFood>
+	</FactionColonies.FCTraitEffectDef>
+
+</Defs>

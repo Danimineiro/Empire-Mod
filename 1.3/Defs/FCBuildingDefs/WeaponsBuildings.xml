@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>AmmunitionMines</defName>
+		<label>Weapons 1: Ammunition Mines</label>
+		<desc>From flint for arrows to the materials for bullets and gunpowder, these mines take up space that could be used for other resource mining. +15% weapons production. -15% mining production.</desc>
+		<cost>250</cost>
+		<techLevel>Undefined</techLevel>
+		<constructionDuration>60000</constructionDuration>
+		<traits>
+			<li>AmmunitionMines</li>
+		</traits>
+		<iconPath>GUI/Buildings/AmmoMines</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>AmmunitionMines</defName>
+		<label>Ammunition Mines</label>
+		<desc></desc>
+		<productionMultiplierWeapons>1.15</productionMultiplierWeapons>
+		<productionMultiplierMining>0.85</productionMultiplierMining>
+	</FactionColonies.FCTraitEffectDef>
+	
+	<FactionColonies.BuildingFCDef>
+		<defName>Smithy</defName>
+		<label>Weapons 2: Smithy</label>
+		<desc>A sturdy forge and sturdier anvil. Perfect for shaping metal into weapons and tools alike.  +.5 base weapons production. -5% mining production.</desc>
+		<cost>500</cost>
+		<techLevel>Medieval</techLevel>
+		<constructionDuration>60000</constructionDuration>
+		<traits>
+			<li>Smithy</li>
+		</traits>
+		<iconPath>GUI/Buildings/Smithy</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>Smithy</defName>
+		<label>Smithy</label>
+		<desc></desc>
+		<productionBaseWeapons>0.5</productionBaseWeapons>
+		<productionMultiplierMining>0.95</productionMultiplierMining>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>MechSalvage</defName>
+		<label>Weapons 4: Mech Salvage Shop</label>
+		<desc>With the right tools, you can do more than shred dead mechanoids, you can salvage their tech to use against them. +.5 base weapons production. +5% military conbat efficiency.</desc>
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration>
+		<traits>
+			<li>MechSalvage</li>
+		</traits>
+		<iconPath>GUI/Buildings/MechSalvage</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>MechSalvage</defName>
+		<label>Mechanoid Salvage Shop</label>
+		<desc></desc>
+		<productionBaseWeapons>0.5</productionBaseWeapons>
+		<militaryMultiplierCombatEfficiency>1.05</militaryMultiplierCombatEfficiency>
+	</FactionColonies.FCTraitEffectDef>
+
+</Defs>

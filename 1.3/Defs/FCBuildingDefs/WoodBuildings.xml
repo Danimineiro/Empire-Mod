@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>TreeFarm</defName>
+		<label>Logging 3: Tree Farm</label>
+		<desc>Stop stripping forest of trees and just grow your own! +.5 base logging production. +5% total logging production.</desc>
+		<cost>1000</cost>
+		<techLevel>Industrial</techLevel>
+		<constructionDuration>120000</constructionDuration>
+		<traits>
+			<li>TreeFarm</li>
+		</traits>
+		<iconPath>GUI/Buildings/TreeFarm</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>TreeFarm</defName>
+		<label>Tree Farm</label>
+		<desc></desc>
+		<productionBaseLogging>0.5</productionBaseLogging>
+		<productionMultiplierLogging>1.05</productionMultiplierLogging>
+	</FactionColonies.FCTraitEffectDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>SyntheticWoodFactory</defName>
+		<label>Logging 4: Synth Wood Factory</label>
+		<desc>It's new! It's space-age! It's just as good as the real thing and it's definitely not vinyl, we swear! +.5 base logging production.</desc>
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration>
+		<traits>
+			<li>SyntheticWoodFactory</li>
+		</traits>
+		<iconPath>GUI/Buildings/Vinyl</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>SyntheticWoodFactory</defName>
+		<label>Synthetic Wood Factory</label>
+		<desc></desc>
+		<productionBaseLogging>0.5</productionBaseLogging>
+	</FactionColonies.FCTraitEffectDef>
+
+</Defs>

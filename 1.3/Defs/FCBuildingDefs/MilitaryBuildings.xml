@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>OrbitalSpaceLaser</defName>
+		<label>Military 5: Orbital Space Laser</label>
+		<desc>It's kind of like a nuclear bomb, but reusable and solar powered. +2 military level. 1000 silver per tax period upkeep. </desc>
+		<cost>8000</cost>
+		<techLevel>Ultra</techLevel>
+		<constructionDuration>600000</constructionDuration>
+		<traits>
+			<li>OrbitalSpaceLaser</li>
+		</traits>
+		<upkeep>1000</upkeep>
+		<iconPath>GUI/Buildings/CFinder</iconPath>
+	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.FCTraitEffectDef>
+		<defName>OrbitalSpaceLaser</defName>
+		<label>Orbital Space Laser</label>
+		<desc></desc>
+		<militaryBaseLevel>2</militaryBaseLevel>
+	</FactionColonies.FCTraitEffectDef>
+</Defs>
