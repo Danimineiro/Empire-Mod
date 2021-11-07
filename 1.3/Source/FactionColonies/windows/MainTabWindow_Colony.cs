@@ -11,7 +11,6 @@ namespace FactionColonies
 {
 	public class MainTabWindow_Colony : MainTabWindow
 	{
-		public bool selectingColonyFC;
 		public override Vector2 InitialSize
 		{
 			get
@@ -73,7 +72,7 @@ namespace FactionColonies
 				//if (faction.capitalLocation == -1)
 				//{
 				//	faction.setCapital();
-				//}
+				//}+
 
 				faction.updateTotalProfit();
 			}
@@ -82,15 +81,6 @@ namespace FactionColonies
 				Log.Message("WorldComp FactionFC is null - Something is wrong! Empire Mod");
 			}
 			
-		}
-
-		public override void PostClose()
-		{
-			base.PostClose();
-			//If selecting colony
-			selectingColonyFC = false;
-
-
 		}
 
 		public override void WindowUpdate()
