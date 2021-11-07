@@ -16,7 +16,7 @@ namespace FactionColonies
 {
     public class FactionColonies : ModSettings
     {
-        public static void updateChanges()
+        public static void UpdateChanges()
         {
             FactionFC factionFC = Find.World.GetComponent<FactionFC>();
 

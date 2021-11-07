@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FactionColonies.util;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -144,7 +145,7 @@ namespace FactionColonies
                 }
                 //
                 Text.Anchor = TextAnchor.MiddleCenter;
-                Widgets.Label(date, (bill.dueTick - Find.TickManager.TicksGame).ToStringTicksToDays());
+                Widgets.Label(date, (bill.dueTick - Find.TickManager.TicksGame).ToTimeString());
 
                 //
                 Widgets.Label(amount, bill.taxes.silverAmount.ToString());

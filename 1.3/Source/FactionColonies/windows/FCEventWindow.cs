@@ -7,6 +7,7 @@ using UnityEngine;
 using RimWorld;
 using Verse;
 using RimWorld.Planet;
+using FactionColonies.util;
 
 namespace FactionColonies
 {
@@ -194,10 +195,7 @@ namespace FactionColonies
                         }
                     }
                 }
-                //
-                Widgets.Label(time, GenDate.ToStringTicksToDays(evt.timeTillTrigger - Find.TickManager.TicksGame));
-
-
+                Widgets.Label(time, (evt.timeTillTrigger - Find.TickManager.TicksGame).ToTimeString());
             }
 
 

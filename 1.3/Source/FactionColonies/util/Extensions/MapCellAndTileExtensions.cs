@@ -5,7 +5,7 @@ using Verse;
 
 namespace FactionColonies.util
 {
-    static class MapAndCellExtensions
+    static class MapCellAndTileExtensions
     {
         public static bool CellBlockedByThing(this IntVec3 targetCell, Map map)
         {
@@ -40,5 +40,13 @@ namespace FactionColonies.util
         }
 
         public static bool HasWoundedForFaction(this Map map, Faction forFaction) => map.mapPawns.SpawnedDownedPawns.Any(pawn => pawn.Faction == forFaction && !pawn.IsPrisoner);
+
+        public static bool IsValidTile(this int tile) => tile >= 0;
+
+        public static bool AreValidTiles(this (int, int) tiles) => tiles.Item1.IsValidTile() && tiles.Item2.IsValidTile();
+
+        public static bool IsInAnyShuttleRange(this int tile) => tile.IsValidTile() && Find.World.GetComponent<FactionFC>().settlements.Any(settlement => settlement.buildings.Contains(BuildingFCDefOf.shuttlePort) && Find.WorldGrid.TraversalDistanceBetween(settlement.worldSettlement.Tile, tile) <= ShuttleSender.ShuttleRange);
+
+        public static bool AreTilesInAnyShuttleRange(this (int, int) tiles) => tiles.Item1.IsInAnyShuttleRange() && tiles.Item2.IsInAnyShuttleRange();
     }
 }

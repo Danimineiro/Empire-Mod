@@ -11,7 +11,7 @@ namespace FactionColonies.util
 	class ShuttleSender
 	{
 		protected readonly int Tile = -1;
-		public readonly int ShuttleRange = 70;
+		public static readonly int ShuttleRange = 70;
 		public WorldSettlementFC settlementFC = null;
 		public static readonly int cost = 1;
 

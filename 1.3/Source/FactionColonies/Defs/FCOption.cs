@@ -7,8 +7,6 @@ using Verse;
 using RimWorld;
 using UnityEngine;
 
-
-
 namespace FactionColonies
 {
     public class FCOptionDef : Def
@@ -28,9 +26,6 @@ namespace FactionColonies
 		public FCEventDef parentEvent;
         public FCEventDef successEvent = null;
         public FCEventDef failEvent = null;
-
-
-
     }
 
 	[DefOf]
@@ -64,14 +59,10 @@ namespace FactionColonies
 		private int length = 350;
 		private int xoffset = 0;
 		private int height = 70;
-
 		public List<FCOptionDef> options = new List<FCOptionDef>();
 		public string header;
 		public string desc;
-
 		public FCEvent parentEvent;
-
-
 
 		public FCOptionWindow(FCEventDef evt, FCEvent parentEvent)
 		{

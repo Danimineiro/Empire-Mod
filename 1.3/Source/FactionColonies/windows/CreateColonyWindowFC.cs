@@ -66,7 +66,7 @@ namespace FactionColonies
             //Upper menu
             Widgets.DrawMenuSection(new Rect(5, 45, 258, 220));
 
-            DrawLabelBox(new Rect(10, 50, 100, 100), "TravelTime".Translate(), timeToTravel.ToStringTicksToDays());
+            DrawLabelBox(new Rect(10, 50, 100, 100), "TravelTime".Translate(), timeToTravel.ToTimeString());
             DrawLabelBox(new Rect(153, 50, 100, 100), "InitialCost".Translate(), settlementCreationCost + " " + "Silver".Translate());
 
 
@@ -199,7 +199,7 @@ namespace FactionColonies
                 faction.addEvent(evt);
 
                 faction.settlementCaravansList.Add(evt.location.ToString());
-                Messages.Message("CaravanSentToLocation".Translate() + " " + (evt.timeTillTrigger - Find.TickManager.TicksGame).ToStringTicksToDays() + "!", MessageTypeDefOf.PositiveEvent);
+                Messages.Message("CaravanSentToLocation".Translate() + " " + (evt.timeTillTrigger - Find.TickManager.TicksGame).ToTimeString() + "!", MessageTypeDefOf.PositiveEvent);
 
                 DoPostEventCreationTraitThings();
             }

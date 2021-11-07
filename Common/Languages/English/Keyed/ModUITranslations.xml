@@ -379,6 +379,7 @@
 	<targetAnyWorldObject>Target any world object you want to send the shuttle to:\n {0} uses remaining (Costs {1})</targetAnyWorldObject>
 	<sendCaravanHere>Send the caravan here</sendCaravanHere>
 
+	<noCaravansToSendShuttleTo>There are no caravans to send a shuttle to!</noCaravansToSendShuttleTo>
 	<noShuttleUsesRemaining>No shuttle uses remaining in this tax period!</noShuttleUsesRemaining>
 	<notEnoughShuttleUsesRemaining>Not enough shuttle uses remaining in this tax period!</notEnoughShuttleUsesRemaining>
 
@@ -403,5 +404,12 @@
 	<FCTrader>Trader</FCTrader>
 	<FCFighter>Fighter</FCFighter>
 	<FCNonMercenary>Non Mercenary</FCNonMercenary>
+	
+	<!-- Squad Deployment Options -->
+	<dropPodDeploymentOption>Drop-Pod</dropPodDeploymentOption>
+	<walkIntoMapDeploymentOption>Walk into Map</walkIntoMapDeploymentOption>
+	<dropPodDeploymentOptionUnavailableReasonMedieval> disabled because "Medieval Tech Only" is enabled</dropPodDeploymentOptionUnavailableReasonMedieval>
+	<dropPodDeploymentOptionUnavailableReasonTech> unavailable without the {0} research</dropPodDeploymentOptionUnavailableReasonTech>
+	<errorDropPodResearchCouldNotBeFound>The drop pod research could not be found! Are you running a mod list that removes it?</errorDropPodResearchCouldNotBeFound>
 
 </LanguageData>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FactionColonies.util;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -101,7 +102,7 @@ namespace FactionColonies
 
                             PaymentUtil.paySilver(Convert.ToInt32(building.cost));
                             settlement.deconstructBuilding(buildingSlot);
-                            Messages.Message(building.label + " " + "WillBeConstructedIn".Translate() + " " + (tmpEvt.timeTillTrigger - Find.TickManager.TicksGame).ToStringTicksToDays(), MessageTypeDefOf.PositiveEvent);
+                            Messages.Message(building.label + " " + "WillBeConstructedIn".Translate() + " " + (tmpEvt.timeTillTrigger - Find.TickManager.TicksGame).ToTimeString(), MessageTypeDefOf.PositiveEvent);
                             settlement.buildings[buildingSlot] = BuildingFCDefOf.Construction;
                             Find.WindowStack.TryRemove(this);
                             Find.WindowStack.WindowOfType<SettlementWindowFc>().windowUpdateFc();

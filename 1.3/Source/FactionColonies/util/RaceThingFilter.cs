@@ -104,7 +104,7 @@ namespace FactionColonies.util
             {
                 Messages.Message("noPawnKindDefOfTypeOfRaceError".Translate(missingLabel0, race.label.CapitalizeFirst()), MessageTypeDefOf.RejectInput);
                 Log.Warning("noPawnKindDefOfTypeOfRaceError".Translate(missingLabel0, race.label.CapitalizeFirst()));
-                workList.Concat(DefaultList.Where(predicate));
+                workList = workList.Concat(DefaultList.Where(predicate));
             }
             else if (triedLevels.Count != 0)
             {
@@ -118,7 +118,7 @@ namespace FactionColonies.util
         {
             triedLevels = new List<TechLevel>();
             successLevel = factionFc.techLevel;
-            while (!workList.Any(predicate) && successLevel > TechLevel.Undefined)
+            while (!workList.Any(predicate) && successLevel > TechLevel.Animal)
             {
                 triedLevels.Add(successLevel);
                 successLevel -= 1;

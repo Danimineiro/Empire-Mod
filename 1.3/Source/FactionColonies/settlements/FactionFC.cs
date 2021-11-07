@@ -1956,6 +1956,7 @@ namespace FactionColonies
 
         public void addEvent(FCEvent fcevent)
         {
+            if (fcevent == null) return;
             //Add event to events
             events.Add(fcevent);
 

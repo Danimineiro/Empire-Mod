@@ -1002,7 +1002,7 @@ namespace FactionColonies
             if (firstTick)
             {
                 //Log.Message("First Tick");
-                FactionColonies.updateChanges();
+                FactionColonies.UpdateChanges();
                 if (planetName.NullOrEmpty())
                 {
                     planetName = Find.World.info.name;
