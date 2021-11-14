@@ -27,6 +27,19 @@
 		<upkeep>250</upkeep>
 		<iconPath>GUI/Buildings/AdventurersGuild</iconPath>
 	</FactionColonies.BuildingFCDef>
+
+	<FactionColonies.BuildingFCDef>
+		<defName>greatCathedral</defName> <!--Name of Def -->
+		<label>Great Cathedral</label> <!--Lable of Def -->
+		<desc>A monument to your settlement's devotion to the precepts that govern its culture. Increases happiness and reduces unrest by 2% at the cost of 10% of the tithe being collected by the Cathedral clergy instead.</desc> <!-- Description of trait -->
+		<cost>3000</cost>
+		<techLevel>Medieval</techLevel>
+		<constructionDuration>60000</constructionDuration> <!-- Ticks it takes until construction is finished -->
+		<traits>
+			<li>greatCathedral</li>
+		</traits>
+		<iconPath>GUI/Buildings/GreatCathedral</iconPath>
+	</FactionColonies.BuildingFCDef>
 	
 	<FactionColonies.BuildingFCDef>
 		<defName>publicMarket</defName> <!--Name of Def -->

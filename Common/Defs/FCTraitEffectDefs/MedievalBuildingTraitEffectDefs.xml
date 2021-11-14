@@ -21,6 +21,16 @@
 	</FactionColonies.FCTraitEffectDef>
 	
 	<FactionColonies.FCTraitEffectDef>
+		<defName>greatCathedral</defName>
+		<label>Great Cathedral</label>
+		<desc>A monument to your settlement's devotion to the precepts that govern its culture. Increases happiness and reduces unrest by 2% at the cost of 10% of the tithe being collected by the Cathedral clergy instead.</desc>
+		<taxBasePercentage>-10</taxBasePercentage>
+		<happinessGainedBase>2</happinessGainedBase>
+		<unrestLostBase>2</unrestLostBase>
+		
+	</FactionColonies.FCTraitEffectDef>
+	
+	<FactionColonies.FCTraitEffectDef>
 		<defName>publicMarket</defName> <!--Name of Def -->
 		<label>Public Market</label> <!--Lable of Def -->
 		<desc>A public market to exchange goods. +15 tithe modifer.</desc> <!-- Description of trait -->
