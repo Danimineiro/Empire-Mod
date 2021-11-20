@@ -39,7 +39,6 @@ namespace FactionColonies
 
         public override string Label => Name;
 
-
         public TraderKindDef TraderKind
         {
             get
@@ -891,8 +890,7 @@ namespace FactionColonies
         static void Postfix(ref Pawn __instance, ref IEnumerable<Gizmo> __result)
         {
             List<Gizmo> output = __result.ToList();
-            if (__result == null || __instance?.Faction == null || !output.Any() ||
-                !(__instance.Map.Parent is WorldSettlementFC))
+            if (__result == null || __instance?.Faction == null || !output.Any() || !(__instance.Map.Parent is WorldSettlementFC))
             {
                 return;
             }
@@ -919,10 +917,7 @@ namespace FactionColonies
                     groupKey = 81729172,
                     defaultLabel = "CommandDraftLabel".Translate()
                 };
-                if (pawnDraftController.pawn.Downed)
-                    draftColonists.Disable("IsIncapped".Translate(
-                        (NamedArgument) pawnDraftController.pawn.LabelShort,
-                        (NamedArgument) pawnDraftController.pawn));
+                if (pawnDraftController.pawn.Downed) draftColonists.Disable("IsIncapped".Translate(pawnDraftController.pawn.LabelShort, pawnDraftController.pawn));
                 draftColonists.tutorTag = "Draft";
                 output.Add(draftColonists);
             }
