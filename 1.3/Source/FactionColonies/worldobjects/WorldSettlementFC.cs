@@ -35,7 +35,7 @@ namespace FactionColonies
         ///     A flag meant to indicate whether or not this settlement is meant for actual destruction; used to override
         ///     WorldObject.Destroy() for compatibility purposes
         /// </summary>
-        private bool destroyFlag;
+        private bool destroyFlag = false;
 
         public SettlementFC settlement;
         public int shuttleUsesRemaining;
@@ -45,12 +45,7 @@ namespace FactionColonies
 
         public new string Name
         {
-            get
-            {
-                if (settlement == null) return "";
-
-                return settlement.name ?? (settlement.name = "");
-            }
+            get => settlement.name ?? (settlement.name = "");
             set => settlement.name = value;
         }
 
@@ -303,6 +298,11 @@ namespace FactionColonies
         public override void ExposeData()
         {
             base.ExposeData();
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                def.expandingIconTexture = "FactionIcons/" + Find.World.GetComponent<FactionFC>().factionIconPath;
+                traitCachedIcon.SetValue(def, ContentFinder<Texture2D>.Get(def.expandingIconTexture));
+            }
             Scribe_References.Look(ref settlement, "settlement");
             Scribe_Collections.Look(ref attackers, "attackers", LookMode.Reference);
             Scribe_Collections.Look(ref defenders, "defenders", LookMode.Reference);
