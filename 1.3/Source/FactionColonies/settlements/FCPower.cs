@@ -20,14 +20,24 @@ namespace FactionColonies
             get
             {
                 FactionFC faction = Find.World.GetComponent<FactionFC>();
+                var finalOutput = 0f;
                 if (faction.powerOutput == null || faction.powerOutput.DestroyedOrNull() || faction.powerOutput == this.parent)
                 {
                     faction.powerOutput = this.parent;
-                    return Find.World.GetComponent<FactionFC>().powerPool;
-                } else
-                {
-                    return 0f;
+                    var maxPowerOutput = Find.World.GetComponent<FactionFC>().powerPool;
+                    // If the faction generates less power than this can process
+                    if (base.DesiredPowerOutput > maxPowerOutput)
+                    {
+                        finalOutput = maxPowerOutput;
+                    }
+                    // If the faction generates more power than this can process
+                    else
+                    {
+                        finalOutput = base.DesiredPowerOutput;
+                    }
                 }
+
+                return finalOutput;
             }
         }
 

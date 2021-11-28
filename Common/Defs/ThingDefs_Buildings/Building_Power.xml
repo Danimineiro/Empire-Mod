@@ -37,12 +37,12 @@
       <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <comps>
-      <li Class="CompProperties_Power">
+        <li Class="CompProperties_Power">
         <compClass>FactionColonies.CompPowerEmpire</compClass>
-        <basePowerConsumption>-1</basePowerConsumption>
+        <basePowerConsumption>-4000</basePowerConsumption>
         <transmitsPower>true</transmitsPower>
-      </li>
-      <li Class="CompProperties_Breakdownable"/>
+        </li>
+        <li Class="CompProperties_Breakdownable"/>
     </comps>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <designationCategory>Power</designationCategory>
