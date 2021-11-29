@@ -168,13 +168,12 @@ namespace FactionColonies
         public static void processBills()
         {
             FactionFC factionfc = Find.World.GetComponent<FactionFC>();
-            Reset:
-            foreach(BillFC bill in factionfc.Bills)
+            for (int i = factionfc.Bills.Count; i > 0; i--)
             {
+                BillFC bill = factionfc.Bills[i];
                 if (bill.dueTick < Find.TickManager.TicksGame)
                 { //if bill is overdue
                     bill.resolve();
-                    goto Reset;
                 }
             }
         }
