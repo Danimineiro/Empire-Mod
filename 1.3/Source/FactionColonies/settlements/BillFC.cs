@@ -168,7 +168,7 @@ namespace FactionColonies
         public static void processBills()
         {
             FactionFC factionfc = Find.World.GetComponent<FactionFC>();
-            for (int i = factionfc.Bills.Count; i > 0; i--)
+            for (int i = factionfc.Bills.Count - 1; i >= 0; i--)
             {
                 BillFC bill = factionfc.Bills[i];
                 if (bill.dueTick < Find.TickManager.TicksGame)
