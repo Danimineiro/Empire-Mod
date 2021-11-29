@@ -13,8 +13,10 @@ namespace FactionColonies
 {
     public class CompPowerEmpire : CompPowerPlant
     {
-        
-
+        /// <summary>
+        /// Base / Original output of faction power generator
+        /// </summary>
+        private const float BaseOutput = 4000;
         protected override float DesiredPowerOutput
         {
             get
@@ -25,15 +27,16 @@ namespace FactionColonies
                 {
                     faction.powerOutput = this.parent;
                     var maxPowerOutput = Find.World.GetComponent<FactionFC>().powerPool;
+                    var localOutputMax = base.DesiredPowerOutput + StatExtension.GetStatValue((Thing) this.parent, FC_DefOf.FCPowerOutputOffset, true);
                     // If the faction generates less power than this can process
-                    if (base.DesiredPowerOutput > maxPowerOutput)
+                    if (localOutputMax > maxPowerOutput)
                     {
                         finalOutput = maxPowerOutput;
                     }
                     // If the faction generates more power than this can process
                     else
                     {
-                        finalOutput = base.DesiredPowerOutput;
+                        finalOutput = localOutputMax;
                     }
                 }
 
