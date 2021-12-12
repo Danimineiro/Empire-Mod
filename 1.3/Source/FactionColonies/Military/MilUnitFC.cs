@@ -53,7 +53,7 @@ namespace FactionColonies
             Scribe_Defs.Look(ref animal, "animal");
         }
 
-        public void generateDefaultPawn()
+        public Pawn generateDefaultPawn()
         {
             List<Apparel> apparel = new List<Apparel>();
             List<ThingWithComps> equipment = new List<ThingWithComps>();
@@ -95,6 +95,8 @@ namespace FactionColonies
                 //Log.Message(weapon.Label);
                 equipWeapon(weapon);
             }
+
+            return defaultPawn;
         }
 
         public void changeTick()

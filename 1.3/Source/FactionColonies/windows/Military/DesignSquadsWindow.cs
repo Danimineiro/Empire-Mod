@@ -16,7 +16,7 @@ namespace FactionColonies
         public DesignSquadsWindow(MilitaryCustomizationUtil util)
         {
             this.util = util;
-            selectedText = "Select A Squad";
+            selectedUnitText = "Select A Squad";
 
             if (util.blankUnit == null)
             {
@@ -30,7 +30,7 @@ namespace FactionColonies
         {
             MilSquadFC squad = (MilSquadFC) selecting;
             selectedSquad = squad;
-            selectedText = squad.name;
+            selectedUnitText = squad.name;
         }
 
         public override void DrawTab(Rect rect)
@@ -55,7 +55,7 @@ namespace FactionColonies
                 DeleteButton.width, DeleteButton.height);
 
             //If squad is not selected
-            if (Widgets.CustomButtonText(ref SelectionBar, selectedText, Color.gray, Color.white, Color.black))
+            if (Widgets.CustomButtonText(ref SelectionBar, selectedUnitText, Color.gray, Color.white, Color.black))
             {
                 //check null
                 if (util.squads == null)
@@ -71,7 +71,7 @@ namespace FactionColonies
                         {
                             name = $"New Squad {(util.squads.Count + 1).ToString()}"
                         };
-                        selectedText = newSquad.name;
+                        selectedUnitText = newSquad.name;
                         selectedSquad = newSquad;
                         selectedSquad.newSquad();
                         util.squads.Add(newSquad);
@@ -82,7 +82,7 @@ namespace FactionColonies
                 squads.AddRange(util.squads.Select(squad => new FloatMenuOption(squad.name, delegate
                 {
                     //Unit is selected
-                    selectedText = squad.name;
+                    selectedUnitText = squad.name;
                     selectedSquad = squad;
                     selectedSquad.updateEquipmentTotalCost();
                 })));
@@ -139,7 +139,7 @@ namespace FactionColonies
                     selectedSquad.deleteSquad();
                     util.checkMilitaryUtilForErrors();
                     selectedSquad = null;
-                    selectedText = "Select A Squad";
+                    selectedUnitText = "Select A Squad";
 
                     //Reset Text anchor and font
                     Text.Font = fontBefore;

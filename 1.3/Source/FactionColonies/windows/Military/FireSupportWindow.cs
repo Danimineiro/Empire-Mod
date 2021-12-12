@@ -16,7 +16,7 @@ namespace FactionColonies
         public FireSupportWindow(MilitaryCustomizationUtil util)
         {
             this.util = util;
-            selectedText = "Select a fire support";
+            selectedUnitText = "Select a fire support";
 
             util.checkMilitaryUtilForErrors();
         }
@@ -62,7 +62,7 @@ namespace FactionColonies
             Widgets.DrawMenuSection(new Rect(0, 0, 800, 225));
 
             //If firesupport is not selected
-            if (Widgets.CustomButtonText(ref SelectionBar, selectedText, Color.gray, Color.white, Color.black))
+            if (Widgets.CustomButtonText(ref SelectionBar, selectedUnitText, Color.gray, Color.white, Color.black))
             {
                 List<FloatMenuOption> supports = new List<FloatMenuOption>();
 
@@ -73,7 +73,7 @@ namespace FactionColonies
                     newFireSupport.name = "New Fire Support " + (util.fireSupportDefs.Count + 1);
                     newFireSupport.setLoadID();
                     newFireSupport.projectiles = new List<ThingDef>();
-                    selectedText = newFireSupport.name;
+                    selectedUnitText = newFireSupport.name;
                     selectedSupport = newFireSupport;
                     util.fireSupportDefs.Add(newFireSupport);
                 }));
@@ -84,7 +84,7 @@ namespace FactionColonies
                     supports.Add(new FloatMenuOption(support.name, delegate
                     {
                         //Unit is selected
-                        selectedText = support.name;
+                        selectedUnitText = support.name;
                         selectedSupport = support;
                     }));
                 }
@@ -150,7 +150,7 @@ namespace FactionColonies
                     selectedSupport.delete();
                     util.checkMilitaryUtilForErrors();
                     selectedSupport = null;
-                    selectedText = "Select A Fire Support";
+                    selectedUnitText = "Select A Fire Support";
 
                     //Reset Text anchor and font
                     Text.Font = fontBefore;

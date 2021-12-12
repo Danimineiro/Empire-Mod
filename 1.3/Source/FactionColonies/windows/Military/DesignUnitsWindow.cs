@@ -18,9 +18,10 @@ namespace FactionColonies
         {
             this.util = util;
             this.faction = faction;
-            
-            selectedText = "Select A Unit";
-
+            selectedSlotText = "Select an Apparel Slot";
+            selectedUnitText = "Select A Unit";
+            apparelSlots = new List<ApparelLayerDef>();
+            apparelSlotSelections = new List<Rect>();
             util.checkMilitaryUtilForErrors();
         }
         
@@ -28,8 +29,9 @@ namespace FactionColonies
         {
             MilUnitFC squad = (MilUnitFC) selecting;
             selectedUnit = squad;
-            selectedText = squad.name;
+            selectedUnitText = squad.name;
         }
+        
         
         public override void DrawTab(Rect rect)
         {
@@ -39,6 +41,7 @@ namespace FactionColonies
             Rect isCivilian = new Rect(5, nameTextField.y + nameTextField.height + 10, 100, 30);
             Rect isTrader = new Rect(isCivilian.x, isCivilian.y + isCivilian.height + 5, isCivilian.width,
                 isCivilian.height);
+            Rect SelectionBarNewSlot = new Rect(isTrader.x, isTrader.y + isTrader.height + 10, 200, 30);
 
             Rect unitIcon = new Rect(560, 235, 120, 120);
             Rect animalIcon = new Rect(560, 335, 120, 120);
@@ -67,7 +70,30 @@ namespace FactionColonies
             Rect RollNewPawn = new Rect(325, ResetButton.y + SavePawn.height + 5, SavePawn.width,
                 SavePawn.height);
 
-            if (Widgets.CustomButtonText(ref SelectionBar, selectedText, Color.gray, Color.white, Color.black))
+            
+           /* List<FloatMenuOption> list = (from thing in DefDatabase<ThingDef>.AllDefs
+                where thing.IsWeapon && thing.BaseMarketValue != 0 && FactionColonies.canCraftItem(thing)
+                where true
+                select new FloatMenuOption(thing.LabelCap + " - Cost: " + thing.BaseMarketValue, delegate
+                { */
+            
+            if (Widgets.CustomButtonText(ref SelectionBarNewSlot, selectedSlotText, Color.gray, Color.white,
+                Color.black))
+            {
+                Log.Message($"All apparel in database: {String.Join(System.Environment.NewLine, DefDatabase<ApparelLayerDef>.AllDefs.ToList())}");
+                // TODO: Figure out why a dropdown doesn't popup here
+                // Also, consider that apparelLayers and bodypart coverings intersect in a way that complicates this greatly
+                List<FloatMenuOption> list = (from thing in DefDatabase<ApparelLayerDef>.AllDefs
+                    where !apparelSlots.Contains(thing)
+                    where true
+                    select new FloatMenuOption(thing.LabelCap, delegate
+                    {
+                        apparelSlots.Add(thing);
+                    })).ToList();
+            }
+            
+
+            if (Widgets.CustomButtonText(ref SelectionBar, selectedUnitText, Color.gray, Color.white, Color.black))
             {
                 List<FloatMenuOption> Units = new List<FloatMenuOption>
                 {
@@ -77,7 +103,7 @@ namespace FactionColonies
                         {
                             name = $"New Unit {util.units.Count() + 1}"
                         };
-                        selectedText = newUnit.name;
+                        selectedUnitText = newUnit.name;
                         selectedUnit = newUnit;
                         util.units.Add(newUnit);
                         newUnit.unequipAllEquipment();
@@ -91,7 +117,7 @@ namespace FactionColonies
                 {
                     void action()
                     {
-                        selectedText = unit.name;
+                        selectedUnitText = unit.name;
                         selectedUnit = unit;
                     }
 
@@ -191,7 +217,7 @@ namespace FactionColonies
                 selectedUnit.removeUnit();
                 util.checkMilitaryUtilForErrors();
                 selectedUnit = null;
-                selectedText = "selectAUnitButton".Translate();
+                selectedUnitText = "selectAUnitButton".Translate();
 
                 //Reset Text anchor and font
                 Text.Font = fontBefore;
@@ -318,7 +344,7 @@ namespace FactionColonies
                         }
                         else
                         {
-                            //If not made from stuff
+                            // If not made from stuff
 
                             selectedUnit.equipWeapon(ThingMaker.MakeThing(thing) as ThingWithComps);
                         }

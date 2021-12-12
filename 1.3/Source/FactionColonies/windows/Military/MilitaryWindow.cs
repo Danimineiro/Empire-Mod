@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
@@ -6,9 +7,11 @@ namespace FactionColonies
 {
     public abstract class MilitaryWindow
     {
-        public string selectedText;
+        public string selectedUnitText;
+        public string selectedSlotText;
         public float scroll;
-
+        public List<Rect> apparelSlotSelections;
+        public List<ApparelLayerDef> apparelSlots;
         public abstract void DrawTab(Rect rect);
 
         public virtual void Select(IExposable selecting)
