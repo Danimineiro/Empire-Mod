@@ -18,10 +18,12 @@ namespace FactionColonies
         {
             this.util = util;
             this.faction = faction;
-            selectedSlotText = "Select an Apparel Slot";
+            selectedSlotText = "Select Non-Apparel Equipment";
             selectedUnitText = "Select A Unit";
             apparelSlots = new List<ApparelLayerDef>();
             apparelSlotSelections = new List<Rect>();
+            liEquipment = new List<Thing>();
+            liEquipmentStr = new List<string>();
             util.checkMilitaryUtilForErrors();
         }
         
@@ -31,8 +33,56 @@ namespace FactionColonies
             selectedUnit = squad;
             selectedUnitText = squad.name;
         }
-        
-        
+
+        List<FloatMenuOption> AvailableEquipment()
+        {
+            List<FloatMenuOption> list = (from thing in DefDatabase<ThingDef>.AllDefs
+                where (thing.IsMedicine || thing.IsIngestible || (!thing.IsArt && !thing.IsMeat && !thing.IsWeapon && !thing.IsApparel && !thing.IsStuff)) && !thing.CanHaveFaction && thing.building == null && thing.BaseMarketValue != 0 && FactionColonies.canCraftItem(thing) && !liEquipmentStr.Contains(thing.LabelCap)
+                where true
+                select new FloatMenuOption(thing.LabelCap + " - Cost: " + thing.BaseMarketValue, delegate
+                {
+                    CustomizeThingStuff(thing);
+                    liEquipmentStr.Add(thing.LabelCap);
+                    
+                }, thing)).ToList();
+
+
+            list.Sort(FactionColonies.CompareFloatMenuOption);
+
+            return list;
+        }
+
+        private void CustomizeThingStuff(ThingDef thing)
+        {
+            if (thing.MadeFromStuff)
+            {
+                // If made from stuff
+                List<FloatMenuOption> stuffList = (from stuff in DefDatabase<ThingDef>.AllDefs
+                    where stuff.IsStuff &&
+                          thing.stuffCategories.SharesElementWith(stuff.stuffProps.categories)
+                    select new FloatMenuOption(stuff.LabelCap + " - Total Value: " +
+                                               StatWorker_MarketValue.CalculatedBaseMarketValue(
+                                                   thing,
+                                                   stuff),
+                        delegate
+                        {
+                            selectedUnit.equipWeapon(
+                                ThingMaker.MakeThing(thing, stuff) as ThingWithComps);
+                        })).ToList();
+
+                stuffList.Sort(FactionColonies.CompareFloatMenuOption);
+                FloatMenu stuffWindow = new FloatMenuSearchable(stuffList);
+                Find.WindowStack.Add(stuffWindow);
+            }
+            else
+            {
+                // If not made from stuff
+
+                selectedUnit.equipWeapon(ThingMaker.MakeThing(thing) as ThingWithComps);
+            }
+        }
+
+
         public override void DrawTab(Rect rect)
         {
             Rect SelectionBar = new Rect(5, 45, 200, 30);
@@ -70,26 +120,18 @@ namespace FactionColonies
             Rect RollNewPawn = new Rect(325, ResetButton.y + SavePawn.height + 5, SavePawn.width,
                 SavePawn.height);
 
-            
-           /* List<FloatMenuOption> list = (from thing in DefDatabase<ThingDef>.AllDefs
-                where thing.IsWeapon && thing.BaseMarketValue != 0 && FactionColonies.canCraftItem(thing)
-                where true
-                select new FloatMenuOption(thing.LabelCap + " - Cost: " + thing.BaseMarketValue, delegate
-                { */
-            
             if (Widgets.CustomButtonText(ref SelectionBarNewSlot, selectedSlotText, Color.gray, Color.white,
                 Color.black))
             {
                 Log.Message($"All apparel in database: {String.Join(System.Environment.NewLine, DefDatabase<ApparelLayerDef>.AllDefs.ToList())}");
+                Log.Message(
+                    $"All body part groups in database: {string.Join(System.Environment.NewLine, DefDatabase<BodyPartGroupDef>.AllDefs)}");
                 // TODO: Figure out why a dropdown doesn't popup here
                 // Also, consider that apparelLayers and bodypart coverings intersect in a way that complicates this greatly
-                List<FloatMenuOption> list = (from thing in DefDatabase<ApparelLayerDef>.AllDefs
-                    where !apparelSlots.Contains(thing)
-                    where true
-                    select new FloatMenuOption(thing.LabelCap, delegate
-                    {
-                        apparelSlots.Add(thing);
-                    })).ToList();
+                List<FloatMenuOption> list = AvailableEquipment();
+                FloatMenu menu = new FloatMenuSearchable(list);
+
+                Find.WindowStack.Add(menu);
             }
             
 

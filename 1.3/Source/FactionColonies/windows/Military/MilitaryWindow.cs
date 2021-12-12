@@ -12,6 +12,8 @@ namespace FactionColonies
         public float scroll;
         public List<Rect> apparelSlotSelections;
         public List<ApparelLayerDef> apparelSlots;
+        public List<Thing> liEquipment;
+        public List<string> liEquipmentStr;
         public abstract void DrawTab(Rect rect);
 
         public virtual void Select(IExposable selecting)

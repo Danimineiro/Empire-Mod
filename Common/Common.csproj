@@ -15,6 +15,9 @@
     <Folder Include="Source\FactionColonies" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\..\..\workshop\content\294100\1631756268\Assemblies\CombatExtended.dll">
+      <Link>References\CombatExtended.dll</Link>
+    </Content>
     <Content Include="..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll">
       <Link>References\Assembly-CSharp.dll</Link>
     </Content>
