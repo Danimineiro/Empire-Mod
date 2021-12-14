@@ -70,7 +70,6 @@ namespace FactionColonies
             Pawn bestNegotiator = BestCaravanPawnUtility.FindBestNegotiator(caravan, settlement.Faction, settlement.TraderKind);
             foreach (FloatMenuOption option in CaravanArrivalActionUtility.GetFloatMenuOptions(() => CheckSettlementAndNegotiator(settlement, bestNegotiator), () => new WorldSettlementTradeAction(settlement), "TradeWith".Translate(settlement.Label), caravan, settlement.Tile, settlement))
             {
-                Log.Message("here");
                 yield return option;
             }
         }

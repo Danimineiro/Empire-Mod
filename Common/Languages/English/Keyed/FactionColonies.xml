@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<FCResetCapitalLocationWarning>Please reset your capital location. If you continue to see this after reseting, please report it.</FCResetCapitalLocationWarning>
+	<FCTaxMapNotSetWarning>Your tax map has not been set. Please set it using the faction menu.</FCTaxMapNotSetWarning>
+	<FCAutoResolveDisabledWarning>Auto resolve is disabled, this setting can cause map generation errors on settlement defense. If you encounter map generation errors turn it back on!</FCAutoResolveDisabledWarning>
+	
+	<FCManualDefenseWarningLabel>Manual Settlement Defence is now disabled by default</FCManualDefenseWarningLabel>
+	<FCManualDefenseWarningDesc>Manual settlement defence has been disabled by default because it has many bugs that can make the game unplayable. The team has decided to completely rework this part of the mod instead of fixing the various issues. As such, enabling settlement defence happens at your own risk. Please do not report issues concerning manual settlement defence.</FCManualDefenseWarningDesc>
+
+	<!-- Fire support -->
+	<FCFireSupportSelectPosition>Select Artillery Position</FCFireSupportSelectPosition>
+	<FCFireSupportNameWillBeFiredOnPosition>{0} will be fired upon shortly on the marked position!</FCFireSupportNameWillBeFiredOnPosition>
+	<FCFireSupportNoSilver>You do not have enough silver to pay for the strike!</FCFireSupportNoSilver>
+</LanguageData>

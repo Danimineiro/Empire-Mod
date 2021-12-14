@@ -10,7 +10,6 @@
 	</supportedVersions>
 	<incompatibleWith>
 		<li>kentington.saveourship2</li>
-		<li>torann.rimwar</li>
 	</incompatibleWith>
 	<modDependencies>
 		<li>

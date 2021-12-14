@@ -37,17 +37,4 @@ namespace FactionColonies
             }
         }
     }
-    
-    [HarmonyPatch(typeof(JobDriver_Goto), "TryExitMap")]
-    public class Patch
-    {
-        static bool Prefix(ref JobDriver_Goto __instance)
-        {
-            Pawn pawn = __instance.pawn;
-            //Log.Message("Can't leave due to supporting: " + settlementFc?.supporting.Any(caravan => caravan.pawns.Contains(pawn)));
-            //Log.Message("Can't leave due to defending:  " + settlementFc?.defenders.Contains(pawn));
-            //Log.Message("Is Mercenary: " + pawn.IsMercenary());
-            return !(pawn.IsMercenary() && pawn.Map.Parent is WorldSettlementFC);
-        }
-    }
 }

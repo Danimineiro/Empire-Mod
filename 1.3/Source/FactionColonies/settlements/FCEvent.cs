@@ -50,24 +50,12 @@ namespace FactionColonies
 
                 //letter
 
-                string settlementString = "";
-                foreach (SettlementFC loc in tempEvent.settlementTraitLocations)
-                {
-                    if (settlementString == "")
-                    {
-                        settlementString = settlementString + loc.name;
-                    }
-                    else
-                    {
-                        settlementString = settlementString + ", " + loc.name;
-                    }
-                }
 
-                if (settlementString != "")
+                string settlementString = tempEvent.settlementTraitLocations.Join((settlement) => $" {settlement.name}", "\n");
+
+                if (!settlementString.NullOrEmpty())
                 {
-                    Find.LetterStack.ReceiveLetter(tempEvent.def.label,
-                        tempEvent.def.desc + "\n This event is affecting the following settlements: " +
-                        settlementString, LetterDefOf.NeutralEvent);
+                    Find.LetterStack.ReceiveLetter(tempEvent.def.label, $"{tempEvent.def.desc}\n{"EventAffectingSettlements".Translate()}\n{settlementString}", LetterDefOf.NeutralEvent);
                 }
                 else
                 {
@@ -543,28 +531,11 @@ namespace FactionColonies
                     {
                         faction.addEvent(tempEvent);
 
+                        string settlementString = tempEvent.settlementTraitLocations.Join((settlement) => $" {settlement.name}", "\n");
 
-                        //letter
-
-                        string settlementString = "";
-                        foreach (SettlementFC loc in tempEvent.settlementTraitLocations)
+                        if (!settlementString.NullOrEmpty())
                         {
-                            //Log.Message(loc.ToString());
-                            if (settlementString == "")
-                            {
-                                settlementString = settlementString + " " + loc.name;
-                            }
-                            else
-                            {
-                                settlementString = settlementString + ", " + loc.name;
-                            }
-                        }
-
-                        if (settlementString != "")
-                        {
-                            Find.LetterStack.ReceiveLetter(tempEvent.def.label,
-                                tempEvent.def.desc + "\n" + "EventAffectingSettlements".Translate() +
-                                settlementString, LetterDefOf.NeutralEvent);
+                            Find.LetterStack.ReceiveLetter(tempEvent.def.label, $"{tempEvent.def.desc}\n{"EventAffectingSettlements".Translate()}\n{settlementString}", LetterDefOf.NeutralEvent);
                         }
                         else
                         {
@@ -699,6 +670,20 @@ namespace FactionColonies
         public FCEvent(bool New)
         {
             loadID = Find.World.GetComponent<FactionFC>().GetNextEventID();
+        }
+        
+        /// <summary>
+        /// Defines parameters of event with custom description
+        /// </summary>
+        /// <param name="f">FactionFC object</param>
+        /// <param name="mapLocation">Location of the event object</param>
+        /// <param name="timeToFinish">Time of event's completion</param>
+        public void DefineEvent(FactionFC f, int mapLocation, int timeToFinish) {
+            this.hasCustomDescription = true;
+            this.timeTillTrigger = Find.TickManager.TicksGame + timeToFinish;
+            this.location = mapLocation;
+            this.planetName = Find.World.info.name;
+            f.addEvent(this);
         }
 
         public void ExposeData()

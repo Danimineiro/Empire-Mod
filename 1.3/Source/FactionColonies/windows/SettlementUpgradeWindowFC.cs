@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Verse;
 using RimWorld;
 using UnityEngine;
@@ -11,55 +8,65 @@ namespace FactionColonies
 {
     public class SettlementUpgradeWindowFc : Window
     {
-        public override Vector2 InitialSize
-        {
-            get { return new Vector2(380f, 300f); }
-        }
+        public override Vector2 InitialSize => new Vector2(380f, 300f);
 
-        //declare variables
+        private readonly int yspacing = 30;
+        private readonly int yoffset = 90;
 
-        //private int xspacing = 60;
-        private int yspacing = 30;
+        private readonly int length = 335;
+        private readonly int xoffset = 0;
+        private readonly int height = 200;
+        private readonly int settlementUpgradeCost;
+        private readonly int maxSettlementLevel;
 
-        private int yoffset = 90;
-
-        //private int headerSpacing = 30;
-        private int length = 335;
-        private int xoffset = 0;
-        private int height = 200;
-        private int settlementUpgradeCost;
-
-        private SettlementFC settlement;
-        private FactionFC factionfc;
-
+        private readonly SettlementFC settlement;
+        private readonly FactionFC factionfc;
 
         public string desc;
         public string header;
 
         public SettlementUpgradeWindowFc(SettlementFC settlement)
         {
-            this.forcePause = false;
-            this.draggable = true;
-            this.doCloseX = true;
-            this.preventCameraMotion = false;
-            this.header = "UpgradeSettlement".Translate();
+            forcePause = false;
+            draggable = true;
+            doCloseX = true;
+            preventCameraMotion = false;
+            header = "UpgradeSettlement".Translate();
             this.settlement = settlement;
-            this.settlementUpgradeCost =
-                Convert.ToInt32(LoadedModManager.GetMod<FactionColoniesMod>().GetSettings<FactionColonies>()
-                    .settlementBaseUpgradeCost) + (settlement.settlementLevel * 1000);
-            this.desc = settlement.name + " " + "CanBeUpgraded".Translate() + " " + this.settlementUpgradeCost + " " +
-                        "Silver".Translate().ToLower() + ". " + "UpgradeColonyDesc".Translate();
-            this.factionfc = Find.World.GetComponent<FactionFC>();
+            settlementUpgradeCost = Convert.ToInt32(LoadedModManager.GetMod<FactionColoniesMod>().GetSettings<FactionColonies>().settlementBaseUpgradeCost) + (settlement.settlementLevel * 1000);
+            desc = settlement.name + " " + "CanBeUpgraded".Translate() + " " + settlementUpgradeCost + " " + "Silver".Translate().ToLower() + ". " + "UpgradeColonyDesc".Translate();
+            factionfc = Find.World.GetComponent<FactionFC>();
+            maxSettlementLevel = LoadedModManager.GetMod<FactionColoniesMod>().GetSettings<FactionColonies>().settlementMaxLevel;
         }
 
-        public override void PreOpen()
+        /// <summary>
+        /// Attempts to create an upgrading <c>FCEvent</c> for a <c>SettlementFC</c>.
+        /// </summary>
+        /// <returns>A message describing if the process was successful or not, including a reason in case it was not</returns>
+        private Message UpgradeSettlement()
         {
-            base.PreOpen();
-        }
+            //failure reasons
+            if (settlement.IsBeingUpgraded) return new Message("AlreadyUpgradeSettlement".Translate(), MessageTypeDefOf.RejectInput);
+            if (settlement.isUnderAttack) return new Message("SettlementUnderAttack".Translate(), MessageTypeDefOf.RejectInput);
+            if (PaymentUtil.getSilver() < settlementUpgradeCost) return new Message("NotEnoughSilverUpgrade".Translate(), MessageTypeDefOf.RejectInput);
 
-        public override void WindowUpdate()
-        {
-            base.WindowUpdate();
+            //on success
+            PaymentUtil.paySilver(settlementUpgradeCost);
+            FCEvent tmp = new FCEvent(true)
+            {
+                def = FCEventDefOf.upgradeSettlement,
+                location = settlement.mapLocation,
+                planetName = settlement.planetName,
+                timeTillTrigger = Find.TickManager.TicksGame + (settlement.settlementLevel + 1) * 60000 * (factionfc.hasPolicy(FCPolicyDefOf.isolationist) ? 1 : 2)
+            };
+                
+            Find.World.GetComponent<FactionFC>().addEvent(tmp);
+
+            //Close this window and update the SettlementWindowFc
+            Find.WindowStack.TryRemove(this);
+            Find.WindowStack.WindowOfType<SettlementWindowFc>().windowUpdateFc();
+
+            return new Message("StartUpgradeSettlement".Translate(), MessageTypeDefOf.NeutralEvent);
         }
 
         public override void DoWindowContents(Rect inRect)
@@ -68,93 +75,26 @@ namespace FactionColonies
             GameFont fontBefore = Text.Font;
             TextAnchor anchorBefore = Text.Anchor;
 
-
             //Settlement Tax Collection Header
             Text.Anchor = TextAnchor.MiddleLeft;
             Text.Font = GameFont.Medium;
+
             Widgets.Label(new Rect(2, 0, 300, 60), header);
-
-
-            //settlement buttons
 
             Text.Anchor = TextAnchor.UpperLeft;
             Text.Font = GameFont.Tiny;
 
-            //0 tithe total string
-            //1 source - -1
-            //2 due/delivery date
-            //3 Silver (- || +)
-            //4 tithe
-
-            if (settlement.settlementLevel < LoadedModManager.GetMod<FactionColoniesMod>()
-                .GetSettings<FactionColonies>().settlementMaxLevel) //if settlement is not max level
+            if (settlement.settlementLevel < maxSettlementLevel) //if settlement is not max level
             {
-                if (Widgets.ButtonText(new Rect(xoffset + ((335 - 150) / 2), height + 10, 150, 40),
-                    "UpgradeSettlement".Translate() + ": " + settlementUpgradeCost))
-                {
-                    //if upgrade button clicked
-                    //if max level
-                    if (settlement.settlementLevel < LoadedModManager.GetMod<FactionColoniesMod>()
-                        .GetSettings<FactionColonies>().settlementMaxLevel) //if below max level
-                    {
-                        if (PaymentUtil.getSilver() > settlementUpgradeCost) //if have enough monies to pay
-                        {
-                            foreach (FCEvent evt in Find.World.GetComponent<FactionFC>().events)
-                            {
-                                if (evt.def == FCEventDefOf.upgradeSettlement && evt.location == settlement.mapLocation)
-                                {
-                                    //if already existing event
-                                    Messages.Message("AlreadyUpgradeSettlement".Translate(),
-                                        MessageTypeDefOf.RejectInput);
-                                    return;
-                                }
-                            }
-
-                            if (settlement.isUnderAttack)
-                            {
-                                Messages.Message("SettlementUnderAttack".Translate(), MessageTypeDefOf.RejectInput);
-                                return;
-                            }
-
-                            PaymentUtil.paySilver(settlementUpgradeCost);
-                            //settlement.upgradeSettlement();
-                            FCEvent tmp = new FCEvent(true);
-                            tmp.def = FCEventDefOf.upgradeSettlement;
-                            tmp.location = settlement.mapLocation;
-                            tmp.planetName = settlement.planetName;
-                            int triggerTime = (settlement.settlementLevel + 1) * 60000 * 2;
-                            if (factionfc.hasPolicy(FCPolicyDefOf.isolationist))
-                                triggerTime /= 2;
-                            tmp.timeTillTrigger = Find.TickManager.TicksGame + triggerTime;
-                            //Log.Message(list[i].enactDuration.ToString());
-                            //Log.Message(tmp.timeTillTrigger.ToString());
-                            Find.World.GetComponent<FactionFC>().addEvent(tmp);
-                            Find.WindowStack.TryRemove(this);
-                            Find.WindowStack.WindowOfType<SettlementWindowFc>().windowUpdateFc();
-                            Messages.Message("StartUpgradeSettlement".Translate(), MessageTypeDefOf.NeutralEvent);
-                        }
-                        else
-                        {
-                            //if don't have enough monies
-                            Messages.Message("NotEnoughSilverUpgrade".Translate(), MessageTypeDefOf.RejectInput);
-                        }
-                    }
-                    else
-                    {
-                        Messages.Message(settlement.name + " " + "AlreadyMaxLevel".Translate() + "!",
-                            MessageTypeDefOf.RejectInput);
-                    }
-                }
+                if (Widgets.ButtonText(new Rect(xoffset + ((335 - 150) / 2), height + 10, 150, 40), "UpgradeSettlement".Translate() + ": " + settlementUpgradeCost)) Messages.Message(UpgradeSettlement());
             }
             else //if settlement is max level
             {
-                desc = "CannotBeUpgradedPastMax".Translate() + ": " + LoadedModManager.GetMod<FactionColoniesMod>()
-                    .GetSettings<FactionColonies>().settlementMaxLevel;
+                desc = "CannotBeUpgradedPastMax".Translate() + ": " + maxSettlementLevel;
             }
 
             Widgets.Label(new Rect(xoffset + 2, yoffset - yspacing + 2, length - 4, height - 4 + yspacing * 2), desc);
             Widgets.DrawBox(new Rect(xoffset, yoffset - yspacing, length, height - yspacing * 2));
-
 
             //reset anchor/font
             Text.Font = fontBefore;

@@ -145,7 +145,7 @@ namespace FactionColonies.util
 			List<Pawn> pawns = new List<Pawn>();
 			while (evt.goods.Count() > 0)
 			{
-				Pawn pawn = PawnGenerator.GeneratePawn(FCPawnGenerator.WorkerOrMilitaryRequest);
+				Pawn pawn = PawnGenerator.GeneratePawn(FCPawnGenerator.WorkerOrMilitaryRequest());
 				Thing next = evt.goods.First();
 
 				if (pawn.carryTracker.innerContainer.TryAdd(next))
@@ -163,7 +163,7 @@ namespace FactionColonies.util
 			RCellFinder.TryFindRandomPawnEntryCell(out parms.spawnCenter, playerHomeMap, CellFinder.EdgeRoadChance_Friendly);
 
 			pawnsArrivalModeWorker.Arrive(pawns, parms);
-			LordMaker.MakeNewLord(FCPawnGenerator.WorkerOrMilitaryRequest.Faction, new LordJob_DeliverSupplies(parms.spawnCenter), playerHomeMap, pawns);
+			LordMaker.MakeNewLord(FCPawnGenerator.WorkerOrMilitaryRequest().Faction, new LordJob_DeliverSupplies(parms.spawnCenter), playerHomeMap, pawns);
 
 		}
 
@@ -281,11 +281,11 @@ namespace FactionColonies.util
 
 		private static IntVec3 ValidLandingCell(IntVec2 requiredSpace, Map map, bool canLandRoofed = false)
 		{
-			IEnumerable<IntVec3> validCells = map.areaManager.Home.ActiveCells.Where(cell => (!map.roofGrid.Roofed(cell) || canLandRoofed) && cell.CellFullFillsSpaceRequirement(requiredSpace, map));
+			IEnumerable<IntVec3> validCells = map.areaManager.Home.ActiveCells.Where(cell => (!map.roofGrid.Roofed(cell) || canLandRoofed) && cell.CellFulfilsSpaceRequirementForSkyFaller(requiredSpace, map));
 
 			if (validCells.Count() == 0)
 			{
-				validCells = map.areaManager.Home.ActiveCells.Where(cell => cell.CellFullFillsSpaceRequirement(requiredSpace, map));
+				validCells = map.areaManager.Home.ActiveCells.Where(cell => cell.CellFulfilsSpaceRequirementForSkyFaller(requiredSpace, map));
 			}
 
 			if (validCells.Count() == 0)

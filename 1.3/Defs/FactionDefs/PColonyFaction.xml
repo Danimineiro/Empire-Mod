@@ -11,5 +11,8 @@
 		<generateNewLeaderFromMapMembersOnly>false</generateNewLeaderFromMapMembersOnly>
 		<factionIconPath>World/PColonyBaseIcon</factionIconPath>
 		<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+		<maxCountAtGameStart>0</maxCountAtGameStart>
+		<maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+		<startingCountAtWorldCreation>0</startingCountAtWorldCreation>
 	</FactionDef>
 </Defs>

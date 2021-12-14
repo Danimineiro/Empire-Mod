@@ -118,8 +118,8 @@ namespace FactionColonies
             FactionFC fc = Find.World.GetComponent<FactionFC>();
             MilSquadFC squad = FactionColoniesMilitary.GetSquad(name).Import();
             
-            militaryCustomizationWindowFC mil = (militaryCustomizationWindowFC)Find.WindowStack.Windows.FirstOrFallback(
-                window => window.GetType() == typeof(militaryCustomizationWindowFC));
+            MilitaryCustomizationWindowFc mil = (MilitaryCustomizationWindowFc)Find.WindowStack.Windows.FirstOrFallback(
+                window => window.GetType() == typeof(MilitaryCustomizationWindowFc));
             
             mil.SetActive(squad);
             
@@ -153,8 +153,8 @@ namespace FactionColonies
             FactionFC fc = Find.World.GetComponent<FactionFC>();
             MilUnitFC unit = FactionColoniesMilitary.GetUnit(name).Import();
             
-            militaryCustomizationWindowFC mil = (militaryCustomizationWindowFC)Find.WindowStack.Windows.FirstOrFallback(
-                window => window.GetType() == typeof(militaryCustomizationWindowFC));
+            MilitaryCustomizationWindowFc mil = (MilitaryCustomizationWindowFc)Find.WindowStack.Windows.FirstOrFallback(
+                window => window.GetType() == typeof(MilitaryCustomizationWindowFc));
             
             mil.SetActive(unit);
             

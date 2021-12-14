@@ -91,7 +91,7 @@ namespace FactionColonies.util
         private IEnumerable<PawnKindDef> DefaultList => DefDatabase<PawnKindDef>.AllDefsListForReading.Where(def => def.IsHumanLikeRace() && AllowedThingDefs.Contains(def.race) && def.defaultFactionType != null && def.defaultFactionType.defName != "Empire");
         private IEnumerable<PawnKindDef> PawnKindDefsForTechLevel(TechLevel techLevel) => DefDatabase<PawnKindDef>.AllDefsListForReading.Where(def => def.IsHumanLikeRace() && AllowedThingDefs.Contains(def.race) && def.defaultFactionType != null && def.defaultFactionType.defName != "Empire" && def.defaultFactionType.techLevel == techLevel);
 
-        private bool FactionProbablyNotGeneratedYet => AllowedThingDefs.Count() == 0 || factionFc.techLevel == TechLevel.Undefined;
+        private bool FactionProbablyNotGeneratedYet => !AllowedThingDefs.Any() || factionFc.techLevel == TechLevel.Undefined;
 
         private IEnumerable<PawnKindDef> GenerateIfMissing(IEnumerable<PawnKindDef> workList, Func<PawnKindDef, bool> predicate, MissingType type, ThingDef race)
         {
@@ -102,7 +102,6 @@ namespace FactionColonies.util
             string missingLabel0 = ResolveTypeToLabel0(type);
             if (!workList.Any(predicate))
             {
-                Messages.Message("noPawnKindDefOfTypeOfRaceError".Translate(missingLabel0, race.label.CapitalizeFirst()), MessageTypeDefOf.RejectInput);
                 Log.Warning("noPawnKindDefOfTypeOfRaceError".Translate(missingLabel0, race.label.CapitalizeFirst()));
                 workList = workList.Concat(DefaultList.Where(predicate));
             }
@@ -114,7 +113,8 @@ namespace FactionColonies.util
             return workList;
         }
 
-        private IEnumerable<PawnKindDef> GetWorkListUsing(IEnumerable<PawnKindDef> workList, Func<PawnKindDef, bool> predicate, out List<TechLevel> triedLevels, out TechLevel successLevel)
+        private IEnumerable<PawnKindDef> GetWorkListUsing(IEnumerable<PawnKindDef> workList, 
+            Func<PawnKindDef, bool> predicate, out List<TechLevel> triedLevels, out TechLevel successLevel)
         {
             triedLevels = new List<TechLevel>();
             successLevel = factionFc.techLevel;

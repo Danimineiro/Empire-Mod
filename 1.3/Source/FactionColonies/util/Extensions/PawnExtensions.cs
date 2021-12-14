@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using Verse;
@@ -80,5 +81,16 @@ namespace FactionColonies.util
 		}
 
 		public static bool HasTrait(this Pawn pawn, TraitDef trait) => pawn?.story?.traits?.HasTrait(trait) ?? false;
+
+		public static bool DropItem(this Pawn pawn, IntVec3 DropLoc, ThingPlaceMode mode, out Thing resultingThing, Action<Thing, int> placedAction = null)
+        {
+			if (pawn?.carryTracker?.CarriedThing != null)
+            {
+				return pawn.carryTracker.TryDropCarriedThing(DropLoc, mode, out resultingThing, placedAction);
+            }
+
+			resultingThing = null;
+			return false;
+        }
 	}
 }

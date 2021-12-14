@@ -107,7 +107,6 @@ namespace FactionColonies
             get
             {
                 if (TraderKind == null) return false;
-                Log.Message("HasStockTraderKindWillTrade" + HasStockTraderKindWillTrade);
                 return HasStockTraderKindWillTrade;
             }
         }

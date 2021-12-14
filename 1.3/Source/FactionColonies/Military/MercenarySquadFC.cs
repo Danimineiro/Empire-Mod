@@ -21,7 +21,6 @@ namespace FactionColonies
         public bool isTraderCaravan;
         public bool isDeployed;
         public bool isExtraSquad;
-        public MilitaryOrders order;
         public int timeDeployed;
         public IntVec3 orderLocation;
         public bool hitMap;
@@ -51,7 +50,6 @@ namespace FactionColonies
             Scribe_Collections.Look(ref UsedApparelList, "UsedApparelList", LookMode.Reference);
             Scribe_References.Look(ref settlement, "Settlement");
             Scribe_Values.Look(ref tickChanged, "tickChanged");
-            Scribe_Values.Look(ref order, "order", MilitaryOrders.Undefinded);
             Scribe_Values.Look(ref timeDeployed, "timeDeployed", -1);
             Scribe_Values.Look(ref orderLocation, "orderLocation");
             Scribe_Values.Look(ref hasLord, "hasLord");
@@ -300,7 +298,7 @@ namespace FactionColonies
                 raceChoice = FactionColonies.getPlayerColonyFaction().RandomPawnKind();
             }
 
-            Pawn newPawn = PawnGenerator.GeneratePawn(FCPawnGenerator.WorkerOrMilitaryRequest);
+            Pawn newPawn = PawnGenerator.GeneratePawn(FCPawnGenerator.WorkerOrMilitaryRequest(raceChoice));
             newPawn.apparel?.DestroyAll();
             newPawn.equipment?.DestroyAllEquipment();
             //merc = (Mercenary)newPawn;
@@ -457,7 +455,7 @@ namespace FactionColonies
                     merc.pawn.equipment.AddEquipment(ThingMaker.MakeThing(weapon.def) as ThingWithComps);
                 }
 
-                if (FactionColonies.checkForMod("CETeam.CombatExtended"))
+                if (FactionColonies.IsModLoaded("CETeam.CombatExtended"))
                 {
                     //Log.Message("mod detected");
                     //CE is loaded
@@ -571,6 +569,21 @@ namespace FactionColonies
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Makes the squad go into cooldown. Only works on a settlements main squad
+        /// </summary>
+        /// <returns>True if successful, false otherwise</returns>
+        public bool InitiateCooldownEvent()
+        {
+            if (!isExtraSquad)
+            {
+                settlement.cooldownMilitary();
+                return true;
+            }
+
+            return false;
         }
     }
 }

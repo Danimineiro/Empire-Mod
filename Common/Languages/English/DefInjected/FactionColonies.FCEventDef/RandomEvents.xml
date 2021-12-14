@@ -1,209 +1,205 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 
-<!-- Armorer Inspiration -->
-<armorerInspiration_0.label>Armorer Inspiration</armorerInspiration_0.label>
-<armorerInspiration_0.desc>A armorer in one of your settlements contacts you. He explains that he has been struck with great inspiration and requests silver for supplies to create you armor worthy of your empire. He plans to give it to you as a token of his loyalty.</armorerInspiration_0.desc>
+	<!-- Armorer Inspiration -->
+	<armorerInspiration_0.label>Armorer Inspiration</armorerInspiration_0.label>
+	<armorerInspiration_0.desc>A armorer in one of your settlements contacts you. He explains that he has been struck with great inspiration and requests silver for supplies to create you armor worthy of your empire. He plans to give it to you as a token of his loyalty.</armorerInspiration_0.desc>
 
 
-<armorerInspiration_1-1.label>Armorer Inspiration</armorerInspiration_1-1.label>
-<armorerInspiration_1-1.desc>The armorer is working on your gift...</armorerInspiration_1-1.desc>
+	<armorerInspiration_1-1.label>Armorer Inspiration</armorerInspiration_1-1.label>
+	<armorerInspiration_1-1.desc>The armorer is working on your gift...</armorerInspiration_1-1.desc>
 
-<armorerInspiration_1-2.label>Armorer Inspiration</armorerInspiration_1-2.label>
-<armorerInspiration_1-2.desc>The armorer is working on your gift...</armorerInspiration_1-2.desc>
+	<armorerInspiration_1-2.label>Armorer Inspiration</armorerInspiration_1-2.label>
+	<armorerInspiration_1-2.desc>The armorer is working on your gift...</armorerInspiration_1-2.desc>
 
-<armorerInspiration_1-3.label>Armorer Inspiration</armorerInspiration_1-3.label>
-<armorerInspiration_1-3.desc>The armorer is working on your gift...</armorerInspiration_1-3.desc>
+	<armorerInspiration_1-3.label>Armorer Inspiration</armorerInspiration_1-3.label>
+	<armorerInspiration_1-3.desc>The armorer is working on your gift...</armorerInspiration_1-3.desc>
 
 
-<!-- Blacksmith Inspiration -->
-<blacksmithInspiration_0.label>Blacksmith Inspiration</blacksmithInspiration_0.label>
-<blacksmithInspiration_0.desc>A blacksmith in one of your settlements contacts you. He explains that he has been struck with great inspiration and requests silver for supplies to create you a weapon worthy of your empire. He plans to give it to you as a token of his loyalty.</blacksmithInspiration_0.desc>
+	<!-- Blacksmith Inspiration -->
+	<blacksmithInspiration_0.label>Blacksmith Inspiration</blacksmithInspiration_0.label>
+	<blacksmithInspiration_0.desc>A blacksmith in one of your settlements contacts you. He explains that he has been struck with great inspiration and requests silver for supplies to create you a weapon worthy of your empire. He plans to give it to you as a token of his loyalty.</blacksmithInspiration_0.desc>
 
 
-<blacksmithInspiration_1-1.label>Blacksmith Inspiration</blacksmithInspiration_1-1.label>
-<blacksmithInspiration_1-1.desc>The blacksmith is working on your gift...</blacksmithInspiration_1-1.desc>
+	<blacksmithInspiration_1-1.label>Blacksmith Inspiration</blacksmithInspiration_1-1.label>
+	<blacksmithInspiration_1-1.desc>The blacksmith is working on your gift...</blacksmithInspiration_1-1.desc>
 
-<blacksmithInspiration_1-2.label>Blacksmith Inspiration</blacksmithInspiration_1-2.label>
-<blacksmithInspiration_1-2.desc>The blacksmith is working on your gift...</blacksmithInspiration_1-2.desc>
+	<blacksmithInspiration_1-2.label>Blacksmith Inspiration</blacksmithInspiration_1-2.label>
+	<blacksmithInspiration_1-2.desc>The blacksmith is working on your gift...</blacksmithInspiration_1-2.desc>
 
-<blacksmithInspiration_1-3.label>Blacksmith Inspiration</blacksmithInspiration_1-3.label>
-<blacksmithInspiration_1-3.desc>The blacksmith is working on your gift...</blacksmithInspiration_1-3.desc>
+	<blacksmithInspiration_1-3.label>Blacksmith Inspiration</blacksmithInspiration_1-3.label>
+	<blacksmithInspiration_1-3.desc>The blacksmith is working on your gift...</blacksmithInspiration_1-3.desc>
 
 
-<!-- Death In The Family-->
-<deathInTheFamily.label>Death In The Family</deathInTheFamily.label>
-<deathInTheFamily.desc>A figure of high-importance and connection to your capital in a settlement has been assassinated. Some people on the streets are spreading that it was you who caused their death. -4 happiness a day.</deathInTheFamily.desc>
+	<!-- Death In The Family-->
+	<deathInTheFamily.label>Death In The Family</deathInTheFamily.label>
+	<deathInTheFamily.desc>A figure of high-importance and connection to your capital in a settlement has been assassinated. Some people on the streets are spreading that it was you who caused their death.\n -4 happiness a day</deathInTheFamily.desc>
 
 
-<!-- Dense Wildlife -->
-<denseWildlife.label>Dense Wildlife</denseWildlife.label>
-<denseWildlife.desc>There is a great amount of animals roaming the region. +1 animals base production.</denseWildlife.desc>
+	<!-- Dense Wildlife -->
+	<denseWildlife.label>Dense Wildlife</denseWildlife.label>
+	<denseWildlife.desc>There is a great amount of animals roaming the region.\n +1 animals base production</denseWildlife.desc>
 
 
-<!-- Drug Trade -->
-<drugTrade_0.label>Drug Trade</drugTrade_0.label>
-<drugTrade_0.desc>One of your settlements is reporting a massive spike in illegal drug use. The leadership suspects that a producer has taken up residence nearby. They request your word on the matter.</drugTrade_0.desc>
+	<!-- Drug Trade -->
+	<drugTrade_0.label>Drug Trade</drugTrade_0.label>
+	<drugTrade_0.desc>One of your settlements is reporting a massive spike in illegal drug use. The leadership suspects that a producer has taken up residence nearby. They request your word on the matter.</drugTrade_0.desc>
 
-<drugTrade_1-1.label>Drug Trade</drugTrade_1-1.label>
-<drugTrade_1-1.desc>Investigating drug trade...\n -10% basetax</drugTrade_1-1.desc>
+	<drugTrade_1-1.label>Drug Trade</drugTrade_1-1.label>
+	<drugTrade_1-1.desc>Investigating drug trade...\n -10% basetax</drugTrade_1-1.desc>
 
-<drugTrade_1-2.label>Drug Trade</drugTrade_1-2.label>
-<drugTrade_1-2.desc>Your settlement may be hooked on drugs, but they seem content with their reality. You doubt you'll hear any complaints anytime soon. \n -10% base tax, +25% happiness gain, -25% unrest gain.</drugTrade_1-2.desc>
+	<drugTrade_1-2.label>Drug Trade</drugTrade_1-2.label>
+	<drugTrade_1-2.desc>Your settlement may be hooked on drugs, but they seem content with their reality. You doubt you'll hear any complaints anytime soon.\n -10% base tax\n +25% happiness gain\n -25% unrest gain</drugTrade_1-2.desc>
 
-<drugTrade_2-1.label>Drug Trade</drugTrade_2-1.label>
-<drugTrade_2-1.desc>Investigating drug trade...\n -10% basetax</drugTrade_2-1.desc>
+	<drugTrade_2-1.label>Drug Trade</drugTrade_2-1.label>
+	<drugTrade_2-1.desc>Investigating drug trade...\n -10% basetax</drugTrade_2-1.desc>
 
-<drugTrade_2-2.label>Drug Trade</drugTrade_2-2.label>
-<drugTrade_2-2.desc>The authorities you directed to find the source of the drug production has turned up nothing. Locals are unhappy with the upheaval. The investigators are going to have to lay back for a short while...  \n -10% base Tax</drugTrade_2-2.desc>
+	<drugTrade_2-2.label>Drug Trade</drugTrade_2-2.label>
+	<drugTrade_2-2.desc>The authorities you directed to find the source of the drug production has turned up nothing. Locals are unhappy with the upheaval. The investigators are going to have to lay back for a short while...\n -10% base Tax</drugTrade_2-2.desc>
 
-<drugTrade_3-1.label>Drug Trade</drugTrade_3-1.label>
-<drugTrade_3-1.desc>The drug line has been incorporated into the settlement's official production. A random tithe of drugs will be delivered to you on a 5-day basis. -10% base tax.</drugTrade_3-1.desc>
+	<drugTrade_3-1.label>Drug Trade</drugTrade_3-1.label>
+	<drugTrade_3-1.desc>The drug line has been incorporated into the settlement's official production. A random tithe of drugs will be delivered to you on a 5-day basis.\n -10% base tax</drugTrade_3-1.desc>
 
-<drugTrade_4-1.label>Drug Trade</drugTrade_4-1.label>
-<drugTrade_4-1.desc>You have received a new tithe of drugs. Continue production or shut down the facility?</drugTrade_4-1.desc>
+	<drugTrade_4-1.label>Drug Trade</drugTrade_4-1.label>
+	<drugTrade_4-1.desc>You have received a new tithe of drugs. Continue production or shut down the facility?</drugTrade_4-1.desc>
 
 
-<!-- Empty Mines -->
-<emptyMines.label>Empty Mines</emptyMines.label>
-<emptyMines.desc>The affected region(s) have been stricken with barren mines. -1 mining base production.</emptyMines.desc>
+	<!-- Empty Mines -->
+	<emptyMines.label>Empty Mines</emptyMines.label>
+	<emptyMines.desc>The affected region(s) have been stricken with barren mines.\n -1 mining base production</emptyMines.desc>
 
 
-<!-- Expanded Forestry -->
-<expandedForestry.label>Expanded Forestry</expandedForestry.label>
-<expandedForestry.desc>Some of your settlements have expanded their forestry production this week. +1 logging base production.</expandedForestry.desc>
+	<!-- Expanded Forestry -->
+	<expandedForestry.label>Expanded Forestry</expandedForestry.label>
+	<expandedForestry.desc>Some of your settlements have expanded their forestry production this week.\n +1 logging base production</expandedForestry.desc>
 
 
-<!-- Food Shortage -->
-<foodShortage.label>Food Shortage</foodShortage.label>
-<foodShortage.desc>There's a widespread food shortage in the affected regions. -1 food base production.</foodShortage.desc>
+	<!-- Food Shortage -->
+	<foodShortage.label>Food Shortage</foodShortage.label>
+	<foodShortage.desc>There's a widespread food shortage in the affected regions.\n -1 food base production</foodShortage.desc>
 
 
-<!-- Food Surplus -->
-<foodSurplus.label>Food Surplus</foodSurplus.label>
-<foodSurplus.desc>Lucky harvests have led to a surplus of food in some settlements. +1 food base production.</foodSurplus.desc>
+	<!-- Food Surplus -->
+	<foodSurplus.label>Food Surplus</foodSurplus.label>
+	<foodSurplus.desc>Lucky harvests have led to a surplus of food in some settlements.\n +1 food base production</foodSurplus.desc>
 
 
-<!-- Forest Fire -->
-<forestFire.label>Massive Forest Fire</forestFire.label>
-<forestFire.desc>The affected region(s) have forest fires blazing out of control. -1 logging base production.</forestFire.desc>
+	<!-- Forest Fire -->
+	<forestFire.label>Massive Forest Fire</forestFire.label>
+	<forestFire.desc>The affected region(s) have forest fires blazing out of control.\n -1 logging base production</forestFire.desc>
 
 
-<!-- Independence Petitions -->
-<independencePetitions.label>Independence Petitions</independencePetitions.label>
-<independencePetitions.desc>Due to unrest in your faction, a growing number of your towns have the idea of independence growing. -5 loyalty a day. -5 prosperity a day. +1 unrest a day.</independencePetitions.desc>
+	<!-- Independence Petitions -->
+	<independencePetitions.label>Independence Petitions</independencePetitions.label>
+	<independencePetitions.desc>Due to unrest in your faction, a growing number of your towns have the idea of independence growing.\n -5 loyalty a day\n -5 prosperity a day\n +1 unrest a day</independencePetitions.desc>
 
 
-<!-- Local Militias Form -->
-<localMilitiasForm.label>Local Militias Form</localMilitiasForm.label>
-<localMilitiasForm.desc>Due to lowered loyalty, citizens are starting to form local militias and are refusing to hand over their share of taxes. -5% Base Tax Rate.</localMilitiasForm.desc>
+	<!-- Local Militias Form -->
+	<localMilitiasForm.label>Local Militias Form</localMilitiasForm.label>
+	<localMilitiasForm.desc>Due to lowered loyalty, citizens are starting to form local militias and are refusing to hand over their share of taxes.\n -5% Base Tax Rate</localMilitiasForm.desc>
 
 
-<!-- Loyalty Parade -->
-<loyaltyParade.label>Loyalty Parade</loyaltyParade.label>
-<loyaltyParade.desc>Some of the settlements in your faction are having a parade in your honor! +1 loyalty a day. -2 unrest a day.</loyaltyParade.desc>
+	<!-- Loyalty Parade -->
+	<loyaltyParade.label>Loyalty Parade</loyaltyParade.label>
+	<loyaltyParade.desc>Some of the settlements in your faction are having a parade in your honor!\n +1 loyalty a day.\n -2 unrest a day</loyaltyParade.desc>
 
 
-<!-- Missed Supply Delivery -->
-<missedSupplyDelivery.label>Missed Supply Delivery</missedSupplyDelivery.label>
-<missedSupplyDelivery.desc>The craftsmen in the affected region(s) are suffering from a lack of supplies. -0.5 weapons base production and -0.5 apparel base production.</missedSupplyDelivery.desc>
+	<!-- Missed Supply Delivery -->
+	<missedSupplyDelivery.label>Missed Supply Delivery</missedSupplyDelivery.label>
+	<missedSupplyDelivery.desc>The craftsmen in the affected region(s) are suffering from a lack of supplies.\n -0.5 weapons\n -0.5 apparel base production</missedSupplyDelivery.desc>
 
 
-<!-- Moonlit Ritual -->
-<moonlitRitual_0.label>A Moonlit Ritual</moonlitRitual_0.label>
-<moonlitRitual_0.desc>One of your settlements reports seeing strange figures wader into the forest at night. They are described as wearing strange cosutmes.</moonlitRitual_0.desc>
+	<!-- Moonlit Ritual -->
+	<moonlitRitual_0.label>A Moonlit Ritual</moonlitRitual_0.label>
+	<moonlitRitual_0.desc>One of your settlements reports seeing strange figures wader into the forest at night. They are described as wearing strange costumes.</moonlitRitual_0.desc>
 
-<moonlitRitual_1-1.label>A Moonlit Ritual</moonlitRitual_1-1.label>
-<moonlitRitual_1-1.desc>Someone has been sent to investigate...</moonlitRitual_1-1.desc>
-<moonlitRitual_1-1.optionDescription>You receive news that an investigator followed an individual into the woods. They reported back seeing the group perform a series of almost ritualistic carnal acts. Not caring to stick around for it, he returned.</moonlitRitual_1-1.optionDescription>
+	<moonlitRitual_1-1.label>A Moonlit Ritual</moonlitRitual_1-1.label>
+	<moonlitRitual_1-1.desc>Someone has been sent to investigate...</moonlitRitual_1-1.desc>
+	<moonlitRitual_1-1.optionDescription>You receive news that an investigator followed an individual into the woods. They reported back seeing the group perform a series of almost ritualistic carnal acts. Not caring to stick around for it, he returned.</moonlitRitual_1-1.optionDescription>
 
-<moonlitRitual_2-1.label>A Moonlit Ritual</moonlitRitual_2-1.label>
-<moonlitRitual_2-1.desc>Investigating further...</moonlitRitual_2-1.desc>
-<moonlitRitual_2-1.optionDescription>The investigator reports back that the group returned again. They continued the same activities as the night prior- however, after not leaving, he observed that the group brought out an ornate chest with religious-looking symbols. He stepped closer for a better look, but after stepping on a dead leaf, the group heard him. He fled before they could find him.</moonlitRitual_2-1.optionDescription>
+	<moonlitRitual_2-1.label>A Moonlit Ritual</moonlitRitual_2-1.label>
+	<moonlitRitual_2-1.desc>Investigating further...</moonlitRitual_2-1.desc>
+	<moonlitRitual_2-1.optionDescription>The investigator reports back that the group returned again. They continued the same activities as the night prior- however, after not leaving, he observed that the group brought out an ornate chest with religious-looking symbols. He stepped closer for a better look, but after stepping on a dead leaf, the group heard him. He fled before they could find him.</moonlitRitual_2-1.optionDescription>
 
-<moonlitRitual_2-2.label>A Moonlit Ritual</moonlitRitual_2-2.label>
-<moonlitRitual_2-2.desc>You have decided to leave them be.</moonlitRitual_2-2.desc>
+	<moonlitRitual_2-2.label>A Moonlit Ritual</moonlitRitual_2-2.label>
+	<moonlitRitual_2-2.desc>You have decided to leave them be.</moonlitRitual_2-2.desc>
 
-<moonlitRitual_3-1.label>A Moonlit Ritual</moonlitRitual_3-1.label>
-<moonlitRitual_3-1.desc>You have ordered the investigation to continue...</moonlitRitual_3-1.desc>
+	<moonlitRitual_3-1.label>A Moonlit Ritual</moonlitRitual_3-1.label>
+	<moonlitRitual_3-1.desc>You have ordered the investigation to continue...</moonlitRitual_3-1.desc>
 
-<moonlitRitual_4-1.label>A Moonlit Ritual</moonlitRitual_4-1.label>
-<moonlitRitual_4-1.desc>After not reporting back, a search for the investigator was conducted. He was found dead. His body was stripped, his chest cavity split, and his skin carved with runic symbols. The group, whoever they were, were not seen again. Dread falls upon us all. \n Coincidently enough, this week's harvests seem to have spoiled... \n -2 happiness a day, -1 food base production.</moonlitRitual_4-1.desc>
+	<moonlitRitual_4-1.label>A Moonlit Ritual</moonlitRitual_4-1.label>
+	<moonlitRitual_4-1.desc>After not reporting back, a search for the investigator was conducted. He was found dead. His body was stripped, his chest cavity split, and his skin carved with runic symbols. The group, whoever they were, were not seen again. Dread falls upon us all. \n Coincidently enough, this week's harvests seem to have spoiled...\n -2 happiness a day\n -1 food base production</moonlitRitual_4-1.desc>
 
-<moonlitRitual_3-2.label>A Moonlit Ritual</moonlitRitual_3-2.label>
-<moonlitRitual_3-2.desc>You have ordered the investigation to continue...</moonlitRitual_3-2.desc>
+	<moonlitRitual_3-2.label>A Moonlit Ritual</moonlitRitual_3-2.label>
+	<moonlitRitual_3-2.desc>You have ordered the investigation to continue...</moonlitRitual_3-2.desc>
 
-<moonlitRitual_4-2.label>A Moonlit Ritual</moonlitRitual_4-2.label>
-<moonlitRitual_4-2.desc>The investigator reported back early in the morning looking quite disheaveled. However, his story says otherwise. They expected him this time and gave an invintation to join. As he explains it, they were performing a fertility ritual to their goddess for hopes of a good harvest. Regardless, he seems to enjoyed himself! \n +1 food base production.</moonlitRitual_4-2.desc>
+	<moonlitRitual_4-2.label>A Moonlit Ritual</moonlitRitual_4-2.label>
+	<moonlitRitual_4-2.desc>The investigator reported back early in the morning looking quite disheaveled. However, his story says otherwise. They expected him this time and gave an invintation to join. As he explains it, they were performing a fertility ritual to their goddess for hopes of a good harvest. Regardless, he seems to enjoyed himself!\n +1 food base production</moonlitRitual_4-2.desc>
 
-<moonlitRitual_3-3.label>A Moonlit Ritual</moonlitRitual_3-3.label>
-<moonlitRitual_3-3.desc>This week's harvests seem to be unnaturally more plentiful than usual... +.5 food base production.</moonlitRitual_3-3.desc>
+	<moonlitRitual_3-3.label>A Moonlit Ritual</moonlitRitual_3-3.label>
+	<moonlitRitual_3-3.desc>This week's harvests seem to be unnaturally more plentiful than usual...\n +0.5 food base production</moonlitRitual_3-3.desc>
 
 
-<moonlitRitual_3-4.label>A Moonlit Ritual</moonlitRitual_3-4.label>
-<moonlitRitual_3-4.desc>This week's harvests seem to be unnaturally less plentiful than usual... -.5 food base production.</moonlitRitual_3-4.desc>
+	<moonlitRitual_3-4.label>A Moonlit Ritual</moonlitRitual_3-4.label>
+	<moonlitRitual_3-4.desc>This week's harvests seem to be unnaturally less plentiful than usual...\n -0.5 food base production</moonlitRitual_3-4.desc>
 
 
-<!-- Settling Down -->
-<settlingDown.label>Settling Down</settlingDown.label>
-<settlingDown.desc>The citizens of your faction are currently reluctant to expand. Doubled cost to settle.</settlingDown.desc>
+	<!-- Settling Down -->
+	<settlingDown.label>Settling Down</settlingDown.label>
+	<settlingDown.desc>The citizens of your faction are currently reluctant to expand. Doubled cost to settle.</settlingDown.desc>
 
 
-<!-- Sparse Wildlife -->
-<sparseWildlife.label>Sparse Wildlife</sparseWildlife.label>
-<sparseWildlife.desc>The wildlife in the affected region(s) have all but disappeared. -1 animals base production.</sparseWildlife.desc>
+	<!-- Sparse Wildlife -->
+	<sparseWildlife.label>Sparse Wildlife</sparseWildlife.label>
+	<sparseWildlife.desc>The wildlife in the affected region(s) have all but disappeared.\n -1 animals base production</sparseWildlife.desc>
 
 
-<!-- Struck Rich Ore Vein -->
-<struckRichOreVein.label>Struck Rich Ore Vein</struckRichOreVein.label>
-<struckRichOreVein.desc>Some of your settlements have managed to be lucky enough to strike veins of rich ore in their mines! +1 Base Production Mining.</struckRichOreVein.desc>
+	<!-- Struck Rich Ore Vein -->
+	<struckRichOreVein.label>Struck Rich Ore Vein</struckRichOreVein.label>
+	<struckRichOreVein.desc>Some of your settlements have managed to be lucky enough to strike veins of rich ore in their mines!\n +1 Base Production Mining</struckRichOreVein.desc>
 
 
-<!-- Unexpected Craftsmanship -->
-<unexpectedCraftsmanship.label>Unexpected Craftsmanship</unexpectedCraftsmanship.label>
-<unexpectedCraftsmanship.desc>The craftsmen in your settlements have been working unusually well! +0.5 weapons base production and +0.5 apparel base production.</unexpectedCraftsmanship.desc>
+	<!-- Unexpected Craftsmanship -->
+	<unexpectedCraftsmanship.label>Unexpected Craftsmanship</unexpectedCraftsmanship.label>
+	<unexpectedCraftsmanship.desc>The craftsmen in your settlements have been working unusually well!\n +0.5 weapons base production\n +0.5 apparel base production</unexpectedCraftsmanship.desc>
 
 
-<!-- Wanderlust -->
-<wanderlust.label>Wanderlust</wanderlust.label>
-<wanderlust.desc>The citizens of your faction are itching to get on the road and settle new lands. Half cost to settle.</wanderlust.desc>
+	<!-- Wanderlust -->
+	<wanderlust.label>Wanderlust</wanderlust.label>
+	<wanderlust.desc>The citizens of your faction are itching to get on the road and settle new lands. Half cost to settle.</wanderlust.desc>
 
 
-<!-- Wounded Animal -->
-<woundedAnimal_0.label>Wounded Animal</woundedAnimal_0.label>
-<woundedAnimal_0.desc>A farmer of one of your settlements has brought a wounded animal to your capital. He states that it entered their town and would refuse to leave. The animal looks sickly and on edge. It looks like it could snap at any moment...</woundedAnimal_0.desc>
+	<!-- Wounded Animal -->
+	<woundedAnimal_0.label>Wounded Animal</woundedAnimal_0.label>
+	<woundedAnimal_0.desc>A farmer of one of your settlements has brought a wounded animal to your capital. He states that it entered their town and would refuse to leave. The animal looks sickly and on edge. It looks like it could snap at any moment...</woundedAnimal_0.desc>
 
-<woundedAnimal_1-1.label>Wounded Animal</woundedAnimal_1-1.label>
-<woundedAnimal_1-1.desc>The animal remains calm. Your colonists guide it in without issue.</woundedAnimal_1-1.desc>
+	<woundedAnimal_1-1.label>Wounded Animal</woundedAnimal_1-1.label>
+	<woundedAnimal_1-1.desc>The animal remains calm. Your colonists guide it in without issue.</woundedAnimal_1-1.desc>
 
-<woundedAnimal_1-2.label>Wounded Animal</woundedAnimal_1-2.label>
-<woundedAnimal_1-2.desc>As the animal is guided in, it starts to fight against the settlers delivering it. It quickly becomes more and more aggressive and all attempts to calm it start to fail... Several settlers are heavily injured or die. Unfortunately, this will affect production for a period of time. Max workers -3 for five days.</woundedAnimal_1-2.desc>
+	<woundedAnimal_1-2.label>Wounded Animal</woundedAnimal_1-2.label>
+	<woundedAnimal_1-2.desc>As the animal is guided in, it starts to fight against the settlers delivering it. It quickly becomes more and more aggressive and all attempts to calm it start to fail... Several settlers are heavily injured or die. Unfortunately, this will affect production for a period of time.\n -3 Max workers for five days</woundedAnimal_1-2.desc>
 
 
-<!-- Strange Discovery -->
-<strangeDiscovery_0.label>Strange Discovery</strangeDiscovery_0.label>
-<strangeDiscovery_0.desc>Deep in the mines, a strange presence has been felt and the miners have stopped working to investigate it.</strangeDiscovery_0.desc>
+	<!-- Strange Discovery -->
+	<strangeDiscovery_0.label>Strange Discovery</strangeDiscovery_0.label>
+	<strangeDiscovery_0.desc>Deep in the mines, a strange presence has been felt and the miners have stopped working to investigate it.</strangeDiscovery_0.desc>
 
-<strangeDiscovery_1-1.label>Strange Discovery</strangeDiscovery_1-1.label>
-<strangeDiscovery_1-1.desc>Your miners start to investigate...</strangeDiscovery_1-1.desc>
+	<strangeDiscovery_1-1.label>Strange Discovery</strangeDiscovery_1-1.label>
+	<strangeDiscovery_1-1.desc>Your miners start to investigate...</strangeDiscovery_1-1.desc>
 
-<strangeDiscovery_1-2.label>Strange Discovery</strangeDiscovery_1-2.label>
-<strangeDiscovery_1-2.desc>Your miners start to investigate...</strangeDiscovery_1-2.desc>
+	<strangeDiscovery_1-2.label>Strange Discovery</strangeDiscovery_1-2.label>
+	<strangeDiscovery_1-2.desc>Your miners start to investigate...</strangeDiscovery_1-2.desc>
 
-<strangeDiscovery_1-3.label>Strange Discovery</strangeDiscovery_1-3.label>
-<strangeDiscovery_1-3.desc>Your miners start to investigate...</strangeDiscovery_1-3.desc>
+	<strangeDiscovery_1-3.label>Strange Discovery</strangeDiscovery_1-3.label>
+	<strangeDiscovery_1-3.desc>Your miners start to investigate...</strangeDiscovery_1-3.desc>
 
-<strangeDiscovery_2-1.label>Strange Discovery</strangeDiscovery_2-1.label>
-<strangeDiscovery_2-1.desc>After investigating, the miners found several veins of ore all clumped together! Someone must us wanted us to find this... \n +0.25 base mining production. You will receive a small group of ores that the miners dug up.</strangeDiscovery_2-1.desc>
+	<strangeDiscovery_2-1.label>Strange Discovery</strangeDiscovery_2-1.label>
+	<strangeDiscovery_2-1.desc>After investigating, the miners found several veins of ore all clumped together! Someone must have wanted us to find this... \nYou will receive a small group of ores that the miners dug up.\n +0.25 base mining production</strangeDiscovery_2-1.desc>
 
-<strangeDiscovery_2-2.label>Strange Discovery</strangeDiscovery_2-2.label>
-<strangeDiscovery_2-2.desc>When your miners investigated, a large incestoid attacked! Luckily, the security force sent with the miners fought off the creature with no casualties. A report of the event has been sent up for investigation.</strangeDiscovery_2-2.desc>
+	<strangeDiscovery_2-2.label>Strange Discovery</strangeDiscovery_2-2.label>
+	<strangeDiscovery_2-2.desc>When your miners investigated, a large insectoid attacked! Luckily, the security force sent with the miners fought off the creature with no casualties. A report of the event has been sent up for investigation.</strangeDiscovery_2-2.desc>
 
-<strangeDiscovery_2-3.label>Strange Discovery</strangeDiscovery_2-3.label>
-<strangeDiscovery_2-3.desc>When your miners investigated, a large incestoid attacked! A few of the miners were killed before the creature was slain. Due to this, a number of workers have decided to stay home after the traumatic event. \n -3 max workers</strangeDiscovery_2-3.desc>
-
-
-
-
+	<strangeDiscovery_2-3.label>Strange Discovery</strangeDiscovery_2-3.label>
+	<strangeDiscovery_2-3.desc>When your miners investigated, a large insectoid attacked! A few of the miners were killed before the creature was slain. Due to this, a number of workers have decided to stay home after the traumatic event.\n -3 max workers</strangeDiscovery_2-3.desc>
 
 </LanguageData>

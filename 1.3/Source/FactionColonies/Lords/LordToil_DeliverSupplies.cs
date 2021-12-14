@@ -17,15 +17,19 @@ namespace FactionColonies
 
 		private bool sendMessage = false;
 		private bool cellIsSet = false;
-		public IntVec3 deliveryCell;
+		private IntVec3 deliveryCell;
+		private IntVec3 enterCell = IntVec3.Invalid;
 
-		public void SetCell()
+        public bool LeavingModeEngaged { get => sendMessage; }
+
+        private void SetCell()
 		{
 			if (!cellIsSet)
 			{
 				TraverseParms traverseParms = DeliveryEvent.DeliveryTraverseParms;
 				traverseParms.pawn = lord.ownedPawns[0];
 				deliveryCell = DeliveryEvent.GetDeliveryCell(traverseParms, lord.Map);
+				enterCell = lord.ownedPawns[0].Position;
 				cellIsSet = true;
 			}
 		}
@@ -52,18 +56,34 @@ namespace FactionColonies
 						traverseParms.pawn = pawn;
 						pawn.mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("FCFollowAndDeliverItem"))
 						{
-							focus = (lord.ownedPawns[0].carryTracker.CarriedThing == null) ? (LocalTargetInfo) deliveryCell : lord.ownedPawns[0]
+							focus = (lord.ownedPawns[0].carryTracker.CarriedThing == null) ? (LocalTargetInfo) deliveryCell : lord.ownedPawns[0],
 						};
 					}
+					continue;
 				}
-				else
+
+				if (!sendMessage) 
 				{
-					if (!sendMessage) 
+					Messages.Message("deliveryPawnsLeavingMap".Translate(), MessageTypeDefOf.NeutralEvent);
+					sendMessage = true;
+				}
+
+				if (enterCell.IsValid)
+                {
+					pawn.mindState.duty = new PawnDuty(DutyDefOf.ExitMapNearDutyTarget)
 					{
-						Messages.Message("pawnsLeavingMap".Translate(), MessageTypeDefOf.NeutralEvent);
-						sendMessage = true;
-					}
-					pawn.mindState.duty = new PawnDuty(DutyDefOf.ExitMapBestAndDefendSelf);
+						locomotion = LocomotionUrgency.Sprint,
+						focus = enterCell,
+						canDig = false,
+					};
+                }
+				else
+                {
+					pawn.mindState.duty = new PawnDuty(DutyDefOf.ExitMapBest)
+					{
+						locomotion = LocomotionUrgency.Sprint,
+						canDig = false
+					};
 				}
 			};
 		}

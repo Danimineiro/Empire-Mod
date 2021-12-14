@@ -38,19 +38,20 @@ namespace FactionColonies
         public List<string> requiredModsID = new List<string>();
         //public required research
 
-        public Texture2D icon
+        public Texture2D Icon
         {
             get
             {
-                if (iconLoaded == null)
+                if (iconLoaded != null) return iconLoaded;
+                
+                if (!iconPath.NullOrEmpty()) 
                 {
-                    if (!iconPath.NullOrEmpty()) {
-                        iconLoaded = ContentFinder<Texture2D>.Get(iconPath);
-                    } else
-                    {
-                        Log.Message("Failed to load icon");
-                        iconLoaded = TexLoad.questionmark;
-                    }
+                    iconLoaded = ContentFinder<Texture2D>.Get(iconPath);
+                } 
+                else
+                {
+                    Log.Error("Failed to load icon for building: " + LabelCap + " at " + (iconPath ?? "nullPath") + "!");
+                    iconLoaded = TexLoad.questionmark;
                 }
                 return iconLoaded;
             }
@@ -66,10 +67,7 @@ namespace FactionColonies
         public static BuildingFCDef Construction;
         public static BuildingFCDef artilleryOutpost;
         public static BuildingFCDef shuttlePort;
-        static BuildingFCDefOf()
-        {
-            DefOfHelper.EnsureInitializedInCtor(typeof(BuildingFCDefOf));
-        }
-    }
 
+        static BuildingFCDefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(BuildingFCDefOf));
+    }
 }

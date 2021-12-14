@@ -26,32 +26,26 @@ namespace FactionColonies.util
 			FixedBiologicalAge = Rand.Range(21, 50)
 		};
 
-		public static PawnGenerationRequest WorkerOrMilitaryRequest
+		public static PawnGenerationRequest WorkerOrMilitaryRequest(PawnKindDef pawnKindDef = null)
 		{
-			get
-			{
-				PawnGenerationRequest request = baseRequest;
+			PawnGenerationRequest request = baseRequest;
 
-				request.KindDef = FactionColonies.getPlayerColonyFaction()?.RandomPawnKind() ?? DefDatabase<FactionDef>.GetNamed("PColony").pawnGroupMakers.RandomElement().options.RandomElement().kind;
-				request.Faction = FactionColonies.getPlayerColonyFaction();
-				request.FixedBiologicalAge = request.KindDef.GetReasonableMercenaryAge();
-				request.MustBeCapableOfViolence = true;
+			request.KindDef = pawnKindDef ?? FactionColonies.getPlayerColonyFaction()?.RandomPawnKind() ?? DefDatabase<FactionDef>.GetNamed("PColony").pawnGroupMakers.RandomElement().options.RandomElement().kind;
+			request.Faction = FactionColonies.getPlayerColonyFaction();
+			request.FixedBiologicalAge = request.KindDef.GetReasonableMercenaryAge();
+			request.MustBeCapableOfViolence = true;
 
-				return request;
-			}
+			return request;
 		}
 
-		public static PawnGenerationRequest CivilianRequest
+		public static PawnGenerationRequest CivilianRequest(PawnKindDef pawnKindDef = null)
 		{
-			get
-			{
-				PawnGenerationRequest request = baseRequest;
+			PawnGenerationRequest request = baseRequest;
 
-				request.KindDef = FactionColonies.getPlayerColonyFaction()?.RandomPawnKind();
-				request.Faction = FactionColonies.getPlayerColonyFaction();
+			request.KindDef = pawnKindDef ?? (FactionColonies.getPlayerColonyFaction()?.RandomPawnKind());
+			request.Faction = FactionColonies.getPlayerColonyFaction();
 
-				return request;
-			}
+			return request;
 		}
 
 		public static PawnGenerationRequest AnimalRequest(PawnKindDef race)

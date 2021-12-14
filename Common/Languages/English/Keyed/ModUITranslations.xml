@@ -158,10 +158,6 @@
     <EstimatedProfit>Est. Profit</EstimatedProfit>
     <TimeTillTax>Time till tax</TimeTillTax>
 
-    <!-- settlementCustomizationWindowFC -->
-    <CustomizeSettlement>Customize Settlement</CustomizeSettlement>
-    <SettlementName>Settlement Name</SettlementName>
-
     <Hamlet>hamlet</Hamlet>
     <BuildingAlreadyType>There is already a building of that type</BuildingAlreadyType>
     <NotEnoughSilverConstructBuilding>You do not have enough silver on the current map to construct that building
@@ -331,14 +327,6 @@
 	<!-- Send Prisoner to settlement -->
 	<cantSendWithDangerLevel>You can't send a prisoner to your settlements when the map has a danger level of {0}!</cantSendWithDangerLevel>
 	
-	<!-- CallInAlliedForces -->
-	<selectDeploymentPosition>Select Deployment Position</selectDeploymentPosition>
-	<selectedPosOutOfBounds>The position you selected is out of bounds for this map!</selectedPosOutOfBounds>
-	<selectedPosTooCloseToEdge>The position you selected is to close to the map edge!</selectedPosTooCloseToEdge>
-
-	<deploymentSuccessLabel>Military deployed</deploymentSuccessLabel>
-	<deploymentSuccessDesc>The military forces of {0} have been deployed to {1}</deploymentSuccessDesc>
-	
 	<!-- ShuttleTransportEvent -->
 	<transportingInjuredShuttle>A shuttle is transporting injured colonists back to you after a successful settlement defence</transportingInjuredShuttle>
 	<transportingInjuredDropPod>Drop pods are transporting injured colonists back to you after a successful settlement defence</transportingInjuredDropPod>
@@ -353,14 +341,14 @@
 	<taxDeliveryModeDefaultDesc>None. Delivery depends on technology and settlement buildings</taxDeliveryModeDefaultDesc>
 	<taxDeliveryModeTaxSpotDesc>TaxSpot. Delivery spawns on the tax spot</taxDeliveryModeTaxSpotDesc>
 	<taxDeliveryModeCaravanDesc>Caravan. Delivery is always brought by a caravan</taxDeliveryModeCaravanDesc>
-	<taxDeliveryModeDropPodDesc>DropPod. Delivery is always arrives in drop pods</taxDeliveryModeDropPodDesc>
+	<taxDeliveryModeDropPodDesc>DropPod. Delivery always arrives in drop pods</taxDeliveryModeDropPodDesc>
 	<taxDeliveryModeShuttleDesc>Shuttle. Delivery always arrives by shuttle</taxDeliveryModeShuttleDesc>
 	<taxDeliveryModeShuttleUnavailableDesc>Shuttle. Unavailable due to royality not being present</taxDeliveryModeShuttleUnavailableDesc>
 	
-	<deliveryPawnsEngageEnemy>The delivering pawns are engaging an enemy!</deliveryPawnsEngageEnemy>
-	<pawnsLeavingMap>The delivering pawns are leaving the map.</pawnsLeavingMap>
-	<pawnsLeavingMapNoPath>The delivering pawns are leaving the map, because they couldn't access the tax delivery spot.</pawnsLeavingMapNoPath>
-	<pawnsLeavingMapWithDowned>The delivering pawns are collecting downed members and leaving the map.</pawnsLeavingMapWithDowned>
+	<deliveryPawnsHiding>The delivering pawns are dropping their items and hiding on your tax delivery spot! They will only engage if the enemy is close!</deliveryPawnsHiding>
+	<deliveryPawnsLeavingMap>The delivering pawns are leaving the map.</deliveryPawnsLeavingMap>
+	<deliveryPawnsLeavingMapNoPath>The delivering pawns are leaving the map, because they couldn't access the tax delivery spot.</deliveryPawnsLeavingMapNoPath>
+	<deliveryPawnsLeavingMapWithDowned>The delivering pawns are collecting downed members and leaving the map.</deliveryPawnsLeavingMapWithDowned>
 	<settlementDeliveringLoot>Your settlement is delivering the following loot to you: </settlementDeliveringLoot>
 	<deliveryHeldUpArriving>A delivery that was forced to wait has arrived!</deliveryHeldUpArriving>
 	<aSettlement> a settlement </aSettlement>
@@ -376,7 +364,7 @@
 	<requestShuttleToMap>Request a shuttle for this map</requestShuttleToMap>
 
 	<shuttlePortCallShuttleForCaravanLabel>Request a shuttle for a caravan</shuttlePortCallShuttleForCaravanLabel>
-	<targetAnyWorldObject>Target any world object you want to send the shuttle to:\n {0} uses remaining (Costs {1})</targetAnyWorldObject>
+	<targetAnyWorldObject>Target any world object you want to send the shuttle to:\n {0} uses remaining (Costs: {1})</targetAnyWorldObject>
 	<sendCaravanHere>Send the caravan here</sendCaravanHere>
 
 	<noCaravansToSendShuttleTo>There are no caravans to send a shuttle to!</noCaravansToSendShuttleTo>
@@ -411,5 +399,55 @@
 	<dropPodDeploymentOptionUnavailableReasonMedieval> disabled because "Medieval Tech Only" is enabled</dropPodDeploymentOptionUnavailableReasonMedieval>
 	<dropPodDeploymentOptionUnavailableReasonTech> unavailable without the {0} research</dropPodDeploymentOptionUnavailableReasonTech>
 	<errorDropPodResearchCouldNotBeFound>The drop pod research could not be found! Are you running a mod list that removes it?</errorDropPodResearchCouldNotBeFound>
+    
+	<!-- Military Deployment -->
+	<FCMilitaryTriedDeployingToSettlementFC>You cannot deploy your military to another settlement!</FCMilitaryTriedDeployingToSettlementFC>
+	<FCMilitaryAction>Military Action</FCMilitaryAction>
+	<selectMilitaryMovePosition>Select Move Position</selectMilitaryMovePosition>
+	<debugRemoveAllCommand>[Debug] Remove all</debugRemoveAllCommand>
+	<militaryPawnsLeavingTimeOut>A squad is leaving, because it's available time ran out!</militaryPawnsLeavingTimeOut>
 
+	<!-- CallInAlliedForces -->
+	<selectDeploymentPosition>Select Deployment Position</selectDeploymentPosition>
+	<selectedPosOutOfBounds>The position you selected is out of bounds for this map!</selectedPosOutOfBounds>
+	<selectedPosTooCloseToEdge>The position you selected is to close to the map edge!</selectedPosTooCloseToEdge>
+
+	<deploymentSuccessLabel>Military deployed</deploymentSuccessLabel>
+	<deploymentSuccessDesc>The military forces of {0} have been deployed to {1}</deploymentSuccessDesc>
+
+	<!-- Sending Prisoner to Settlement Button -->
+	<floatMenuOptionSendPrisonerToSettlement>{0} - Settlement Level: {1}, Prisoners: {2}</floatMenuOptionSendPrisonerToSettlement> <!-- 0 is the settlements name. 1 is the settlements level. 2 is the amount of Prisoners-->
+	
+	<!-- Worldmap additional action buttons -->
+	<FCCaptureFloatMenuOption>Try to capture using {0}'s military (Level {1}).</FCCaptureFloatMenuOption> <!-- 0 is a settlement's name -->
+	<FCRaidFloatMenuOption>Try to raid using {0}'s military (Level {1}).</FCRaidFloatMenuOption>
+	<FCEnslaveFloatMenuOption>Try to enslave using {0}'s military (Level {1}).</FCEnslaveFloatMenuOption>
+
+	<!-- SettlementWindowFC -->
+	<FCMilitaryLevel>militaryLevel</FCMilitaryLevel>
+	<FCHappiness>happiness</FCHappiness>
+	<FCLoyality>loyalty</FCLoyality>
+	<FCUnrest>unrest</FCUnrest>
+	<FCProsperity>prosperity</FCProsperity>
+
+	<FCUpkeep>Upkeep</FCUpkeep>
+	
+	<!-- Tithe Customization -->
+	<FCTitheEnableAll>Enable All</FCTitheEnableAll>
+	<FCTitheDisableAll>Disable All</FCTitheDisableAll>
+	
+	<FCTitheSingleOption>{0} - Cost - {1} | Allowed: {2}</FCTitheSingleOption> <!-- Example: "Steel - Cost - 10 | Allowed: true" -->
+	<FCIsAllowed>true</FCIsAllowed>
+	<FCIsNotAllowed>false</FCIsNotAllowed>
+
+	<!-- Settlement Customization -->
+	<FCCustomizeSettlement>Customize Settlement</FCCustomizeSettlement>
+	<FCSettlementFullName>Full name:</FCSettlementFullName>
+	<FCSettlementShortName>Short name:</FCSettlementShortName>
+	
+	<!-- Errors -->
+	<FCGenericError>If you can read this, something went wrong.</FCGenericError>
+	<FCUnsupportedMilJobError>The job chosen for this FloatMenuOption doesn't have any translation keys registered in AddButtonsToNonEmpireObjects.MilJobOptionStringsDic</FCUnsupportedMilJobError>
+	<FCUnsupportedSettlementFaction>The faction of this settlement has no name or something went terribly wrong.</FCUnsupportedSettlementFaction>
+	
 </LanguageData>

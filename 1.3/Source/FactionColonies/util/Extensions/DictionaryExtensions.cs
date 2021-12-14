@@ -1,13 +1,24 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Verse;
 
 namespace FactionColonies.util
 {
+    /// <summary>
+    /// This class provides extensions for some kinds of lists
+    /// </summary>
     static class ListExtensions
     {
-        public static string ToLetterString(this List<Thing> list)
+        /// <summary>
+        /// Transforms a <paramref name="list"/> into a string<para />
+        /// Example (The linebreaks are twice as big as ingame):<para />
+        /// Steel 75x<para />
+        /// Wood 150x
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static string ToLetterString(this IEnumerable<Thing> list)
         {
-            string returnString = "";
             Dictionary<string, int> thingCountDic = new Dictionary<string, int>();
             foreach (Thing thing in list)
             {
@@ -21,12 +32,7 @@ namespace FactionColonies.util
                 }
             }
 
-            foreach (KeyValuePair<string, int> keyValuePair in thingCountDic)
-            {
-                returnString += keyValuePair.Key.ToString() + " " + keyValuePair.Value.ToString() + "x\n";
-            }
-
-            return returnString.TrimEnd('\n');
+            return thingCountDic.Aggregate("", (current, next) => current + $"{next.Key} {next.Value}x\n").TrimEnd('\n');
         }
     }
 }

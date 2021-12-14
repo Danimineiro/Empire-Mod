@@ -119,7 +119,7 @@ namespace FactionColonies
                 Widgets.DrawMenuSection(newBuildingWindow);
                 Widgets.DrawMenuSection(newBuildingIcon);
                 Widgets.DrawLightHighlight(newBuildingIcon);
-                Widgets.ButtonImage(newBuildingIcon, building.icon);
+                Widgets.ButtonImage(newBuildingIcon, building.Icon);
 
                 Text.Font = GameFont.Small;
                 Widgets.ButtonTextSubtle(newBuildingLabel, "");
@@ -137,7 +137,7 @@ namespace FactionColonies
             Widgets.DrawLightHighlight(TopIcon);
 
             Widgets.DrawBox(new Rect(0, 0, 400, 500));
-            Widgets.ButtonImage(TopIcon, buildingDef.icon);
+            Widgets.ButtonImage(TopIcon, buildingDef.Icon);
 
             Widgets.ButtonTextSubtle(TopName, "");
             Text.Font = GameFont.Medium;

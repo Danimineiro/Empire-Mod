@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.FCTraitEffectDef>
+		<defName>shuttlePort</defName>
+		<label>Shuttle Port</label>
+		<desc></desc>
+		<taxBaseRandomModifier>10</taxBaseRandomModifier>
+		<taxBasePercentage>5</taxBasePercentage>
+	</FactionColonies.FCTraitEffectDef>
+</Defs>

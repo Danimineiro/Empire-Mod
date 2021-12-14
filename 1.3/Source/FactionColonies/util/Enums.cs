@@ -1,13 +1,11 @@
 ﻿namespace FactionColonies.util
 {
-    public enum MilitaryOrders
+    public enum MilitaryOrder
     {
-        Undefinded,
-        Standby,
-        Attack,
-        MoveTo,
-        RecoverWounded,
-        Leave
+        Undefined,
+        DefendPoint,
+        Hunt,
+        RecoverWoundedAndLeave
     }
 
     public enum MilitaryJob
@@ -24,6 +22,15 @@
     public enum Operation
     {
         Addition,
-        Multiplikation
+        Multiplication
+    }
+
+    public enum PatchNoteType
+    {
+        Undefined,
+        Hotfix,
+        Patch,
+        Minor,
+        Major
     }
 }

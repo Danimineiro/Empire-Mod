@@ -7,11 +7,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="References/*.dll" />
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.2.2900" />
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.3.3184-beta" />
     <PackageReference Include="Lib.Harmony" Version="2.0.4" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Source\FactionColonies" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll">
+      <Link>References\Assembly-CSharp.dll</Link>
+    </Content>
+    <Content Include="..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll">
+      <Link>References\UnityEngine.CoreModule.dll</Link>
+    </Content>
   </ItemGroup>
 </Project>

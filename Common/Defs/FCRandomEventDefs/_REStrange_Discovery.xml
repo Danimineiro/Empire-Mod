@@ -179,7 +179,7 @@
 	<FactionColonies.FCEventDef>
 		<defName>strangeDiscovery_2-2</defName> 
 		<label>Strange Discovery</label> 
-		<desc>When your miners investigated, a large incestoid attacked! Luckily, the security force sent with the miners fought off the creature with no casualties. A report of the event has been sent up for investigation.</desc>
+		<desc>When your miners investigated, a large insectoid attacked! Luckily, the security force sent with the miners fought off the creature with no casualties. A report of the event has been sent up for investigation.</desc>
 		
 		<!-- Basic event stuff -->
 		<timeTillTrigger>2500</timeTillTrigger> 
@@ -196,7 +196,7 @@
 	<FactionColonies.FCEventDef>
 		<defName>strangeDiscovery_2-3</defName> 
 		<label>Strange Discovery</label> 
-		<desc>When your miners investigated, a large incestoid attacked! A few of the miners were killed before the creature was slain. Due to this, a number of workers have decided to stay home after the traumatic event. \n -3 max workers</desc>
+		<desc>When your miners investigated, a large insectoid attacked! A few of the miners were killed before the creature was slain. Due to this, a number of workers have decided to stay home after the traumatic event. \n -3 max workers</desc>
 		
 		<!-- Basic event stuff -->
 		<timeTillTrigger>300000</timeTillTrigger> 

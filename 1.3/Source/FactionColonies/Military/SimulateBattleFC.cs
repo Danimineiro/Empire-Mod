@@ -11,45 +11,51 @@ namespace FactionColonies
     {
         public static int FightBattle(militaryForce MFA, militaryForce MFB)
         {
-            //Log.Message("Starting battle");
-            while (MFA.forceRemaining > 0 && MFB.forceRemaining > 0)
+            int result = 0;
+            try
             {
-                FightRound(MFA, MFB);
+                //Log.Message("Starting battle");
+                while (MFA.forceRemaining > 0 && MFB.forceRemaining > 0)
+                {
+                    // One number should always be reduced to 0
+                    FightRound(MFA, MFB);
+                }
+
+                if (MFA.forceRemaining <= 0)
+                {
+                    //Log.Message("Defending Force has won.");
+                    //b is winner
+                    result = 1;
+                }
+
+                else
+                {
+                    //Log.Message("Attacking Force has won.");
+                    //a is winner
+                    result = 0;
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error($"An exception occurred while resolving combat in Empire {System.Environment.NewLine}[{e}]");
+                result = -1;
             }
 
-            if (MFA.forceRemaining <= 0)
-            {
-                //Log.Message("Defending Force has won.");
-                //b is winner
-                return 1;
-            }
-
-            if (MFB.forceRemaining <= 0)
-            {
-                //Log.Message("Attacking Force has won.");
-                //a is winner
-                return 0;
-            }
-
-            Log.Message("FightBattle catch statement - Empire");
-            //catch
-            return -1;
+            return result;
         }
 
         public static void FightRound(militaryForce MFA, militaryForce MFB)
         {
-            int randA = Rand.Range(0, 20);
-            int randB = Rand.Range(0, 20);
-            //Log.Message("A Begin: " + MFA.forceRemaining + " : " + MFB.forceRemaining + " B begin");
-            //Log.Message("A Rolled: " + randA.ToString() + " : " + randB.ToString() + " B rolled");
-            if (randA == randB)
-            {
-            }
-            else if (randA > randB)
+            var randA = (Rand.Range(0, 20) * MFA.militaryEfficiency);
+            var randB = (Rand.Range(0, 20) * MFA.militaryEfficiency);
+            // Log.Message("A Begin: " + MFA.forceRemaining + " : " + MFB.forceRemaining + " B begin");
+            // Log.Message("A Rolled: " + randA.ToString() + " : " + randB.ToString() + " B rolled");
+
+            if (randA > randB)
             {
                 MFB.forceRemaining -= 1;
             }
-            else if (randB > randA)
+            else
             {
                 MFA.forceRemaining -= 1;
             }
@@ -106,9 +112,9 @@ namespace FactionColonies
 
             double militaryLevel = settlement.settlementMilitaryLevel + militaryLevelBonus + homeForceLevel;
             double efficiency =
-                TraitUtilsFC.cycleTraits(new double(), "militaryMultiplierCombatEfficiency", faction.traits,
-                    Operation.Multiplikation) * TraitUtilsFC.cycleTraits(new double(), "militaryMultiplierCombatEfficiency",
-                    settlement.traits, Operation.Multiplikation);
+                TraitUtilsFC.cycleTraits("militaryMultiplierCombatEfficiency", faction.traits,
+                    Operation.Multiplication) * TraitUtilsFC.cycleTraits("militaryMultiplierCombatEfficiency",
+                    settlement.traits, Operation.Multiplication);
             if (isAttacking && faction.hasPolicy(FCPolicyDefOf.militaristic)) 
                 efficiency *= 1.2;
             militaryForce returnForce = new militaryForce(militaryLevel, efficiency, settlement,
@@ -329,7 +335,7 @@ namespace FactionColonies
             else
             {
                 //if settlement is foreign
-                settlementOfMilitaryForce.sendMilitary(evt.settlementFCDefending.mapLocation, evt.planetName,
+                settlementOfMilitaryForce.SendMilitary(evt.settlementFCDefending.mapLocation, evt.planetName,
                     util.MilitaryJob.DefendFriendlySettlement, -1, evt.militaryForceAttackingFaction);
                 Find.LetterStack.ReceiveLetter("Military Action", "ForeignMilitarySwitch"
                     .Translate(settlementOfMilitaryForce.name,

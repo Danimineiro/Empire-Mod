@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<FCSettingSilverPerResource>Silver amount gained per resource</FCSettingSilverPerResource>
+	<FCSettingDaysBetweenTax>Days between tax time</FCSettingDaysBetweenTax>
+	<FCSettingProductionTitheMod>Production Tithe Modifier</FCSettingProductionTitheMod>
+	<FCSettingWorkerCost>Cost Per Worker</FCSettingWorkerCost>
+	<FCSettingMaxSettlementLevel>Max Settlement Level</FCSettingMaxSettlementLevel>
+	<FCSettingDisableHostileMilActions>Disable Hostile Military Actions</FCSettingDisableHostileMilActions>
+	<FCSettingDisableRandomEvents>Disable Random Events</FCSettingDisableRandomEvents>
+	<FCSettingDeadPawnsIncreaseMilCooldown>Dead Pawns Increase Military Cooldown</FCSettingDeadPawnsIncreaseMilCooldown>
+	<FCSettingForcedPausing>Disable Forced Pausing During Events</FCSettingForcedPausing>
+	<FCSettingAutoResolveBattles>Automatically Resolve Battles</FCSettingAutoResolveBattles>
+	<FCSettingMinMaxMilitaryAction>Min/Max Days Until Military Action (ex. Settlements being attacked)</FCSettingMinMaxMilitaryAction>
+	<FCSettingMinMaxRandomEvent>Min/Max Days Until Random Event</FCSettingMinMaxRandomEvent>
+	<FCSettingResetButton>Reset Settings</FCSettingResetButton>
+	<FCOpenPatchNotes>Open Patch Notes Window</FCOpenPatchNotes>
+</LanguageData>

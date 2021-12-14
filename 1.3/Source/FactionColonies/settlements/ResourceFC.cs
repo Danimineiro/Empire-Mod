@@ -9,6 +9,25 @@ namespace FactionColonies
 {
     public class ResourceFC : IExposable
     {
+        public string name;
+        public string label;
+        public double baseProduction; //base production for resource
+        public double endProduction;  //production after modifiers
+        public double baseProductionMultiplier = 1;  //base production modifier for resource
+        public double endProductionMultiplier = 1;  //end production modifier for resource
+        public List<ProductionAdditive> baseProductionAdditives = new List<ProductionAdditive>();    // {ID, Value, Desc}
+        public List<ProductionMultiplier> baseProductionMultipliers = new List<ProductionMultiplier>();  // {ID, Value, Desc}
+        public double amount;
+        public int assignedWorkers;
+        public bool isTithe;
+        public bool isTitheBool; //used to track if isTithe is changed. AGHHH
+
+        public ThingFilter filter = new ThingFilter();
+        public double taxStock = 0;
+        public double taxMinimumToTithe = 99999;
+        public double taxPercentage = 0;
+        public SettlementFC settlement;
+
         public ResourceFC()
         {
         }
@@ -52,8 +71,8 @@ namespace FactionColonies
                 (current, thing) => Math.Min(thing?.BaseMarketValue ?? 100, current));
             //Log.Message(minimum.ToString());
             taxMinimumToTithe = minimum + FactionColonies.Settings().productionTitheMod + 
-            TraitUtilsFC.cycleTraits(0.0, "taxBaseRandomModifier", Find.World.GetComponent<FactionFC>().traits, Operation.Addition) + 
-            TraitUtilsFC.cycleTraits(0.0, "taxBaseRandomModifier", settlement.traits, Operation.Addition);
+            TraitUtilsFC.cycleTraits("taxBaseRandomModifier", Find.World.GetComponent<FactionFC>().traits, Operation.Addition) + 
+            TraitUtilsFC.cycleTraits("taxBaseRandomModifier", settlement.traits, Operation.Addition);
             return minimum;
         }
 
@@ -88,26 +107,6 @@ namespace FactionColonies
 
             Scribe_References.Look(ref settlement, "settlement");
         }
-
-        public string name;
-        public string label;
-        public double baseProduction; //base production for resource
-        public double endProduction;  //production after modifiers
-        public double baseProductionMultiplier = 1;  //base production modifier for resource
-        public double endProductionMultiplier = 1;  //end production modifier for resource
-        public List<ProductionAdditive> baseProductionAdditives = new List<ProductionAdditive>();    // {ID, Value, Desc}
-        public List<ProductionMultiplier> baseProductionMultipliers = new List<ProductionMultiplier>();  // {ID, Value, Desc}
-        public double amount;
-        public int assignedWorkers;
-        public bool isTithe;
-        public bool isTitheBool; //used to track if isTithe is changed. AGHHH
-
-        public ThingFilter filter = new ThingFilter();
-        public double taxStock;
-        public double taxMinimumToTithe = 99999;
-        public double taxPercentage;
-        public SettlementFC settlement;
-
     }
 
     public class ProductionAdditive : IExposable
