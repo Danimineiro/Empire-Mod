@@ -291,7 +291,9 @@ namespace FactionColonies
         {
             try
             {
-                base.PostMapGenerate();
+                Log.Message($"Has {AllComps.Count} comps attached");
+                QuestUtility.SendQuestTargetSignals(this.questTags, "MapGenerated", this.Named("SUBJECT"));
+                Log.Message("Quest signals sent");
             }
             catch (Exception e)
             {
@@ -563,8 +565,12 @@ namespace FactionColonies
 
         public override void Tick()
         {
-            base.Tick();
+            CheckRemoveMapNow();
             trader?.TraderTrackerTick();
+            foreach (var comp in AllComps)
+            {
+                comp.CompTick();
+            }
         }
 
         private void zoomIntoTile(FCEvent evt)
