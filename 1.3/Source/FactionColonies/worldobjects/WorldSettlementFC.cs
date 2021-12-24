@@ -287,6 +287,18 @@ namespace FactionColonies
             supporting = new List<CaravanSupporting>();
         }
 
+        public override void PostMapGenerate()
+        {
+            try
+            {
+                base.PostMapGenerate();
+            }
+            catch (Exception e)
+            {
+                Log.Message($"Could not return base components for manual defense generated map {System.Environment.NewLine}{e}");
+            }
+        }
+
         public void updateTechIcon()
         {
             var techLevel = Find.World.GetComponent<FactionFC>().techLevel;
