@@ -176,7 +176,7 @@ namespace FactionColonies
 
             Type typ = FactionColonies.returnUnknownTypeFromName("SaveOurShip2.WorldSwitchUtility");
             Type typ2 = FactionColonies.returnUnknownTypeFromName("SaveOurShip2.FixOutdoorTemp");
-
+            Type typ3 = FactionColonies.returnUnknownTypeFromName("SaveOurShip2.SelectiveWorldGeneration");
 
 
             //Get type inside of type
@@ -195,7 +195,7 @@ namespace FactionColonies
 
             MethodInfo originalpre = typ.GetMethod("KillAllColonistsNotInCrypto", BindingFlags.Static | BindingFlags.NonPublic);
             MethodInfo originalpost = typ.GetMethod("DoWorldSwitch", BindingFlags.Static | BindingFlags.NonPublic);
-            // MethodInfo originalpost2 = typ2.GetMethod("Replace", BindingFlags.Static | BindingFlags.Public);
+            MethodInfo originalpost2 = typ3.GetMethod("Replace", BindingFlags.Static | BindingFlags.Public);
 
 
 
@@ -203,7 +203,7 @@ namespace FactionColonies
             var postfix = typeof(SoS2HarmonyPatches).GetMethod("Postfix");
             harmony.Patch(originalpre, prefix: new HarmonyMethod(prefix));
             harmony.Patch(originalpost, postfix: new HarmonyMethod(postfix));
-            // harmony.Patch(originalpost2, postfix: new HarmonyMethod(postfix));
+            harmony.Patch(originalpost2, postfix: new HarmonyMethod(postfix));
             Log.Message("Finished patching Empire and SoS2");
         }
         //
