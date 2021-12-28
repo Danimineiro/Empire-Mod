@@ -86,17 +86,41 @@ namespace FactionColonies
             return match;
         }
 
-        public static void updateFactionOnPlanet()
+        public static void updateFactionOnPlanet(FactionFC worldComp)
         {
-            FactionFC worldcomp = Find.World.GetComponent<FactionFC>();
             Faction faction1 = FactionColonies.getPlayerColonyFaction();
-            //Log.Message((faction1 != null).ToString());
-            if (faction1 == null && worldcomp.factionCreated == true)
+            Log.Message($"Null check on faction while updating: {faction1 == null}");
+            if (faction1 == null && worldComp.factionCreated == true)
             {
                 Log.Message("Moved to new planet - Adding faction copy");
                 //FactionColonies.createPlayerColonyFaction();
-                FactionColonies.copyPlayerColonyFaction();
-                faction1 = FactionColonies.getPlayerColonyFaction();
+                faction1 = FactionColonies.copyPlayerColonyFaction(worldComp);
+                Log.Message($"Rechecking faction for null: {faction1 == null}");
+                // faction1 = FactionColonies.getPlayerColonyFaction();
+                // List<SettlementFC> newWorldSettlements = new List<SettlementFC>();
+                // foreach (Settlement s in Find.World.worldObjects.Settlements.Where(settlement =>
+                //     settlement.Faction == faction1))
+                // {
+                //     Log.Message($"Found settlement owned by Empire faction {s.Name}");
+                //     if (s.GetType() == typeof(WorldSettlementFC))
+                //     {
+                //         SettlementFC settlementFc = worldComp.returnSettlementByLocation(s.Tile, Find.World.info.name);
+                //         newWorldSettlements.Add(settlementFc);
+                //     }
+                //     else
+                //     {
+                //         WorldSettlementFC wsFC =
+                //             FactionColonies.createPlayerColonySettlement(s.Tile, true, Find.World.info.name);
+                //         SettlementFC settlementFc = worldComp.returnSettlementByLocation(s.Tile, Find.World.info.name);
+                //         settlementFc.loyalty = 15;
+                //         settlementFc.happiness = 25;
+                //         settlementFc.unrest = 20;
+                //         settlementFc.prosperity = 70;
+                //         newWorldSettlements.Add(settlementFc);
+                //         s.Destroy();
+                //     }
+                // }
+                // worldComp.settlements = newWorldSettlements;
             }
             //Log.Message(((bool)(faction1 != null)).ToString());
             foreach (Faction factionOther in Find.FactionManager.AllFactionsListForReading)
@@ -104,13 +128,20 @@ namespace FactionColonies
                 //Log.Message(factionOther.def.defName);
                 if (factionOther != faction1 && faction1.RelationWith(factionOther, true) == null)
                 {
-
-                    faction1.TryMakeInitialRelationsWith(factionOther);
+                    try
+                    {
+                        faction1.TryMakeInitialRelationsWith(factionOther);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.ErrorOnce($"Failed making faction relations with {faction1.Name} and {factionOther.Name}{System.Environment.NewLine}", 1);
+                    }
                 }
             }
-            worldcomp.updateFactionIcon(ref faction1, "FactionIcons/" + worldcomp.factionIconPath);
-            worldcomp.factionUpdated = true;
-            //foreach (SettlementFC settlement in worldcomp.settlements)
+            worldComp.factionUpdated = true;
+            worldComp.updateFactionIcon(ref faction1, "FactionIcons/" + worldComp.factionIconPath);
+
+            //foreach (SettlementFC settlement in worldComp.settlements)
             //{
             //    Settlement obj = Find.WorldObjects.SettlementAt(settlement.mapLocation);
             //    if (obj != null && obj.Faction != faction1)
@@ -130,11 +161,12 @@ namespace FactionColonies
             FactionFC worldcomp = Find.World.GetComponent<FactionFC>();
 
 
-            //FactionFC worldcomp = Find.World.GetComponent<FactionFC>();
-            if (worldcomp != null && worldcomp.planetName != null && worldcomp.planetName != Find.World.info.name && Find.TickManager.TicksGame > 60000)
+            //FactionFC worldComp = Find.World.GetComponent<FactionFC>();
+            if (worldcomp != null && worldcomp.planetName != null && worldcomp.planetName != Find.World.info.name && Find.TickManager.TicksGame > 600)
             {
+                Log.Message("Executing Empire - SoS2 postfix");
                 Faction faction1 = FactionColonies.getPlayerColonyFaction();
-                updateFactionOnPlanet();
+                updateFactionOnPlanet(worldcomp);
 
                 if (worldcomp.SoSMoving == true)
                 {
@@ -155,18 +187,10 @@ namespace FactionColonies
                     worldcomp.SoSShipCapitalMoving = false;
                     worldcomp.setCapital();
                 }
-
-                ///
+                Log.Message("Toggling change planet bool");
                 worldcomp.boolChangedPlanet = true;
                 worldcomp.planetName = Find.World.info.name;
             }
-            
-
-
-            //ResetFactionLeaders();
-
-
-
         }
 
 
@@ -268,5 +292,90 @@ namespace FactionColonies
             Scribe_Values.Look<int>(ref location, "location");
 
         }
+
+     //    [HarmonyPatch(typeof(FactionManager), "Add")]
+     //
+     //    class AddPatch
+     //    {
+     //        static void Prefix(FactionManager __instance, Faction faction)
+     //        {
+     //            if (__instance.allFactions.Contains(faction))
+     //                    return;
+     //                __instance.allFactions.Add(faction);
+     //                __instance.RecacheFactions();
+     //            }
+     //    }
+     //    
+     //    [HarmonyPatch(typeof(Faction), "TryGenerateNewLeader")]
+	    // class TryGenerateNewLeaderPatch
+	    // {
+		   //  static bool Prefix(Faction __instance, ref bool __result)
+		   //  {
+			  //   Pawn pawn = __instance.leader;
+			  //   __instance.leader = null;
+     //            Log.Message($"leader props set for {__instance.Name}");
+			  //   if (__instance.def.generateNewLeaderFromMapMembersOnly)
+			  //   {
+     //                Log.Message("Generating from map members only...");
+				 //    for (int i = 0; i < Find.Maps.Count; i++)
+				 //    {
+					//     Map map = Find.Maps[i];
+					//     for (int j = 0; j < map.mapPawns.AllPawnsCount; j++)
+					//     {
+					// 	    if (map.mapPawns.AllPawns[j] != pawn && !map.mapPawns.AllPawns[j].Destroyed && map.mapPawns.AllPawns[j].HomeFaction == __instance)
+					// 	    {
+					// 		    __instance.leader = map.mapPawns.AllPawns[j];
+					// 	    }
+					//     }
+				 //    }
+			  //   }
+			  //   else if (__instance.def.pawnGroupMakers != null)
+			  //   {
+     //                Log.Message("Generating from pawn group makers");
+				 //    List<PawnKindDef> list = new List<PawnKindDef>();
+				 //    foreach (PawnGroupMaker pawnGroupMaker in from x in __instance.def.pawnGroupMakers where x.kindDef == PawnGroupKindDefOf.Combat select x)
+				 //    {
+     //                    Log.Message($"checking pawn group maker");
+					//     foreach (PawnGenOption pawnGenOption in pawnGroupMaker.options)
+					//     {
+					// 	    if (pawnGenOption.kind.factionLeader)
+					// 	    {
+     //                            Log.Message($"Adding {pawnGenOption.kind.defName}");
+					// 		    list.Add(pawnGenOption.kind);
+					// 	    }
+					//     }
+				 //    }
+				 //    if (__instance.def.fixedLeaderKinds != null)
+				 //    {
+     //                    Log.Message("Adding fixed leaderkinds");
+					//     list.AddRange(__instance.def.fixedLeaderKinds);
+				 //    }
+     //                if (list.TryRandomElement(out PawnKindDef kind))
+     //                {
+     //                    PawnGenerationRequest request = new PawnGenerationRequest(kind, __instance, PawnGenerationContext.NonPlayer, -1, __instance.def.leaderForceGenerateNewPawn, false, false, false, true, false, 1f, false, true, true, true, false, false, false, false, 0f, 0f, null, 1f, null, null, null, null, null, null, null, null, null, null, null, null, null, false, false, false);
+     //                    Gender supremeGender = __instance.ideos.PrimaryIdeo.SupremeGender;
+     //                    if (supremeGender != Gender.None)
+     //                    {
+     //                        request.FixedGender = new Gender?(supremeGender);
+     //                    }
+     //                    Log.Message("Requesting pawn from generator...");
+     //                    __instance.leader = PawnGenerator.GeneratePawn(request);
+     //                    if (__instance.leader.RaceProps.IsFlesh)
+     //                    {
+     //                        __instance.leader.relations.everSeenByPlayer = true;
+     //                    }
+     //                    if (!Find.WorldPawns.Contains(__instance.leader))
+     //                    {
+     //                        Find.WorldPawns.PassToWorld(__instance.leader, PawnDiscardDecideMode.KeepForever);
+     //                    }
+     //                }
+     //            }
+     //
+			  //   __result = __instance.leader != null;
+     //
+			  //   Log.Message($"Generated Leader for {__instance.Name}: {__instance.leader?.Name?.ToString() ?? "null"}");
+			  //   return false;
+		   //  }
+	    // }
     }
 }

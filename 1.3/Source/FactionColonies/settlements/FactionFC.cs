@@ -22,7 +22,8 @@ namespace FactionColonies
         public int dailyTimer = Find.TickManager.TicksGame;
         public int militaryTimeDue;
         public int mercenaryTick;
-        public bool factionCreated;
+        public bool factionCreated = false;
+        public Faction faction;
 
         private int nextUnitId;
         private int nextSquadId;
@@ -469,10 +470,11 @@ namespace FactionColonies
         public override void WorldComponentTick()
         {
             base.WorldComponentTick();
+            Faction FCFaction = (Faction) null;
             if (firstTick)
             {
                 //Log.Message("First Tick");
-                FactionColonies.UpdateChanges();
+                FactionColonies.UpdateChanges(this);
                 if (planetName.NullOrEmpty())
                 {
                     planetName = Find.World.info.name;
@@ -480,19 +482,19 @@ namespace FactionColonies
 
                 roadBuilder.FirstTick();
 
-                Faction FCf = FactionColonies.getPlayerColonyFaction();
-                if (FCf != null)
-                {
-                    FCf.def.techLevel = TechLevel.Undefined;
+                FCFaction = FactionColonies.getPlayerColonyFaction();
+                if (FCFaction != null) {
+                    FCFaction.def.techLevel = TechLevel.Undefined;
                     factionIcon = TexLoad.factionIcons.FirstOrFallback(obj => obj.name == factionIconPath,
                         TexLoad.factionIcons.First());
-                    updateFactionIcon(ref FCf, "FactionIcons/" + factionIcon.name);
+                    updateFactionIcon(ref FCFaction, "FactionIcons/" + factionIcon.name);
                     factionIconPath = factionIcon.name;
+                    this.faction = FCFaction;
                 }
                 
                 militaryCustomizationUtil.checkMilitaryUtilForErrors();
 
-                factionBackup = FCf;
+                factionBackup = FCFaction;
                 firstTick = false;
             }
 
@@ -503,8 +505,7 @@ namespace FactionColonies
 
 
             //If Player Colony Faction does exists
-            Faction faction = FactionColonies.getPlayerColonyFaction();
-            if (faction != null)
+            if (FCFaction != null)
             {
                 roadBuilder.RoadTick();
                 TaxTick();
@@ -513,56 +514,46 @@ namespace FactionColonies
                 MilitaryTick();
                 TickActions();
             }
-            else if (faction == null && settlements.Count() >= 0 && factionBackup != null)
-            {
-                //Log.Message("Moved to new planet - Adding faction copy");
-                //FactionColonies.createPlayerColonyFaction();
-                //FactionColonies.copyPlayerColonyFaction();
-            }
 
             if (boolChangedPlanet)
             {
-                // if (!factionUpdated)
-                // {
-                SoS2HarmonyPatches.updateFactionOnPlanet();
-                factionUpdated = false;
-                // }
-                Reset:
-                //Log.Message("New planet-" + Find.World.info.name);
-                foreach (SettlementSoS2Info entry in createSettlementQueue)
-                {
-                    //Log.Message("key for create-" + entry.Key);
-                    if (entry.planetName == Find.World.info.name)
+                Faction pfaction = Faction.OfPlayer;
+                Log.Message($"Pfaction ideo set to {pfaction.ideos.PrimaryIdeo.name}");
+                if (pfaction.ideos.PrimaryIdeo.name != null) {
+                    SoS2HarmonyPatches.updateFactionOnPlanet(this);
+                    factionUpdated = false;
+                    Reset:
+                    Log.Message("New planet-" + Find.World.info.name);
+                    foreach (SettlementSoS2Info entry in createSettlementQueue)
                     {
-                        //Log.Message("Match");
-
-
-                        Settlement settlement =
-                            (Settlement) WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
-                        settlement.SetFaction(faction);
-                        settlement.Tile = entry.location;
-                        settlement.Name = returnSettlementByLocation(settlement.Tile, Find.World.info.name).name;
-                        Find.WorldObjects.Add(settlement);
-
-                        createSettlementQueue.Remove(entry);
-                        goto Reset;
+                        if (entry.planetName == Find.World.info.name)
+                        {
+                            Log.Message("Match");
+                            Settlement settlement =
+                                (Settlement) WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
+                            settlement.SetFaction(faction);
+                            settlement.Tile = entry.location;
+                            settlement.Name = returnSettlementByLocation(settlement.Tile, Find.World.info.name).name;
+                            Find.WorldObjects.Add(settlement);
+                            createSettlementQueue.Remove(entry);
+                            goto Reset;
+                        }
                     }
-                }
 
-                roadBuilder.CreateRoadQueue(Find.World.info.name);
-                roadBuilder.FlagUpdateRoadQueues();
-                Reset2:
-                foreach (SettlementSoS2Info entry in deleteSettlementQueue)
-                {
-                    //Log.Message("key for destroy-" + entry.Key);
-                    if (entry.planetName != Find.World.info.name) continue;
-                    //Log.Message("Match");
-                    Find.WorldObjects.Remove(Find.World.worldObjects.WorldObjectAt<WorldSettlementFC>(entry.location));
-                    deleteSettlementQueue.Remove(entry);
-                    goto Reset2;
+                    roadBuilder.CreateRoadQueue(Find.World.info.name);
+                    roadBuilder.FlagUpdateRoadQueues();
+                    Reset2:
+                    foreach (SettlementSoS2Info entry in deleteSettlementQueue)
+                    {
+                        //Log.Message("key for destroy-" + entry.Key);
+                        if (entry.planetName != Find.World.info.name) continue;
+                        //Log.Message("Match");
+                        Find.WorldObjects.Remove(Find.World.worldObjects.WorldObjectAt<WorldSettlementFC>(entry.location));
+                        deleteSettlementQueue.Remove(entry);
+                        goto Reset2;
+                    }
+                    boolChangedPlanet = false;
                 }
-
-                boolChangedPlanet = false;
             }
         }
 
@@ -745,19 +736,20 @@ namespace FactionColonies
             }
         }
 
-        public void updateTechLevel(ResearchManager researchManager)
+        public void updateTechLevel(ResearchManager researchManager, Faction faction)
         {
+            Log.Message($"Research manager null? {researchManager == null}");
             bool medievalOnly = LoadedModManager.GetMod<FactionColoniesMod>().GetSettings<FactionColonies>()
                 .medievalTechOnly;
 
-
+            Log.Message("Getting tech level");
             if (!medievalOnly && DefDatabase<ResearchProjectDef>.GetNamed("ShipBasics", false) != null &&
                 researchManager.GetProgress(DefDatabase<ResearchProjectDef>.GetNamed("ShipBasics", false)) ==
-                DefDatabase<ResearchProjectDef>.GetNamed("ShipBasics", false).baseCost && techLevel < TechLevel.Ultra)
+                DefDatabase<ResearchProjectDef>.GetNamed("ShipBasics", false).baseCost && techLevel <= TechLevel.Ultra)
             {
+                Log.Message("Ultra");
                 techLevel = TechLevel.Ultra;
                 factionDef.techLevel = TechLevel.Ultra;
-                Log.Message("Ultra");
                 raceFilter.FinalizeInit(this);
             }
             else if (!medievalOnly && DefDatabase<ResearchProjectDef>.GetNamed("Fabrication", false) != null &&
@@ -765,9 +757,9 @@ namespace FactionColonies
                      DefDatabase<ResearchProjectDef>.GetNamed("Fabrication", false).baseCost &&
                      techLevel < TechLevel.Spacer)
             {
+                Log.Message("Spacer");
                 techLevel = TechLevel.Spacer;
                 factionDef.techLevel = TechLevel.Spacer;
-                Log.Message("Spacer");
                 raceFilter.FinalizeInit(this);
             }
             else if (!medievalOnly && DefDatabase<ResearchProjectDef>.GetNamed("Electricity", false) != null &&
@@ -775,9 +767,10 @@ namespace FactionColonies
                      DefDatabase<ResearchProjectDef>.GetNamed("Electricity", false).baseCost &&
                      techLevel < TechLevel.Industrial)
             {
+                Log.Message("Industrial");
                 techLevel = TechLevel.Industrial;
                 factionDef.techLevel = TechLevel.Industrial;
-                Log.Message("Industrial");
+                
                 raceFilter.FinalizeInit(this);
             }
             else if (DefDatabase<ResearchProjectDef>.GetNamed("Smithing", false) != null &&
@@ -785,51 +778,50 @@ namespace FactionColonies
                      DefDatabase<ResearchProjectDef>.GetNamed("Smithing", false).baseCost &&
                      techLevel < TechLevel.Medieval)
             {
+                Log.Message("Medieval");
                 techLevel = TechLevel.Medieval;
                 factionDef.techLevel = TechLevel.Medieval;
-                Log.Message("Medieval");
                 raceFilter.FinalizeInit(this);
             }
             else
             {
-                if (techLevel < TechLevel.Neolithic)
-                {
-                    Log.Message("Neolithic");
-                    techLevel = TechLevel.Neolithic;
-                    raceFilter.FinalizeInit(this);
-                }
+                Log.Message("Neolithic");
+                techLevel = TechLevel.Neolithic;
+                raceFilter.FinalizeInit(this);
             }
 
             //update to player colony faction
             updateFaction();
-
-            Faction playerColonyfaction = FactionColonies.getPlayerColonyFaction();
-            if (playerColonyfaction != null && playerColonyfaction.def.techLevel < techLevel)
+            Log.Message("Faction updated");
+            Log.Message($"PColony obtained, null check {faction == null}");
+            if (faction == null)
+            {
+                Log.Error("Faction is still null while attempting to update technology level");
+            }
+            if (faction.def.techLevel < techLevel)
             {
                 Log.Message("Updating Tech Level");
-                updateFactionDef(techLevel, ref playerColonyfaction);
+                updateFactionDef(techLevel, ref faction);
             }
-            else if (playerColonyfaction.def.techLevel >= techLevel)
+            else if (faction.def.techLevel >= techLevel)
             {
-                //Log.Message("Tech Level already matches");
+                Log.Message("Tech Level already matches");
             }
             // Check Leader
-            if (playerColonyfaction != null)
+            Log.Message("Checking leader");
+            if (faction.leader == null || faction.leader.Dead)
             {
-                if (playerColonyfaction.leader == null || playerColonyfaction.leader.Dead)
+                if (!faction.TryGenerateNewLeader())
                 {
-                    if (!playerColonyfaction.TryGenerateNewLeader())
+                    Log.Message("Generating Leader failed! Manually Generating . . .");
+                    faction.leader = PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind: Faction.OfPlayer.RandomPawnKind(),
+                    faction: faction, context: PawnGenerationContext.NonPlayer,
+                    forceGenerateNewPawn: true, newborn: false, allowDead: false, allowDowned: false,
+                    canGeneratePawnRelations: true, mustBeCapableOfViolence: true, colonistRelationChanceFactor: 0,
+                    forceAddFreeWarmLayerIfNeeded: false, worldPawnFactionDoesntMatter: false));
+                    if (faction.leader == null)
                     {
-                        Log.Message("Generating Leader failed! Manually Generating . . .");
-                        playerColonyfaction.leader = PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind: Faction.OfPlayer.RandomPawnKind(),
-                        faction: playerColonyfaction, context: PawnGenerationContext.NonPlayer,
-                        forceGenerateNewPawn: true, newborn: false, allowDead: false, allowDowned: false,
-                        canGeneratePawnRelations: true, mustBeCapableOfViolence: true, colonistRelationChanceFactor: 0,
-                        forceAddFreeWarmLayerIfNeeded: false, worldPawnFactionDoesntMatter: false));
-                        if (playerColonyfaction.leader == null)
-                        {
-                            Log.Warning("That failed, too! Contacting " + playerColonyfaction.Name + " won't work!");
-                        }
+                        Log.Warning("That failed, too! Contacting " + faction.Name + " won't work!");
                     }
                 }
             }
@@ -995,7 +987,7 @@ namespace FactionColonies
             int averageUnrestTmp = 0;
             int averageProsperityTmp = 0;
 
-            if (settlements.Count() > 0)
+            if (settlements.Any())
             {
                 foreach (SettlementFC settlement in settlements)
                 {
@@ -1040,7 +1032,7 @@ namespace FactionColonies
             //Pop UI updates
             updateTotalResources();
             updateTotalProfit();
-            updateTechLevel(Find.ResearchManager);
+            updateTechLevel(Find.ResearchManager, this.faction);
         }
 
         public double getTotalIncome() //return total income of settlements       ####MAKE UPDATE PER HOUR TICK

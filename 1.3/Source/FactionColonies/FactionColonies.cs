@@ -16,9 +16,9 @@ namespace FactionColonies
 {
     public class FactionColonies : ModSettings
     {
-        public static void UpdateChanges()
+        public static void UpdateChanges(FactionFC factionFC)
         {
-            FactionFC factionFC = Find.World.GetComponent<FactionFC>();
+            
             PatchNoteSettings patchNoteSettings = LoadedModManager.GetMod<PatchNoteMod>().GetSettings<PatchNoteSettings>();
 
             Log.Message("Updating Empire to Latest Version");
@@ -139,7 +139,7 @@ namespace FactionColonies
             }
         }
 
-        public static bool IsModLoaded(string packageID) => LoadedModManager.RunningModsListForReading.Any(mod => mod.PackageIdPlayerFacing == packageID);
+        public static bool IsModLoaded(string packageID) => LoadedModManager.RunningModsListForReading.Any(mod => mod.PackageIdPlayerFacing.Contains(packageID));
 
         public static Type returnUnknownTypeFromName(string name)
         {
@@ -211,7 +211,17 @@ namespace FactionColonies
 
         public static Faction getPlayerColonyFaction()
         {
-            return Find.FactionManager.FirstFactionOfDef(DefDatabase<FactionDef>.GetNamed("PColony"));
+            IEnumerable<Faction> Factions = Find.FactionManager.AllFactionsListForReading.Where(fac => fac.def.defName == "PColony");
+            
+            Faction f = Find.World.factionManager.FirstFactionOfDef(DefDatabase<FactionDef>.GetNamed("PColony"));
+            // if (f == null)
+            // {
+            //     Log.Message($"Nullcheck on faction: {f == null}");
+            //     Log.Message($"Factions with matching def: {Factions.Count()}");
+            //     Log.Message($"{Find.FactionManager.AllFactionsListForReading.Join(faction => faction.Name + " " + faction.def.defName, System.Environment.NewLine)}");
+            // }
+
+            return f;
         }
 
 
@@ -240,9 +250,6 @@ namespace FactionColonies
             {
                 Find.World.GetComponent<FactionFC>().timeStart = Find.TickManager.TicksGame;
             }
-
-            //Log.Message(faction.Name);
-
             SettlementFC settlementfc;
             WorldSettlementFC settlement = null;
             if (createWorldObject)
@@ -994,37 +1001,46 @@ namespace FactionColonies
             prisoner.DeSpawn();
         }
 
-        public static Faction copyPlayerColonyFaction()
+        public static Faction copyPlayerColonyFaction(FactionFC worldComp)
         {
-            FactionFC worldcomp = Find.World.GetComponent<FactionFC>();
-
-            worldcomp.setCapital();
-
+            Log.Message("Copying player faction colony");
+            Log.Message("Setting capital");
+            worldComp.setCapital();
+            Log.Message("Acquiring faction def");
             FactionDef facDef = new FactionDef();
-
+            
 
             facDef = DefDatabase<FactionDef>.GetNamed("PColony");
-            Faction faction = new Faction();
-            faction.def = facDef;
-            faction.def.techLevel = worldcomp.factionBackup.def.techLevel;
+            Faction faction = new Faction {def = facDef};
+            faction.def.techLevel = worldComp.factionBackup.def.techLevel;
             faction.loadID = Find.UniqueIDsManager.GetNextFactionID();
-            faction.colorFromSpectrum = worldcomp.factionBackup.colorFromSpectrum;
-            faction.Name = worldcomp.factionBackup.Name;
-            faction.centralMelanin = worldcomp.factionBackup.centralMelanin;
+            faction.colorFromSpectrum = worldComp.factionBackup.colorFromSpectrum;
+            faction.Name = worldComp.factionBackup.Name;
+            faction.centralMelanin = worldComp.factionBackup.centralMelanin;
+            worldComp.resetRaceFilter();
             //<DevAdd> Copy player faction relationships  
+            Log.Message("Faction props set");
             foreach (Faction other in Find.FactionManager.AllFactionsListForReading)
             {
                 faction.TryMakeInitialRelationsWith(other);
             }
 
-            //faction.GenerateNewLeader();
-            faction.TryGenerateNewLeader();
-
-            //Log.Message(Find.FactionManager.AllFactions.Contains(faction).ToString());
-
-            //Find.FactionManager.Add(faction);
-
-            //check if SoS2 is enabled
+            Log.Message("Relations set");
+            try
+            {
+                
+                Log.Message($"{faction.def.pawnGroupMakers.Count}");
+                Log.Message($"{faction.def.pawnGroupMakers.Count(p => p.kindDef == PawnGroupKindDefOf.Combat)}");
+                faction.leader = new Pawn();
+                faction.TryGenerateNewLeader();
+                
+            }
+            catch (Exception e)
+            {
+                Log.Message("Could not generate faction leader");
+                Log.Message($"{e}");
+            }
+            Log.Message("Leader generated");
             if (IsModLoaded("kentington.saveourship2"))
             {
                 Log.Message("SoS2 running - planet changed");
@@ -1066,13 +1082,14 @@ namespace FactionColonies
 
         public static Faction createPlayerColonyFaction()
         {
-            FactionFC worldcomp = Find.World.GetComponent<FactionFC>();
-            //Log.Message("Creating new faction");
+            FactionFC worldComp = Find.World.GetComponent<FactionFC>();
+            Log.Message("Creating new faction");
             //Set start time for world component to start tracking your faction;
-            worldcomp.setCapital();
+            worldComp.setCapital();
 
-            //Log.Message("Faction is being created");
+            Log.Message("Faction is being created");
             FactionDef facDef = DefDatabase<FactionDef>.GetNamed("PColony");
+            Log.Message($"Got faction def: {facDef.defName}");
             Faction faction = new Faction();
             faction.def = facDef;
             faction.def.techLevel = TechLevel.Undefined;
@@ -1082,6 +1099,7 @@ namespace FactionColonies
             faction.centralMelanin = Rand.Value;
             faction.def.classicIdeo = Faction.OfPlayer.def.classicIdeo;
             faction.ideos = Faction.OfPlayer.ideos;
+            Log.Message("Faction props set");
             //<DevAdd> Copy player faction relationships  
             foreach (Faction other in Find.FactionManager.AllFactionsListForReading)
             {
@@ -1104,10 +1122,10 @@ namespace FactionColonies
                     Log.Warning("That failed, too! Contacting " + faction.Name + " won't work!");
                 }
             }
-            worldcomp.factionBackup = faction;
+            worldComp.factionBackup = faction;
             Find.FactionManager.Add(faction);
-
-            Find.World.GetComponent<FactionFC>().updateTechLevel(Find.ResearchManager);
+            Log.Message("Updating tech level");
+            Find.World.GetComponent<FactionFC>().updateTechLevel(Find.ResearchManager, worldComp.faction);
             return faction;
         }
 

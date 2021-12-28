@@ -60,7 +60,6 @@ namespace FactionColonies
 			faction = Find.World.GetComponent<FactionFC>();
 			if (faction != null)
 			{
-				settlementList = faction.settlements;
 				faction.updateAverages();
 
 				//Initial release - Autocreate faction
@@ -209,8 +208,10 @@ namespace FactionColonies
 			} else //create new faction
 			{
 				if (Widgets.ButtonText(button, "Create New Faction"))
-				{ 
+				{
+					Log.Message("Creating faction");
 					FactionColonies.createPlayerColonyFaction();
+					Log.Message("Faction created");
 					faction.factionCreated = true;
 					Find.WindowStack.Add(new FactionCustomizeWindowFc(faction));
 					//Initial release - Autocreate faction
