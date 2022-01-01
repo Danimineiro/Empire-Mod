@@ -1,12 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Poke" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
         <TargetFramework>net472</TargetFramework>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
         <OutputPath>Assemblies</OutputPath>
-        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <AssemblyVersion>0.38.3.05</AssemblyVersion>
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <Build>$([System.DateTime]::op_Subtraction($([System.DateTime]::get_Now().get_Date()),$([System.DateTime]::new(2000,1,1))).get_TotalDays())</Build>
+        <Revision>$([MSBuild]::Divide($([System.DateTime]::get_Now().get_TimeOfDay().get_TotalSeconds()), 2).ToString('F0'))</Revision>
+        <AssemblyVersion>0.4.$(Build).$(Revision)</AssemblyVersion>
     </PropertyGroup>
     <ItemGroup>
         <!-- Rimworld -->
@@ -19,5 +21,22 @@
         
         <PackageReference Include="Lib.Harmony" Version="2.1.0" />
         <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+        <Reference Include="Microsoft.Build.Framework" />
+        <Reference Include="Microsoft.Build.Utilities.v4.0" />
     </ItemGroup>
+
+    <UsingTask TaskName="Echo" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
+        <ParameterGroup>
+            <Text Required="true" />
+        </ParameterGroup>
+        <Task>
+            <Code Type="Fragment" Language="cs">
+                Log.LogMessage(MessageImportance.High, Text);
+            </Code>
+        </Task>
+    </UsingTask>
+    <Target Name="TestBuild">
+        <Echo Text="Greetings!" />
+    </Target>
+    
 </Project>
