@@ -12,18 +12,49 @@
 
 		<linkButtonImagePaths>
 			<li>GUI/Buttons/discordlogo</li>
-			<li>GUI/Buttons/nguilogo</li>
 			<li>GUI/Buttons/wikilogo</li>
+			<li>GUI/Buttons/nguilogo</li>
 		</linkButtonImagePaths>
 
 		<linkButtonToolTips>
 			<li>Join the Empire discord!</li>
+			<li>Check out the Empire Wiki!</li>
 			<li>The layout of this GUI was made using NesGUI, a tool for modders that helps with creating RimWorld GUI! Click to learn more.</li>
-			<li>Check out the Empire Wiki! (Recently updated!)</li>
 		</linkButtonToolTips>
 	
 		<authorStringBase>All of the code for this update has been developed by {0}.</authorStringBase>
 		<introStringBase>A new update for {0} has been released: v.{1}. The following changes have occurred:</introStringBase>
+	</FactionColonies.PatchNoteDef>
+
+	<FactionColonies.PatchNoteDef ParentName="EmpirePatchBase">
+		<defName>0_40_01</defName>
+		<label>Improvements and about rewriting Empire</label>
+		<description>Performance and Info</description>
+
+		<major>0</major>
+		<minor>40</minor>
+		<patch>1</patch>
+
+		<releaseDay>ß5</releaseDay>
+		<releaseMonth>02</releaseMonth>
+		<releaseYear>2022</releaseYear>
+
+		<patchNoteType>Patch</patchNoteType>
+
+		<patchNoteLines>
+			<li>This patch should increase performance when loading for users with many race/faction mods</li>
+		</patchNoteLines>
+
+		<additionalNotes>
+			<li>The Empire team has shifted focus and we are working on completely rewriting the code. The new version will be released as an independent mod that will not be compatible with the current version or any saves made with it.</li>
+			<li>If you want to know more or if you want to follow the development, head over to the Empire Discord, you can do so by clicking one of the buttons on your right!</li>
+			<li>(If we find small easy to fix errors or improvements like this patches content they might still be made)</li>
+			<li>We don't have a timeline for the next release yet, so don't stop using old Empire just yet! We hope you continue to have fun!</li>
+		</additionalNotes>
+
+		<authors>
+			<li>Danimineiro</li>
+		</authors>
 	</FactionColonies.PatchNoteDef>
 
 	<FactionColonies.PatchNoteDef ParentName="EmpirePatchBase">
