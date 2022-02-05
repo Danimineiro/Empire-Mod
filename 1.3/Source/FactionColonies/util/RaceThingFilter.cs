@@ -11,6 +11,8 @@ namespace FactionColonies.util
         private FactionDef faction;
         private FactionFC factionFc;
         private MilitaryCustomizationUtil militaryUtil;
+        private IEnumerable<PawnKindDef> humanPawnKindDefsCached;
+        private IEnumerable<PawnKindDef> animalPawnKindDefsCached;
 
         private bool HasMissingPawnKindDefTypes => !faction.pawnGroupMakers[1].traders.Any() || !faction.pawnGroupMakers[0].options.Any() || !faction.pawnGroupMakers[3].options.Any() || WorldSettlementTraderTracker.BaseTraderKinds == null || !WorldSettlementTraderTracker.BaseTraderKinds.Any();
 
@@ -62,7 +64,7 @@ namespace FactionColonies.util
             faction = DefDatabase<FactionDef>.GetNamed("PColony");
             faction.pawnGroupMakers = emptyList.ListFullCopy();
 
-            if (AllowedDefCount == 0) SetAllow(DefDatabase<PawnKindDef>.AllDefsListForReading.First(def => def.IsHumanlikeWithLabelRace()).race, true);
+            if (AllowedDefCount == 0) SetAllow((animalPawnKindDefsCached ?? (animalPawnKindDefsCached = DefDatabase<PawnKindDef>.AllDefsListForReading)).First(def => def.IsHumanlikeWithLabelRace()).race, true);
 
             RefreshAnimalRaces();
             RefreshHumanRaces();
@@ -81,7 +83,7 @@ namespace FactionColonies.util
         private void RefreshHumanRaces()
         {
             List<string> races = new List<string>();
-            foreach (PawnKindDef def in DefDatabase<PawnKindDef>.AllDefsListForReading.Where(def => def.IsHumanlikeWithLabelRace() && !races.Contains(def.race.label) && AllowedThingDefs.Contains(def.race)))
+            foreach (PawnKindDef def in humanPawnKindDefsCached ?? (humanPawnKindDefsCached = DefDatabase<PawnKindDef>.AllDefsListForReading.Where(def => def.IsHumanlikeWithLabelRace() && !races.Contains(def.race.label) && AllowedThingDefs.Contains(def.race))))
             {
                 races.Add(def.race.label);
                 SetAllow(def.race, true);
