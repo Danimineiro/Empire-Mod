@@ -12,6 +12,7 @@ namespace FactionColonies.util
         private FactionFC factionFc;
         private MilitaryCustomizationUtil militaryUtil;
         private IEnumerable<PawnKindDef> humanPawnKindDefsCached;
+        private IEnumerable<PawnKindDef> defaultList;
         private IEnumerable<PawnKindDef> animalPawnKindDefsCached;
 
         private bool HasMissingPawnKindDefTypes => !faction.pawnGroupMakers[1].traders.Any() || !faction.pawnGroupMakers[0].options.Any() || !faction.pawnGroupMakers[3].options.Any() || WorldSettlementTraderTracker.BaseTraderKinds == null || !WorldSettlementTraderTracker.BaseTraderKinds.Any();
@@ -90,8 +91,8 @@ namespace FactionColonies.util
             }
         }
 
-        private IEnumerable<PawnKindDef> DefaultList => DefDatabase<PawnKindDef>.AllDefsListForReading.Where(def => def.IsHumanLikeRace() && AllowedThingDefs.Contains(def.race) && def.defaultFactionType != null && def.defaultFactionType.defName != "Empire");
-        private IEnumerable<PawnKindDef> PawnKindDefsForTechLevel(TechLevel techLevel) => DefDatabase<PawnKindDef>.AllDefsListForReading.Where(def => def.IsHumanLikeRace() && AllowedThingDefs.Contains(def.race) && def.defaultFactionType != null && def.defaultFactionType.defName != "Empire" && def.defaultFactionType.techLevel == techLevel);
+        private IEnumerable<PawnKindDef> DefaultList => defaultList ?? (defaultList = DefDatabase<PawnKindDef>.AllDefsListForReading.Where(def => def.IsHumanLikeRace() && AllowedThingDefs.Contains(def.race) && def.defaultFactionType != null && def.defaultFactionType.defName != "Empire"));
+        private IEnumerable<PawnKindDef> PawnKindDefsForTechLevel(TechLevel techLevel) => DefaultList.Where(def => def.defaultFactionType.techLevel == techLevel);
 
         private bool FactionProbablyNotGeneratedYet => !AllowedThingDefs.Any() || factionFc.techLevel == TechLevel.Undefined;
 
