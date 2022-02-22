@@ -123,7 +123,7 @@ namespace FactionColonies
                 Text.Anchor = TextAnchor.UpperCenter;
 
 
-                Widgets.CheckboxLabeled(isTrader, "is Trader Caravan", ref selectedSquad.isTraderCaravan);
+                //Widgets.CheckboxLabeled(isTrader, "is Trader Caravan", ref selectedSquad.isTraderCaravan);
                 selectedSquad.setTraderCaravan(selectedSquad.isTraderCaravan);
                 
                 //Unit Name

@@ -244,8 +244,8 @@ namespace FactionColonies
             //Unit Name
             selectedUnit.name = Widgets.TextField(nameTextField, selectedUnit.name);
 
-            Widgets.CheckboxLabeled(isCivilian, "unitIsCivilianLabel".Translate(), ref selectedUnit.isCivilian);
-            Widgets.CheckboxLabeled(isTrader, "unitIsTraderLabel".Translate(), ref selectedUnit.isTrader);
+            //Widgets.CheckboxLabeled(isCivilian, "unitIsCivilianLabel".Translate(), ref selectedUnit.isCivilian);
+            //Widgets.CheckboxLabeled(isTrader, "unitIsTraderLabel".Translate(), ref selectedUnit.isTrader);
             selectedUnit.setTrader(selectedUnit.isTrader);
             selectedUnit.setCivilian(selectedUnit.isCivilian);
 
