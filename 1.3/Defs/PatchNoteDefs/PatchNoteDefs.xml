@@ -27,6 +27,38 @@
 	</FactionColonies.PatchNoteDef>
 
 	<FactionColonies.PatchNoteDef ParentName="EmpirePatchBase">
+		<defName>0_40_02</defName>
+		<label>Improvements and about rewriting Empire</label>
+		<description>Removes the bugged auto battle setting and two incomplete settings</description>
+
+		<major>0</major>
+		<minor>40</minor>
+		<patch>2</patch>
+
+		<releaseDay>22</releaseDay>
+		<releaseMonth>02</releaseMonth>
+		<releaseYear>2022</releaseYear>
+
+		<patchNoteType>Patch</patchNoteType>
+
+		<patchNoteLines>
+			<li>The setting allowing for manual resolve of battles is removed because atm it will always cause crashes</li>
+			<li>Checkboxes that allow a squad/unit to be set as a trader/civilian got removed, as that feature never got implemented fully</li>
+		</patchNoteLines>
+
+		<additionalNotes>
+			<li>The Empire team has shifted focus and we are working on completely rewriting the code. The new version will be released as an independent mod that will not be compatible with the current version or any saves made with it.</li>
+			<li>If you want to know more or if you want to follow the development, head over to the Empire Discord, you can do so by clicking one of the buttons on your right!</li>
+			<li>(If we find small easy to fix errors or improvements like this patches content they might still be made)</li>
+			<li>We don't have a timeline for the next release yet, so don't stop using old Empire just yet! We hope you continue to have fun!</li>
+		</additionalNotes>
+
+		<authors>
+			<li>Danimineiro</li>
+		</authors>
+	</FactionColonies.PatchNoteDef>
+
+	<FactionColonies.PatchNoteDef ParentName="EmpirePatchBase">
 		<defName>0_40_01</defName>
 		<label>Improvements and about rewriting Empire</label>
 		<description>Performance and Info</description>
