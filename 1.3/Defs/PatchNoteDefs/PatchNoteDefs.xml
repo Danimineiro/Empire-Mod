@@ -29,6 +29,35 @@
 	<FactionColonies.PatchNoteDef ParentName="EmpirePatchBase">
 		<defName>0_40_02</defName>
 		<label>Improvements and about rewriting Empire</label>
+		<description>Removes a potential soft lock</description>
+
+		<major>0</major>
+		<minor>40</minor>
+		<patch>3</patch>
+
+		<releaseDay>16</releaseDay>
+		<releaseMonth>04</releaseMonth>
+		<releaseYear>2022</releaseYear>
+
+		<patchNoteType>Patch</patchNoteType>
+
+		<patchNoteLines>
+			<li>The setting allowing to keep some float menus forcefully open has been removed because it stopped working and I don't have the time to fix it - sorry about that but it's a soft lock and I don't want people to lose their saves over it</li>
+		</patchNoteLines>
+
+		<additionalNotes>
+			<li>Mods rework has kinda slowed down recently, things are busy here, sorry about that too</li>
+			<li>I hope I can deliver better news in future - Dani</li>
+		</additionalNotes>
+
+		<authors>
+			<li>Danimineiro</li>
+		</authors>
+	</FactionColonies.PatchNoteDef>
+
+	<FactionColonies.PatchNoteDef ParentName="EmpirePatchBase">
+		<defName>0_40_02</defName>
+		<label>Improvements and about rewriting Empire</label>
 		<description>Removes the bugged auto battle setting and two incomplete settings</description>
 
 		<major>0</major>

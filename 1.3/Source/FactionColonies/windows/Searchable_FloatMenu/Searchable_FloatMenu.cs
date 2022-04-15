@@ -99,7 +99,7 @@ namespace FactionColonies
 			this.ignoreBeforeChar = ignoreBeforeChar;
 			this.canBeForcedOpen = canBeForcedOpen;
 
-			options = AddForceOpenOption(options);
+			//options = AddForceOpenOption(options);
 			filteredOptions = options.ListFullCopy();
 
 			options.Clear();
