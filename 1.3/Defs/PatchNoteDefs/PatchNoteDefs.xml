@@ -27,7 +27,7 @@
 	</FactionColonies.PatchNoteDef>
 
 	<FactionColonies.PatchNoteDef ParentName="EmpirePatchBase">
-		<defName>0_40_02</defName>
+		<defName>0_40_03</defName>
 		<label>Improvements and about rewriting Empire</label>
 		<description>Removes a potential soft lock</description>
 
