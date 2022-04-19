@@ -377,7 +377,7 @@
 	
 	<!-- Auto Defend Warning -->
 	<autoDefendWarning>Keep in mind that this setting is not the same as the automatic battle resolve setting found in the settings menu!</autoDefendWarning>
-	<autoBattleEnabledNoManualFight>You can't manually fight battles if automatic battle resolve is enabled!</autoBattleEnabledNoManualFight>
+	<autoBattleEnabledNoManualFight><!--You can't manually fight battles if automatic battle resolve is enabled!-->Manually fighting battles is currently disabled due to game breaking bugs.</autoBattleEnabledNoManualFight>
 	
 	<!-- Squad creation menu -->
 	<clearUnitSlot>Clear Unit Slot</clearUnitSlot>

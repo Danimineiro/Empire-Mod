@@ -546,7 +546,7 @@ namespace FactionColonies
                                 delegate
                                 {
                                     settlement.autoDefend = !settlement.autoDefend;
-                                    Messages.Message("autoDefendWarning".Translate(), MessageTypeDefOf.CautionInput);
+                                    //Messages.Message("autoDefendWarning".Translate(), MessageTypeDefOf.CautionInput);
                                 })
                             };
 
