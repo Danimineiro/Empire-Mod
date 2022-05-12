@@ -11,9 +11,9 @@ using Verse.AI.Group;
 
 namespace FactionColonies
 {
-	class LordJob_DeployMilitary : LordJob
+	public class LordJob_DeployMilitary : LordJob
 	{
-		private MercenarySquadFC squad;
+		public MercenarySquadFC squad;
 		private IntVec3 currentOrderPosition;
 		private int whenToForceLeave;
 		private int timeDeployed = 0;
@@ -23,6 +23,7 @@ namespace FactionColonies
 
 		private LordToil_DefendPoint lordToil_DefendPoint;
 		private LordToil_HuntEnemies lordToil_HuntEnemies;
+		private Map currentMap;
 
 		/// <summary>
 		/// Default constructor, meant to only be used when creating the job object during loading
@@ -44,9 +45,11 @@ namespace FactionColonies
 		{
 			this.currentOrderPosition = currentOrderPosition;
 			this.squad = squad;
+			squad.lord = lord;
 
 			whenToForceLeave = maxDeploymentTime + Find.TickManager.TicksGame;
 			timeDeployed = Find.TickManager.TicksGame;
+			currentMap = squad.map;
 
 			Init();
 		}
@@ -56,7 +59,7 @@ namespace FactionColonies
 		/// </summary>
 		private void Init()
 		{
-			deployedMilitaryCommandMenu = new DeployedMilitaryCommandMenu();
+			deployedMilitaryCommandMenu = new DeployedMilitaryCommandMenu(this);
 			if (!Find.WindowStack.IsOpen(typeof(DeployedMilitaryCommandMenu))) Find.WindowStack.Add(deployedMilitaryCommandMenu);
 			else deployedMilitaryCommandMenu = (DeployedMilitaryCommandMenu) Find.WindowStack.Windows.First(window => window.GetType() == typeof(DeployedMilitaryCommandMenu));
 
@@ -67,7 +70,7 @@ namespace FactionColonies
 			lordToil_HuntEnemies = new LordToil_HuntEnemies(currentOrderPosition);
 		}
 
-		private bool ReadyForCommands
+		internal bool ReadyForCommands
         {
 			get
             {
@@ -91,6 +94,7 @@ namespace FactionColonies
 			Scribe_Values.Look(ref whenToForceLeave, "whenToForceLeave");
 			Scribe_Values.Look(ref currentOrder, "currentOrder");
 			Scribe_References.Look(ref squad, "squad");
+			Scribe_References.Look(ref currentMap, "currentMap");
 
 			//PostLoadInit is the last loading pass
 			if (Scribe.mode == LoadSaveMode.PostLoadInit) Init();
@@ -204,7 +208,7 @@ namespace FactionColonies
 			return stateGraph;
 		}
 
-		public override void Notify_LordDestroyed()
+        public override void Notify_LordDestroyed()
 		{
 			squad.InitiateCooldownEvent();
 			squad.isDeployed = false;
