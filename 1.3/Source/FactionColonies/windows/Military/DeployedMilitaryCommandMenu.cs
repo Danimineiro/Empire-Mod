@@ -14,12 +14,14 @@ namespace FactionColonies
     {
         readonly FactionFC faction;
         public MercenarySquadFC selectedSquad;
+        private List<MercenarySquadFC> squads = new List<MercenarySquadFC>();
         public string squadText;
 
+        private LordJob_DeployMilitary lordJob;
         public Dictionary<MercenarySquadFC, IntVec3> currentOrderPositionDic = new Dictionary<MercenarySquadFC, IntVec3>();
         public Dictionary<MercenarySquadFC, MilitaryOrder> squadMilitaryOrderDic = new Dictionary<MercenarySquadFC, MilitaryOrder>();
 
-        public DeployedMilitaryCommandMenu()
+        public DeployedMilitaryCommandMenu(LordJob_DeployMilitary lordJob)
         {
             layer = WindowLayer.Super;
             closeOnClickedOutside = false;
@@ -33,6 +35,7 @@ namespace FactionColonies
             faction = Find.World.GetComponent<FactionFC>();
 
             selectedSquad = faction.militaryCustomizationUtil.DeployedSquads.Where(squad => squad.getSettlement != null).RandomElementWithFallback();
+            this.lordJob = lordJob;
         }
 
         public override Vector2 InitialSize => new Vector2(200f, 240f);
@@ -121,27 +124,32 @@ namespace FactionColonies
         {
             foreach (MercenarySquadFC squad in faction.militaryCustomizationUtil.DeployedSquads)
             {
-                foreach (Mercenary merc in squad.mercenaries.Concat(squad.animals))
-                {
-                    if (merc?.pawn?.Map != null)
-                    {
-                        merc?.animal?.pawn?.Destroy();
-                        merc.pawn.Destroy();
-                    }
-                }
-
-                try
-                {
-                    foreach (Pawn pawn in Find.CurrentMap.mapPawns.SpawnedPawnsInFaction(FactionColonies.getPlayerColonyFaction()))
-                    {
-                        pawn.Destroy();
-                    }
-                }
-                catch { }
-
-                squad.isDeployed = false;
-                squad.InitiateCooldownEvent();
+                DespawnSquad(squad);
             }
+        }
+
+        private static void DespawnSquad(MercenarySquadFC squad)
+        {
+            foreach (Mercenary merc in squad.mercenaries.Concat(squad.animals))
+            {
+                if (merc?.pawn?.Map != null)
+                {
+                    merc?.animal?.pawn?.Destroy();
+                    merc.pawn.Destroy();
+                }
+            }
+
+            try
+            {
+                foreach (Pawn pawn in Find.CurrentMap.mapPawns.SpawnedPawnsInFaction(FactionColonies.getPlayerColonyFaction()))
+                {
+                    pawn.Destroy();
+                }
+            }
+            catch { }
+
+            squad.isDeployed = false;
+            squad.InitiateCooldownEvent();
         }
 
         public override void DoWindowContents(Rect rect) 
@@ -174,6 +182,14 @@ namespace FactionColonies
 
             Text.Font = prevFont;
             Text.Anchor = prevAnchor;
+
+            if (Find.TickManager.TicksGame % 60 == 0)
+            {
+                if (lordJob.ReadyForCommands && lordJob.lord.ownedPawns.All(pawn => !pawn.Spawned))
+                {
+                    DespawnSquad(lordJob.squad);
+                }
+            }
         }
     }
 }

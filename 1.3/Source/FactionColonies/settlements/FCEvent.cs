@@ -191,6 +191,8 @@ namespace FactionColonies
 
         public static FCEvent MakeRandomEvent(FCEventDef def, List<SettlementFC> SettlementTraitLocations)
         {
+            if (def is null) return null;
+
             FCEvent tempEvent = new FCEvent(true)
             {
                 def = def,
@@ -199,82 +201,86 @@ namespace FactionColonies
                 settlementTraitLocations = new List<SettlementFC>()
             };
 
-
-            //if affects specific settlement(s) then get settlements.
-            if (tempEvent.def.rangeSettlementsAffected.max != 0)
+            try
             {
-                int numSettlements = tempEvent.def.rangeSettlementsAffected.RandomInRange;
-
-                //Log.Message("Pre- " + numSettlements);
-                //if random number of settlements more than total settlements, reset number settlements.
-                if (numSettlements > Find.World.GetComponent<FactionFC>().settlements.Count())
+                //if affects specific settlement(s) then get settlements.
+                if (tempEvent.def.rangeSettlementsAffected.max != 0)
                 {
-                    numSettlements = Find.World.GetComponent<FactionFC>().settlements.Count();
-                    //Log.Message("Post- " + numSettlements);
-                }
+                    int numSettlements = tempEvent.def.rangeSettlementsAffected.RandomInRange;
 
-                //List of map locations
-                List<SettlementFC> settlements = new List<SettlementFC>();
-                //temporary list of settlemnts.
-                List<SettlementFC> tmp = new List<SettlementFC>();
-
-                if (SettlementTraitLocations == null || SettlementTraitLocations.Count == 0)
-                {
-                    foreach (SettlementFC settlement in Find.World.GetComponent<FactionFC>().settlements.InRandomOrder()
-                    )
+                    //Log.Message("Pre- " + numSettlements);
+                    //if random number of settlements more than total settlements, reset number settlements.
+                    if (numSettlements > Find.World.GetComponent<FactionFC>().settlements.Count())
                     {
-                        if (tempEvent.def.requiredResource != "")
+                        numSettlements = Find.World.GetComponent<FactionFC>().settlements.Count();
+                        //Log.Message("Post- " + numSettlements);
+                    }
+
+                    //List of map locations
+                    List<SettlementFC> settlements = new List<SettlementFC>();
+                    //temporary list of settlemnts.
+                    List<SettlementFC> tmp = new List<SettlementFC>();
+
+
+                    if (SettlementTraitLocations == null || SettlementTraitLocations.Count == 0)
+                    {
+                        foreach (SettlementFC settlement in Find.World.GetComponent<FactionFC>().settlements.InRandomOrder()
+                        )
                         {
-                            //if there is a required resource
-                            if (settlement.returnResource(tempEvent.def.requiredResource).assignedWorkers > 0)
+                            if (tempEvent.def.requiredResource != "")
                             {
-                                //if have someone working on that resource
+                                //if there is a required resource
+                                if (settlement.returnResource(tempEvent.def.requiredResource).assignedWorkers > 0)
+                                {
+                                    //if have someone working on that resource
+                                    tmp.Add(settlement);
+                                }
+                            }
+                            else
+                            {
                                 tmp.Add(settlement);
                             }
                         }
-                        else
-                        {
-                            tmp.Add(settlement);
-                        }
-                    }
 
-                    while (tmp.Count() > 0)
+                        while (tmp.Count() > 0)
+                        {
+                            SettlementFC cSettlement = tmp.RandomElement();
+                            if (settlements.Count() < numSettlements)
+                            {
+                                settlements.Add(cSettlement);
+                            }
+
+                            tmp.Remove(cSettlement);
+                        }
+
+                        tempEvent.settlementTraitLocations.AddRange(settlements);
+                    }
+                    else
                     {
-                        SettlementFC cSettlement = tmp.RandomElement();
-                        if (settlements.Count() < numSettlements)
-                        {
-                            settlements.Add(cSettlement);
-                        }
-
-                        tmp.Remove(cSettlement);
+                        tempEvent.settlementTraitLocations.AddRange(SettlementTraitLocations);
+                        //Log.Message(tempEvent.settlementTraitLocations.Count().ToString());
                     }
 
-                    tempEvent.settlementTraitLocations.AddRange(settlements);
+                    //foreach(int loc in tempEvent.settlementTraitLocations)
+                    //{
+                    //Log.Message("Location: " + loc);
+                    //}
                 }
-                else
+
+                //if event has options
+                //open event option window
+                //Log.Message("option count: " + tempEvent.def.options.Count().ToString());
+                if (tempEvent.def.options.Count > 0 && tempEvent.def.activateAtStart)
                 {
-                    tempEvent.settlementTraitLocations.AddRange(SettlementTraitLocations);
-                    //Log.Message(tempEvent.settlementTraitLocations.Count().ToString());
+                    Find.WindowStack.Add(new FCOptionWindow(tempEvent.def, tempEvent));
+                    return null;
                 }
-
-                //foreach(int loc in tempEvent.settlementTraitLocations)
-                //{
-                //Log.Message("Location: " + loc);
-                //}
-            }
-
-            //if event has options
-            //open event option window
-            //Log.Message("option count: " + tempEvent.def.options.Count().ToString());
-            if (tempEvent.def.options.Count > 0 && tempEvent.def.activateAtStart)
+            } catch(Exception e)
             {
-                Find.WindowStack.Add(new FCOptionWindow(tempEvent.def, tempEvent));
-                return null;
+                Log.Error($"Couldn't create Random Event with def: {def?.defName ?? "NULL"} and list of size: {SettlementTraitLocations?.Count ?? 0}: {e.Message}");
             }
 
             return tempEvent;
-
-            //
         }
 
 
