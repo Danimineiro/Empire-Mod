@@ -16,9 +16,9 @@ namespace FactionColonies
         readonly List<BuildingFCDef> buildingList;
         readonly FactionFC factionfc;
 
-        int scroll;
-        int maxScroll;
         private static readonly int offset = 8;
+
+        private Vector2 scrollPosition = Vector2.zero;
 
         private static readonly int rowHeight = 90;
         readonly int scrollHeight = 350;
@@ -28,23 +28,7 @@ namespace FactionColonies
         Rect TopName = new Rect(15, 15, 370, 30);
         Rect TopDescription = new Rect(95, 60, 305, 90);
 
-        Rect BaseBuildingWindow = new Rect(0, 150, 400, rowHeight);
-        Rect BaseBuildingIcon = new Rect(offset, 150 + offset, 64, 64);
-        Rect BaseBuildingLabel = new Rect(80, 150 + 5, 320, 20);
-        Rect BaseBuildingDesc = new Rect(80, 150 + 25, 320, 65);
-
-        Rect newBuildingWindow;
-        Rect newBuildingIcon;
-        Rect newBuildingLabel;
-        Rect newBuildingDesc;
-
-        public override Vector2 InitialSize
-        {
-            get
-            {
-                return new Vector2(436f, 536f);
-            }
-        }
+        public override Vector2 InitialSize => new Vector2(436f, 536f);
 
 
         public override void DoWindowContents(Rect inRect)
@@ -52,15 +36,21 @@ namespace FactionColonies
             //grab before anchor/font
             GameFont fontBefore = Text.Font;
             TextAnchor anchorBefore = Text.Anchor;
-
+            var outRect = new Rect(0f, 150f, inRect.width, inRect.height - 150f);
+            var viewRect = new Rect(outRect.x, outRect.y, outRect.width - 16f, buildingList.Count * rowHeight);
+            Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
+            var ls = new Listing_Standard();
+            ls.Begin(viewRect);
             //Buildings
             for (int i = 0; i < buildingList.Count; i++)
             {
                 BuildingFCDef building = buildingList[i];
-                newBuildingWindow = new Rect(BaseBuildingWindow.x, BaseBuildingWindow.y + (i * (rowHeight)) + scroll, BaseBuildingWindow.width, BaseBuildingWindow.height);
-                newBuildingIcon = new Rect(BaseBuildingIcon.x, BaseBuildingIcon.y + (i * (rowHeight)) + scroll, BaseBuildingIcon.width, BaseBuildingIcon.height);
-                newBuildingLabel = new Rect(BaseBuildingLabel.x, BaseBuildingLabel.y + (i * (rowHeight)) + scroll, BaseBuildingLabel.width, BaseBuildingLabel.height);
-                newBuildingDesc = new Rect(BaseBuildingDesc.x, BaseBuildingDesc.y + (i * (rowHeight)) + scroll, BaseBuildingDesc.width, BaseBuildingDesc.height);
+                var newBuildingWindow = ls.GetRect(rowHeight);
+                var newBuildingIcon = new Rect(newBuildingWindow.x + offset, newBuildingWindow.y + offset, 64, 64);
+                var newBuildingLabel = new Rect(newBuildingWindow.x + 80, newBuildingWindow.y + 5,
+                    newBuildingWindow.width - 80, 20);
+                var newBuildingDesc = new Rect(newBuildingWindow.x + 80, newBuildingWindow.y + 25,
+                    newBuildingWindow.width - 80, 65);
 
                 if (Widgets.ButtonInvisible(newBuildingWindow))
                 {
@@ -129,6 +119,8 @@ namespace FactionColonies
                 Widgets.Label(newBuildingDesc, building.desc);
             }
 
+            ls.End();
+            Widgets.EndScrollView();
 
             //Top Window 
             Widgets.DrawMenuSection(TopWindow);
@@ -153,11 +145,6 @@ namespace FactionColonies
             //reset anchor/font
             Text.Font = fontBefore;
             Text.Anchor = anchorBefore;
-
-            if (Event.current.type == EventType.ScrollWheel)
-            {
-                scrollWindow(Event.current.delta.y);
-            }
         }
 
 
@@ -192,35 +179,6 @@ namespace FactionColonies
             this.settlement = settlement;
             this.buildingSlot = buildingSlot;
             buildingDef = settlement.buildings[buildingSlot];
-
-            
-        }
-
-        public override void PreOpen()
-        {
-            base.PreOpen();
-            scroll = 0;
-            maxScroll = buildingList.Count * rowHeight - scrollHeight;
-        }
-
-
-
-
-        private void scrollWindow(float num)
-        {
-            if (scroll - num * 10 < -1 * maxScroll)
-            {
-                scroll = -1 * maxScroll;
-            }
-            else if (scroll - num * 10 > 0)
-            {
-                scroll = 0;
-            }
-            else
-            {
-                scroll -= (int)Event.current.delta.y * 10;
-            }
-            Event.current.Use();
         }
     }
 }

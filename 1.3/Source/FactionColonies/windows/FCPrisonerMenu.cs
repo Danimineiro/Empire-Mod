@@ -18,34 +18,12 @@ namespace FactionColonies
         public SettlementFC settlement;
         public FactionFC faction;
 
-        public int scroll = 0;
-        public int maxScroll;
+        public Vector2 scrollPosition = Vector2.zero;
         public int scrollBoxHeight = 440;
 
         public int optionHeight = 90;
 
-        //
-
-
-        public Rect optionBox;
-        public Rect optionPawnIcon;
-        public Rect optionPawnName;
-        public Rect optionPawnHealth;
-        public Rect optionPawnWorkload;
-        public Rect optionPawnUnrest;
-        public Rect optionButtonInfo;
-        public Rect optionButtonAction;
-
-        
-
-        public override Vector2 InitialSize
-        {
-            get
-            {
-                return new Vector2(538f, 478f);  //19
-            }
-        }
-
+        public override Vector2 InitialSize => new Vector2(538f, 478f); //19
 
 
 
@@ -57,42 +35,12 @@ namespace FactionColonies
             this.settlement = settlement;
             this.prisoners = settlement.prisonerList;
 
-            this.scroll = 0;
-            this.maxScroll = (prisoners.Count() * optionHeight) - scrollBoxHeight;
-
-
             //Window Properties
             this.forcePause = false;
             this.draggable = true;
             this.doCloseX = true;
             this.preventCameraMotion = false;
-
-
-            optionBox = new Rect(0, 0, 500, optionHeight);
-            //rect for pawn image
-            optionPawnIcon = new Rect(optionBox.x, optionBox.y + 10, 50, 50);
-            //rect for pawn name
-            optionPawnName = new Rect(optionBox.x + 50, optionBox.y + 5, 300, 20);
-            //rect for pawn health
-            optionPawnHealth = new Rect(optionPawnName.x, optionPawnName.y + 20, 300, 20);
-            //rect for pawn unrest
-            optionPawnUnrest = new Rect(optionPawnHealth.x, optionPawnHealth.y + 20, 300, 20);
-            //rect for pawn workload
-            optionPawnWorkload = new Rect(optionPawnUnrest.x, optionPawnUnrest.y + 20, 150, 20);
-            //rect for info button
-            optionButtonInfo = new Rect(optionBox.x + optionBox.width - 150 - 10, optionPawnHealth.y + 20, 150, 20);
-            //rect for action button
-            optionButtonAction = new Rect(optionBox.x + optionBox.width - 150 - 10, optionPawnUnrest.y + 20, 150, 20);
-
         }
-
-        public override void WindowUpdate()
-        {
-            base.WindowUpdate();
-            this.maxScroll = (prisoners.Count() * optionHeight) - scrollBoxHeight;
-        }
-
-
 
         public override void DoWindowContents(Rect inRect)
         {
@@ -107,52 +55,38 @@ namespace FactionColonies
 
 
             Text.Anchor = TextAnchor.MiddleLeft;
-
+            var outRect = new Rect(0, 0, inRect.width, inRect.height);
+            var viewRect = new Rect(outRect.x, outRect.y, outRect.width - 16f, prisoners.Count * optionHeight);
+            Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
+            var ls = new Listing_Standard();
+            ls.Begin(viewRect);
             int i = 0;
             foreach (FCPrisoner prisoner in prisoners)
             {
-                Rect Box;
-                Rect PawnIcon;
-                Rect PawnName;
-                Rect PawnHealth;
-                Rect PawnUnrest;
-                Rect PawnWorkload;
-                Rect ButtonInfo;
-                Rect ButtonAction;
-
-                Box = optionBox;
-                PawnIcon = optionPawnIcon;
-                PawnName = optionPawnName;
-                PawnHealth = optionPawnHealth;
-                PawnUnrest = optionPawnUnrest;
-                PawnWorkload = optionPawnWorkload;
-                ButtonInfo = optionButtonInfo;
-                ButtonAction = optionButtonAction;
-
-                Box.y += scroll + optionHeight * i;
-                PawnIcon.y += scroll + optionHeight * i;
-                PawnName.y += scroll + optionHeight * i;
-                PawnHealth.y += scroll + optionHeight * i;
-                PawnUnrest.y += scroll + optionHeight * i;
-                PawnWorkload.y += scroll + optionHeight * i;
-                ButtonInfo.y += scroll + optionHeight * i;
-                ButtonAction.y += scroll + optionHeight * i;
+                Rect box = ls.GetRect(optionHeight);
+                Rect pawnIcon = new Rect(box.x, box.y + 18, 50, 50);
+                Rect pawnName = new Rect(box.x + 50, box.y + 4, 300, 20);
+                Rect pawnHealth = new Rect(pawnName.x, pawnName.y + 20, 300, 20);
+                Rect pawnUnrest = new Rect(pawnHealth.x, pawnHealth.y + 20, 300, 20);
+                Rect pawnWorkload = new Rect(pawnUnrest.x, pawnUnrest.y + 20, 150, 20);
+                Rect buttonInfo = new Rect(box.xMax - 150 - 10, pawnHealth.y + 20, 150, 20);
+                Rect buttonAction = new Rect(box.xMax - 150 - 10, pawnUnrest.y + 20, 150, 20);
 
 
                 //display stuff now
-                Widgets.DrawMenuSection(Box);
+                Widgets.DrawMenuSection(box);
                 //on every other box
                 if (i % 2 == 0)
                 {
-                    Widgets.DrawHighlight(Box);
+                    Widgets.DrawHighlight(box);
                 }
 
                 //show pawn;
-                Widgets.ThingIcon(PawnIcon, prisoner.prisoner);
+                Widgets.ThingIcon(pawnIcon, prisoner.prisoner);
                 //Pawn Name
-                Widgets.Label(PawnName, prisoner.prisoner.Name.ToString());
+                Widgets.Label(pawnName, prisoner.prisoner.Name.ToString());
                 //Pawn Health
-                Widgets.Label(PawnHealth, "Health".Translate().CapitalizeFirst() + " " + prisoner.health);
+                Widgets.Label(pawnHealth, "Health".Translate().CapitalizeFirst() + " " + prisoner.health);
                 //Pawn Unrest
                     //Widgets.Label(PawnUnrest, "Unrest".Translate().CapitalizeFirst() + " " + prisoner.unrest);
 
@@ -175,7 +109,7 @@ namespace FactionColonies
                         workload = "null";
                         break;
                 }
-                if (Widgets.ButtonText(PawnWorkload, "FCWorkload".Translate().CapitalizeFirst() + ": " + workload))
+                if (Widgets.ButtonText(pawnWorkload, "FCWorkload".Translate().CapitalizeFirst() + ": " + workload))
                 {
                     List<FloatMenuOption> list = new List<FloatMenuOption>();
                     list.Add(new FloatMenuOption("FCHeavy".Translate().CapitalizeFirst() + " - " + "FCHeavyExplanation".Translate(), delegate
@@ -195,7 +129,7 @@ namespace FactionColonies
                 }
 
                 //Info Button
-                if (Widgets.ButtonTextSubtle(ButtonInfo, "ViewInfo".Translate()))
+                if (Widgets.ButtonTextSubtle(buttonInfo, "ViewInfo".Translate()))
                 {
                     Pawn pawn = new Pawn();
                     pawn = prisoner.prisoner;
@@ -217,7 +151,7 @@ namespace FactionColonies
                 }
 
                 //Action button
-                if (Widgets.ButtonTextSubtle(ButtonAction, "Actions".Translate()))
+                if (Widgets.ButtonTextSubtle(buttonAction, "Actions".Translate()))
                 {
                     List<FloatMenuOption> list = new List<FloatMenuOption>();
 
@@ -282,33 +216,10 @@ namespace FactionColonies
                 i++;
             }
 
+            ls.End();
+            Widgets.EndScrollView();
             Text.Font = fontBefore;
             Text.Anchor = anchorBefore;
-
-            if (Event.current.type == EventType.ScrollWheel)
-            {
-
-                scrollWindow(Event.current.delta.y);
-            }
-
-        }
-
-
-        private void scrollWindow(float num)
-        {
-            if (scroll - num * 5 < -1 * maxScroll)
-            {
-                scroll = -1 * maxScroll;
-            }
-            else if (scroll - num * 5 > 0)
-            {
-                scroll = 0;
-            }
-            else
-            {
-                scroll -= (int)Event.current.delta.y * 5;
-            }
-            Event.current.Use();
         }
     }
 }
