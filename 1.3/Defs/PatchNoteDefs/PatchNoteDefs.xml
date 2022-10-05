@@ -27,6 +27,36 @@
 	</FactionColonies.PatchNoteDef>
 
 	<FactionColonies.PatchNoteDef ParentName="EmpirePatchBase">
+		<defName>0_40_04</defName>
+		<label>Small Improvements and a scrollbar</label>
+		<description>Scrollbars and a tiny fix</description>
+
+		<major>0</major>
+		<minor>40</minor>
+		<patch>4</patch>
+
+		<releaseDay>05</releaseDay>
+		<releaseMonth>10</releaseMonth>
+		<releaseYear>2022</releaseYear>
+
+		<patchNoteType>Patch</patchNoteType>
+
+		<patchNoteLines>
+			<li>SaintCirno9 on Github added Scrollbars... ín may - Somehow I missed the notification</li>
+			<li>Other than that I fixed a small error regarding Events</li>
+		</patchNoteLines>
+
+		<additionalNotes>
+			<li>There's been lots of changes for me irl and with the rework and RimWorld update, I can't make promises of stuff being delivered soon ;w; - I hope this lasts for now</li>
+			<li>I hope I can deliver better news in future - Dani</li>
+		</additionalNotes>
+
+		<authors>
+			<li>Danimineiro</li>
+		</authors>
+	</FactionColonies.PatchNoteDef>
+	
+	<FactionColonies.PatchNoteDef ParentName="EmpirePatchBase">
 		<defName>0_40_03</defName>
 		<label>Improvements and about rewriting Empire</label>
 		<description>Removes a potential soft lock</description>
