@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionDef ParentName="OutlanderFactionBase">
+		<defName>PColony</defName>
+		<label>Player Faction</label>
+		<description>This faction resides under your control.</description>
+		<settlementGenerationWeight>0</settlementGenerationWeight>
+		<requiredCountAtGameStart>0</requiredCountAtGameStart>
+		<canMakeRandomly>false</canMakeRandomly>
+		<techLevel>Neolithic</techLevel>
+		<generateNewLeaderFromMapMembersOnly>false</generateNewLeaderFromMapMembersOnly>
+		<factionIconPath>World/PColonyBaseIcon</factionIconPath>
+		<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+		<maxCountAtGameStart>0</maxCountAtGameStart>
+		<maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+		<startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+	</FactionDef>
+</Defs>

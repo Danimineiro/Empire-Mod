@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Patch> 
+
+<Operation Class="PatchOperationConditional">
+	<xpath>/Defs/FactionDef[defName="Empire"]</xpath>
+	<match Class="PatchOperationAdd">
+		<xpath>/Defs/FactionDef[defName="Empire"]/permanentEnemyToEveryoneExcept</xpath>
+		<value>
+			<li>PColony</li>
+		</value>
+	</match>
+	<success>Always</success>
+</Operation>
+
+
+</Patch>
