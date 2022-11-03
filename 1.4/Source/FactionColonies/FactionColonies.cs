@@ -16,6 +16,17 @@ namespace FactionColonies
 {
     public class FactionColonies : ModSettings
     {
+        private Faction playerFactionRef = null;
+
+        public Faction GetVanillaPlayerFaction()
+        {
+            if (playerFactionRef == null)
+            {
+                playerFactionRef = Find.FactionManager.AllFactions.ToList().Find(faction => faction.IsPlayer);
+            }
+
+            return playerFactionRef;
+        }
         public static void UpdateChanges()
         {
             FactionFC factionFC = Find.World.GetComponent<FactionFC>();
@@ -623,7 +634,7 @@ namespace FactionColonies
                 points = 999,
                 raidArrivalModeForQuickMilitaryAid = true,
                 raidNeverFleeIndividual = true,
-                raidForceOneIncap = true,
+                //raidForceOneIncap = true,
                 raidArrivalMode = PawnsArrivalModeDefOf.CenterDrop,
                 raidStrategy = RaidStrategyDefOf.ImmediateAttackFriendly
             };
@@ -767,7 +778,7 @@ namespace FactionColonies
                             parms.points = 999;
                             parms.raidArrivalModeForQuickMilitaryAid = true;
                             parms.raidNeverFleeIndividual = true;
-                            parms.raidForceOneIncap = true;
+                            //parms.raidForceOneIncap = true;
                             parms.raidArrivalMode = PawnsArrivalModeDefOf.CenterDrop;
                             parms.raidStrategy = RaidStrategyDefOf.ImmediateAttackFriendly;
                             parms.raidArrivalModeForQuickMilitaryAid = true;
@@ -1010,7 +1021,7 @@ namespace FactionColonies
             faction.loadID = Find.UniqueIDsManager.GetNextFactionID();
             faction.colorFromSpectrum = worldcomp.factionBackup.colorFromSpectrum;
             faction.Name = worldcomp.factionBackup.Name;
-            faction.centralMelanin = worldcomp.factionBackup.centralMelanin;
+            //faction. = worldcomp.factionBackup.centralMelanin;
             //<DevAdd> Copy player faction relationships  
             foreach (Faction other in Find.FactionManager.AllFactionsListForReading)
             {
@@ -1075,11 +1086,11 @@ namespace FactionColonies
             FactionDef facDef = DefDatabase<FactionDef>.GetNamed("PColony");
             Faction faction = new Faction();
             faction.def = facDef;
-            faction.def.techLevel = TechLevel.Undefined;
+            faction.def.techLevel = Faction.OfPlayer.def.techLevel;
             faction.loadID = Find.UniqueIDsManager.GetNextFactionID();
             faction.colorFromSpectrum = FactionGenerator.NewRandomColorFromSpectrum(faction);
             faction.Name = "PlayerColony".Translate();
-            faction.centralMelanin = Rand.Value;
+            //faction.centralMelanin = Rand.Value;
             faction.def.classicIdeo = Faction.OfPlayer.def.classicIdeo;
             faction.ideos = Faction.OfPlayer.ideos;
             //<DevAdd> Copy player faction relationships  
@@ -1096,7 +1107,7 @@ namespace FactionColonies
                 Log.Message("Generating Leader failed! Manually Generating . . .");
                 faction.leader = PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind: Faction.OfPlayer.RandomPawnKind(),
                 faction: faction, context: PawnGenerationContext.NonPlayer, 
-                forceGenerateNewPawn: true, newborn: false, allowDead: false, allowDowned: false,
+                forceGenerateNewPawn: true, developmentalStages: DevelopmentalStage.Adult, allowDead: false, allowDowned: false,
                 canGeneratePawnRelations: true, mustBeCapableOfViolence: true, colonistRelationChanceFactor: 0,
                 forceAddFreeWarmLayerIfNeeded: false,  worldPawnFactionDoesntMatter: false));
                 if(faction.leader == null)
