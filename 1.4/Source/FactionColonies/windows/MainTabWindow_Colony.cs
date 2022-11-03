@@ -664,7 +664,7 @@ namespace FactionColonies
                                         points = 999,
                                         raidArrivalModeForQuickMilitaryAid = true,
                                         raidNeverFleeIndividual = true,
-                                        //raidForceOneIncap = true,
+                                        raidForceOneIncap = true,
                                         raidArrivalMode = PawnsArrivalModeDefOf.CenterDrop,
                                         raidStrategy = RaidStrategyDefOf.ImmediateAttackFriendly
                                     };

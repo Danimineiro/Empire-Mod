@@ -10,8 +10,7 @@ namespace FactionColonies.util
 			Context = PawnGenerationContext.NonPlayer,
 			Tile = -1,
 			ForceGenerateNewPawn = false,
-			AllowPregnant = false,
-			AllowedDevelopmentalStages = DevelopmentalStage.Adult,
+			Newborn = false,
 			AllowDead = false,
 			AllowDowned = false,
 			CanGeneratePawnRelations = true,
@@ -35,8 +34,7 @@ namespace FactionColonies.util
 			request.Faction = FactionColonies.getPlayerColonyFaction();
 			request.FixedBiologicalAge = request.KindDef.GetReasonableMercenaryAge();
 			request.MustBeCapableOfViolence = true;
-			request.AllowPregnant = false;
-			request.AllowedDevelopmentalStages = DevelopmentalStage.Adult;
+
 			return request;
 		}
 
@@ -46,8 +44,6 @@ namespace FactionColonies.util
 
 			request.KindDef = pawnKindDef ?? (FactionColonies.getPlayerColonyFaction()?.RandomPawnKind());
 			request.Faction = FactionColonies.getPlayerColonyFaction();
-			request.AllowPregnant = false;
-			request.AllowedDevelopmentalStages = DevelopmentalStage.Adult;
 
 			return request;
 		}

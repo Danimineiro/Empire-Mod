@@ -823,7 +823,7 @@ namespace FactionColonies
                         Log.Message("Generating Leader failed! Manually Generating . . .");
                         playerColonyfaction.leader = PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind: Faction.OfPlayer.RandomPawnKind(),
                         faction: playerColonyfaction, context: PawnGenerationContext.NonPlayer,
-                        forceGenerateNewPawn: true, developmentalStages: DevelopmentalStage.Adult, allowDead: false, allowDowned: false,
+                        forceGenerateNewPawn: true, newborn: false, allowDead: false, allowDowned: false,
                         canGeneratePawnRelations: true, mustBeCapableOfViolence: true, colonistRelationChanceFactor: 0,
                         forceAddFreeWarmLayerIfNeeded: false, worldPawnFactionDoesntMatter: false));
                         if (playerColonyfaction.leader == null)

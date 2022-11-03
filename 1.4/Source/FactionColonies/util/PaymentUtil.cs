@@ -500,7 +500,7 @@ namespace FactionColonies
 
             pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind: raceChoice,
                 faction: FactionColonies.getPlayerColonyFaction(), context: PawnGenerationContext.NonPlayer, tile: -1, 
-                forceGenerateNewPawn: false, developmentalStages: DevelopmentalStage.Adult, allowDead: false, allowDowned: false, 
+                forceGenerateNewPawn: false, newborn: false, allowDead: false, allowDowned: false, 
                 canGeneratePawnRelations: false, mustBeCapableOfViolence: true, colonistRelationChanceFactor: 0, 
                 forceAddFreeWarmLayerIfNeeded: false, allowGay: false, allowFood: false, allowAddictions: false, 
                 inhabitant: false, certainlyBeenInCryptosleep: false, forceRedressWorldPawnIfFormerColonist: false, 
@@ -643,7 +643,7 @@ namespace FactionColonies
 
                 PawnGenerationRequest request = new PawnGenerationRequest(kind: things.RandomElement<PawnKindDef>(),
                     faction: Find.FactionManager.OfPlayer, context: PawnGenerationContext.NonPlayer, tile: -1, 
-                    forceGenerateNewPawn: false, developmentalStages: DevelopmentalStage.Adult, allowDead: false, allowDowned: false, 
+                    forceGenerateNewPawn: false, newborn: false, allowDead: false, allowDowned: false, 
                     canGeneratePawnRelations: true, mustBeCapableOfViolence: false, colonistRelationChanceFactor: 1f, 
                     forceAddFreeWarmLayerIfNeeded: false, allowGay: true, allowFood: true, allowAddictions: false, 
                     inhabitant: false, certainlyBeenInCryptosleep: false, forceRedressWorldPawnIfFormerColonist: false, 
@@ -728,7 +728,7 @@ namespace FactionColonies
             regen:
             PawnGenerationRequest request = new PawnGenerationRequest(kind: things.RandomElement<PawnKindDef>(),
                 faction: Find.FactionManager.OfPlayer, context: PawnGenerationContext.NonPlayer, tile: -1, 
-                forceGenerateNewPawn: false, developmentalStages: DevelopmentalStage.Adult, allowDead: false, allowDowned: false, 
+                forceGenerateNewPawn: false, newborn: false, allowDead: false, allowDowned: false, 
                 canGeneratePawnRelations: true, mustBeCapableOfViolence: false, colonistRelationChanceFactor: 1f,
                 forceAddFreeWarmLayerIfNeeded: false, allowGay: true, allowFood: true, allowAddictions: false,
                 inhabitant: false, certainlyBeenInCryptosleep: false, forceRedressWorldPawnIfFormerColonist: false, 
