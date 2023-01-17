@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+        <TargetFramework>net472</TargetFramework>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+        <OutputPath>Assemblies</OutputPath>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <AssemblyVersion>0.38.3.05</AssemblyVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <!-- Rimworld -->
+        <Reference Condition="'$(Configuration)' == 'Debug'" Include="../../../RimWorldData_1.3/*.dll">
+            <Private>False</Private>
+        </Reference>
+        <PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3580" />
+
+        <!-- <ProjectReference Include="..\Common\Common.csproj" /> -->
+        
+        <PackageReference Include="Lib.Harmony" Version="2.2.2" />
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
+    </ItemGroup>
+</Project>
