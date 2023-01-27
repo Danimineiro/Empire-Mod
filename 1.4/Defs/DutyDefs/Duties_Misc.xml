@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<DutyDef>
+		<defName>FCDeliverItem</defName>
+		<thinkNode Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="FactionColonies.JobGiver_GotoAndDrop"/>
+				<li Class="JobGiver_WanderNearDutyLocation">
+					<wanderRadius>0</wanderRadius>
+				</li>
+			</subNodes>
+		</thinkNode>
+	</DutyDef>
+	
+	<DutyDef>
+		<defName>FCFollowAndDeliverItem</defName>
+		<thinkNode Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="FactionColonies.JobGiver_GotoAndDrop"/>
+				<li Class="JobGiver_WanderNearDutyLocation">
+					<wanderRadius>10</wanderRadius>
+				</li>
+			</subNodes>
+		</thinkNode>
+	</DutyDef>
+
+	<DutyDef>
+		<defName>FCTakeWoundedAndLeave</defName>
+		<thinkNode Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="FactionColonies.JobGiver_TakeWounded" />
+				<li Class="JobGiver_ExitMapBest">
+					<defaultLocomotion>Jog</defaultLocomotion>
+					<jobMaxDuration>500</jobMaxDuration>
+					<forceCanDigIfAnyHostileActiveThreat>true</forceCanDigIfAnyHostileActiveThreat>
+					<forceCanDigIfCantReachMapEdge>true</forceCanDigIfCantReachMapEdge>
+				</li>
+			</subNodes>
+		</thinkNode>
+	</DutyDef>
+</Defs>

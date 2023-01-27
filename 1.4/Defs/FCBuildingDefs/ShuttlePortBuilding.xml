@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FactionColonies.BuildingFCDef>
+		<defName>shuttlePort</defName>
+		<!--Name of Def -->
+		<label>Shuttle Port</label>
+		<!--Lable of Def -->
+		<desc>A small scale airport, this building provides the infrastructure to rapidly send goods around the planet. This building allows you to send three shuttles every tax cycle. +10 tithe modifier, +5% basetax. $600 upkeep cost.</desc>
+		<!-- Description of trait -->
+		<cost>4000</cost>
+		<techLevel>Spacer</techLevel>
+		<constructionDuration>300000</constructionDuration>
+		<!-- Ticks it takes until construction is finished -->
+		<traits>
+			<li>shuttlePort</li>
+		</traits>
+		<upkeep>600</upkeep>
+		<iconPath>GUI/Buildings/ShuttlePort</iconPath>
+		<shuttleUses>3</shuttleUses>
+		<requiresRoyality>true</requiresRoyality>
+	</FactionColonies.BuildingFCDef>
+</Defs>
